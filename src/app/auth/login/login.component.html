@@ -7,15 +7,24 @@
 	            <h4 class="card-title mt-2">User Login</h4>
             </header>
           <div class="card-body">
-            <form class="form-signin">
+            <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login(loginForm.valid)">
               <div class="form-label-group">
                 <label for="inputEmail">Email address</label>
-                <input type="email" id="inputEmail" class="form-control mb-4" placeholder="Email address" required autofocus>
+                <input type="email" formControlName="email"  id="inputEmail" class="form-control mb-4" placeholder="Email address" required autofocus>
+                <p *ngIf="!loginForm.get('email').valid && loginAttempt && loginForm.get('email').hasError('required')" class="deep-orange-text small m-0">
+                  Please provide a email!
+                </p>
+                <p *ngIf="loginForm.get('email').hasError('email')" class="deep-orange-text small m-0">
+                    Please provide a valid email!
+                </p>
               </div>
 
               <div class="form-label-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" id="inputPassword" class="form-control mb-4" placeholder="Password" required>
+                <input type="password"  formControlName="password" id="inputPassword" class="form-control mb-4" placeholder="Password" required>
+                <p *ngIf="!loginForm.get('password').valid && loginAttempt && loginForm.get('password').hasError('required')" class="deep-orange-text small m-0">
+                  Please provide a password!
+                </p>
               </div>
 
               <div class="custom-control custom-checkbox my-3">

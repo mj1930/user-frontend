@@ -6,8 +6,8 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/'},
-  {path: 'home', component: UserHomepageComponent},
+  // {path: '', pathMatch: 'full', redirectTo: '/'},
+  {path: '', component: UserHomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
 

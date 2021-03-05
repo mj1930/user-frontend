@@ -23,7 +23,9 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "mdbootstrap": "^4.19.2",
+    "owl.carousel": "^2.3.4",
     "rxjs": "~6.6.0",
+    "themify-icons": "^1.0.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

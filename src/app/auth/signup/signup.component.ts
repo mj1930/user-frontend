@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
       lname: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      gender: [''],
+     // gender: [''],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
       lname: this.registerForm.controls['lname'].value,
       email: this.registerForm.controls['email'].value,
       password: this.registerForm.controls['password'].value,
-      gender: this.registerForm.controls['gender'].value
+     // gender: this.registerForm.controls['gender'].value
     }
 
     this.authService.register(reqData).subscribe(data => {

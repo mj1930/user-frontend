@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from '../app/auth/login/login.component';
 import { SignupComponent } from '../app/auth/signup/signup.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { httpInterceptorProviders } from "./http-interceptor";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth/auth.service';
 export class UserHomepageComponent implements OnInit {
 
   products;
+  imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
 
   constructor(private authService: AuthService) { }
 
@@ -17,7 +18,12 @@ export class UserHomepageComponent implements OnInit {
   }
 
   getProducts() {
-    this.authService.getProducts().subscribe(data => {
+    let obj = {
+      skip: 0,
+      limit: 10,
+      status: true
+    }
+    this.authService.getProducts(obj).subscribe(data => {
       console.log(data);
       this.products = data['data'];
     }, error => {

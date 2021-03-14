@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor() { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler) {
-        if(request.url == 'products/get-all-products')
+        if(request.url == 'products/filter-products')
         {
             this.baseUrl = environment.sellerUrl;
         }

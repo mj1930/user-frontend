@@ -16,7 +16,7 @@ export class AuthService {
     return this.http.post('users/login', req);
   }
 
-  getProducts() {
-    return this.http.get('products/get-all-products');
+  getProducts(data) {
+    return this.http.post('products/filter-products', data);
   }
 }

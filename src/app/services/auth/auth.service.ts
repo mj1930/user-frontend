@@ -19,4 +19,8 @@ export class AuthService {
   getProducts(data) {
     return this.http.post('products/filter-products', data);
   }
+
+  getCategories(body) {
+    return this.http.post('category/get-all-categories', body); 
+  }
 }

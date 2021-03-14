@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3001/',
-  sellerUrl: 'http://localhost:3003/'
+  sellerUrl: 'http://localhost:3003/',
+  adminApiUrl: 'http://localhost:3002/'
 };
 
 /*

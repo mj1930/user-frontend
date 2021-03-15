@@ -12,6 +12,7 @@ import { LoginComponent } from '../app/auth/login/login.component';
 import { SignupComponent } from '../app/auth/signup/signup.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
+import { ProductDescriptionComponent } from './product-description/product-description.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserCartComponent } from './user-cart/user-cart.component';
     LoginComponent,
     SignupComponent,
     UserHomepageComponent,
-    UserCartComponent
+    UserCartComponent,
+    ProductDescriptionComponent
   ],
   imports: [
     BrowserModule,

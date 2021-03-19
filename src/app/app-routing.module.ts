@@ -8,8 +8,8 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 
 const routes: Routes = [
-  // {path: '', pathMatch: 'full', redirectTo: '/'},
-  {path: '', component: UserHomepageComponent},
+  {path: '', pathMatch: 'full', redirectTo: '/user-home-page'},
+  {path: 'user-home-page', component: UserHomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'cart', component: UserCartComponent},

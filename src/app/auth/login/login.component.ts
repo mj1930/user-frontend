@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', "");
         localStorage.setItem('password', "");
       }
-      this.router.navigateByUrl('/seller-welcome');
+      this.router.navigateByUrl('/user-home-page');
     }, error => {
       console.log(error);
     })

@@ -106,16 +106,9 @@
             <div class="nav-depart">
                 <div class="depart-btn">
                     <i class="fa fa-bars" aria-hidden="true"></i>                    
-                    <span>All departments</span>
+                    <span>Categories</span>
                     <ul class="depart-hover">
-                        <li class="active"><a href="#">Women’s Clothing</a></li>
-                        <li><a href="#">Men’s Clothing</a></li>
-                        <li><a href="#">Underwear</a></li>
-                        <li><a href="#">Kid's Clothing</a></li>
-                        <li><a href="#">Brand Fashion</a></li>
-                        <li><a href="#">Accessories/Shoes</a></li>
-                        <li><a href="#">Luxury Brands</a></li>
-                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                        <li *ngFor="let category of categories"class="active"><a>{{category?.categoryName}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -253,11 +246,11 @@
             <div class="col">
                 <div class="product-list">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-1.jpg" alt="">
-                                    <div class="sale pp-sale">Sale</div>
+                                    <img [src]="(product && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt="">
+                                    <!-- <div class="sale pp-sale">Sale</div> -->
                                     <div class="icon">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                                     </div>
@@ -268,18 +261,18 @@
                                     </ul>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="catagory-name">Towel</div>
+                                    <div class="catagory-name">{{product?.itemName}}</div>
                                     <a href="#">
-                                        <h5>Pure Pineapple</h5>
+                                        <h5>{{product?.itemTypeName}}</h5>
                                     </a>
                                     <div class="product-price">
-                                        INR 14.00
-                                        <span>INR 35.00</span>
+                                        INR {{product?.productPrice}}
+                                        <span>INR {{product?.mrp}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <!-- <div class="col-lg-3 col-sm-6">
                             <div class="product-item">
                                 <div class="pi-pic">
                                     <img src="https://preview.colorlib.com/theme/fashi/img/products/product-2.jpg" alt="">
@@ -453,7 +446,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

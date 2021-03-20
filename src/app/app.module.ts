@@ -14,6 +14,8 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { httpInterceptorProviders } from "./http-interceptor";
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
+import { ProductCategoryViewComponent } from './product-category-view/product-category-view.component';
+import { OrderListingComponent } from './order-listing/order-listing.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ProductDescriptionComponent } from './product-description/product-descr
     SignupComponent,
     UserHomepageComponent,
     UserCartComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    ProductCategoryViewComponent,
+    OrderListingComponent
   ],
   imports: [
     BrowserModule,

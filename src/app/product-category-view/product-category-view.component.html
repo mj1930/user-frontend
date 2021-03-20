@@ -159,13 +159,7 @@
                     <p class="py-2 text-dark">Categories</p>
                 </div>
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action text-dark">
-                      Computers
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action text-dark">Television</a>
-                    <a href="#" class="list-group-item list-group-item-action text-dark">Components</a>
-                    <a href="#" class="list-group-item list-group-item-action text-dark">Speakers</a>
-                    <a href="#" class="list-group-item list-group-item-action text-dark">Smart Watches</a>
+                    <a class="list-group-item list-group-item-action text-dark" *ngFor="let category of categories"  routerLink="/product-category/{{category?._id}}"> {{category?.categoryName}}</a>
                 </div>
             </div>
             
@@ -174,7 +168,7 @@
                 <div class="col grey lighten-2">
                     <p class="py-2 text-dark">Refine Search</p>
                 </div>
-                <div class="list-group">
+                <!-- <div class="list-group">
                     <p class="mb-2 font-weight-bold">Category</p>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="shoes">
@@ -195,7 +189,7 @@
                         <input type="checkbox" class="custom-control-input" id="Accessories">
                         <label class="custom-control-label" for="Accessories">Accessories</label>
                     </div>
-                </div>
+                </div> -->
 
 
                 <div class="list-group my-3">

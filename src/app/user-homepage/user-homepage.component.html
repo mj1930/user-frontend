@@ -108,7 +108,7 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>                    
                     <span>Categories</span>
                     <ul class="depart-hover">
-                        <li *ngFor="let category of categories"class="active"><a>{{category?.categoryName}}</a></li>
+                        <li *ngFor="let category of categories"class="active" routerLink="/product-category/{{category._id}}"><a>{{category?.categoryName}}</a></li>
                     </ul>
                 </div>
             </div>

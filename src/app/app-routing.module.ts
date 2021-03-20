@@ -10,16 +10,14 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/user-home-page'},
-  {path: 'user-home-page', component: UserHomepageComponent},
+  {path: '', component: UserHomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'cart', component: UserCartComponent},
   {path: 'product-description', component: ProductDescriptionComponent},
-  {path:'**', component: LoginComponent},
   {path: 'order-listing', component: OrderListingComponent},
-  {path: 'product-category', component: ProductCategoryViewComponent},
-
+  {path: 'product-category/:id', component: ProductCategoryViewComponent},
+  {path:'**', component: LoginComponent}
 
 
 ];

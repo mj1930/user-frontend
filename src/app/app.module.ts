@@ -36,7 +36,7 @@ import { OrderListingComponent } from './order-listing/order-listing.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [httpInterceptorProviders, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

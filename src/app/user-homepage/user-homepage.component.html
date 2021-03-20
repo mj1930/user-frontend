@@ -580,16 +580,18 @@
     <div class="container">
         <h4 class="text-center text-white mb-5">Shop By Category</h4>
         <div class="row">
-            <div class="col-md-3 col-sm-6 my-2">
-                <div class="card shopCategory">
-                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title text-center text-white">Appliances</h5>
+            <ng-container *ngFor="let category of categories">
+                <div class="col-md-3 col-sm-6 my-2">
+                    <div class="card shopCategory">
+                        <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="product-category/{{category?._id}}">{{category?.categoryName}}</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
     
-            <div class="col-md-3 col-sm-6 my-2">
+            <!-- <div class="col-md-3 col-sm-6 my-2">
                 <div class="card shopCategory">
                     <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
                     <div class="card-body">
@@ -614,7 +616,7 @@
                       <h5 class="card-title text-center text-white">Appliances</h5>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         
     </div>

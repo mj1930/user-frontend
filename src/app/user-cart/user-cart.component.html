@@ -195,12 +195,12 @@
                 <table class="table table-bordered table-responsive my-3">
                     <thead class="grey lighten-2">
                       <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Model</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Total</th>
+                        <th scope="col" class="text-nowrap">Image</th>
+                        <th scope="col" class="text-nowrap">Product Name</th>
+                        <th scope="col" class="text-nowrap">Model</th>
+                        <th scope="col" class="text-nowrap">Quantity</th>
+                        <th scope="col" class="text-nowrap">Unit Price</th>
+                        <th scope="col" class="text-nowrap">Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -212,7 +212,7 @@
                             <p class="m-0">Solid Backpack thinnest headphone jack access</p>
                              <!-- <span class="m-0 small">Reward Points: 1000</span> -->
                         </td>
-                        <td>
+                        <td class="text-nowrap">
                             <p>SAM1</p>
                         </td>
                         <td>
@@ -223,10 +223,10 @@
                             </div>
                         </td>
 
-                        <td>
+                        <td class="text-nowrap">
                             <p>INR 499</p>
                         </td>
-                        <td>
+                        <td class="text-nowrap">
                             <p>INR 499</p>
                         </td>
                       </tr>
@@ -264,9 +264,32 @@
                           </button>
                         </h2>
                       </div>
-                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div id="collapseTwo" class="collapse000" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                           <!-- To Be Updated -->
+                          <p>Enter your destination to get a shipping estimate.</p>
+                          <div class="row my-2">
+                            <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Country</p>
+                            <select class="col form-control">
+                                <option value="Select Country">Select Country</option>
+                                <option value="India">India</option>
+                            </select>
+                            </div>
+
+
+                        <div class="row my-2">
+                        <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Region / State</p>
+                        <select class="col form-control">
+                            <option value="Select Country">Select State</option>
+                            <option value="India">Haryana</option>
+                        </select>
+                        </div>
+
+                        <div class="row my-2">
+                            <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Post Code</p>
+                            <input type="text" class="col form-control" placeholder="Post Code">
+                        </div>
+
                         </div>
                       </div>
                     </div>
@@ -278,7 +301,7 @@
                           </button>
                         </h2>
                       </div>
-                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                      <div id="collapseThree" class="collapse000" aria-labelledby="headingThree" data-parent="#accordionExample">
                         <div class="card-body">
                             <div class="row">
                                 <p class="my-2 mr-2 text-dark">Gift Card</p>
@@ -303,7 +326,7 @@
                             <tbody>
                             <tr>
                                 <th scope="col" class="text-right"><b>Discount:</b></th>
-                                <td>INR 26</td>
+                                <td>span</td>
                             </tr>
                             <tr>
                                 <th scope="col" class="text-right"><b>GST (18%)</b></th>

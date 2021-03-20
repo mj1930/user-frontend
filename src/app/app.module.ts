@@ -32,7 +32,7 @@ import { ProductDescriptionComponent } from './product-description/product-descr
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, httpInterceptorProviders],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

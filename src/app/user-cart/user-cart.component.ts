@@ -25,22 +25,23 @@ export class UserCartComponent implements OnInit {
     this.authService.getCartList(obj).subscribe(data => {
       console.log(data);
       this.cartList = data['data'];
-      this.cartList.forEach(item => item['quantity'] = item.products.length);
+      //this.cartList.forEach(item => item['quantity'] = item.products.length);
       this.calculateTotal();
     }, error => {
       console.log(error);
     });
   }
 
-  updateCart(cart, index) {
+  updateCart(product, index) {
     let reqBody = {
-      productId: cart.products[index]._id,
-      quantity: cart.quantity,
-      totalAmnt: String(cart.products[0].mrp * cart.quantity),
+      productId: product.productId,
+      quantity: product.quantity,
+      totalAmnt: String( product.orderPrice * product.quantity),
           };
     this.authService.updateCart(reqBody).subscribe(data => {
       console.log('update',data);
       this.getCartList();
+      this.calculateTotal();
       // for(let i=0; i<this.cartList.length; i++) {
       //   if(data["data"]._id === this.cartList[i]._id) {
       //     this.cartList[i] = data['data'];
@@ -52,15 +53,16 @@ export class UserCartComponent implements OnInit {
     });
   }
 
-  removeCart(cart, index) {
+  removeCart(product, index) {
     let reqBody = {
-productId: cart.products[index]._id,
-quantity: cart.quantity,
-totalAmnt: String(cart.products[0].mrp * cart.quantity),
+productId: product.productId,
+quantity: product.quantity,
+totalAmnt: String( product.orderPrice * product.quantity),
     };
     this.authService.removeCart(reqBody).subscribe(data => {
       console.log('remove',data);
       this.getCartList();
+      this.calculateTotal();
       // for(let i=0; i<this.cartList.length; i++) {
       //   if(data["data"]._id === this.cartList[i]._id) {
       //     this.cartList[i] = data['data'];
@@ -76,9 +78,9 @@ total = null;
 gstValue = null;
   calculateTotal() {
     this.subTotal = 0;
-    this.cartList.forEach(item => {
-this.subTotal += item.quantity * item.products[0].mrp;
-    });
+    this.cartList.forEach(cart => cart["products"].forEach(item => {
+this.subTotal += item.quantity * item.orderPrice;
+    }));
     this.gstValue = this.subTotal * 18 / 100;
     this.total = this.subTotal + this.gstValue;
   }

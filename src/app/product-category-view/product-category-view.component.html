@@ -149,217 +149,183 @@
     </div>
 </header>
 
+
+
 <div class="container my-5">
     <div class="row">
-        <div class="col-lg-3 col-12">
-            <div class="col grey lighten-2">
-                <p class="py-2 text-dark">Latest</p>
-            </div>
-            <div class="col p-0">
-                <div class="select-items">
-                    <table style="border-collapse: separate; border-spacing: 1em;">
-                        <tbody>
-                            <tr>
-                                <td class="si-pic border"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt="" class=""></td>
-                                <td class="si-text">
-                                    <div class="product-selected">
-                                        <p>INR60.00 x 1</p>
-                                        <h6>Kabino Bedside Table</h6>
-                                    </div>
-                                </td>
-                                <td class="si-close">
-                                    <i class="ti-close"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="si-pic border"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt=""></td>
-                                <td class="si-text">
-                                    <div class="product-selected">
-                                        <p>INR60.00 x 1</p>
-                                        <h6>Kabino Bedside Table</h6>
-                                    </div>
-                                </td>
-                                <td class="si-close">
-                                    <i class="ti-close"></i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="col-md-2">
+            <div class="category-show">
+                <div class="col grey lighten-2">
+                    <p class="py-2 text-dark">Categories</p>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action text-dark" *ngFor="let category of categories"  routerLink="/product-category/{{category?._id}}"> {{category?.categoryName}}</a>
                 </div>
             </div>
-        </div>
+            
 
-        <div class="col-lg-9 col-12">
-            <div class="col">
-                <h4>Shopping Cart</h4>
-                <table class="col-12 table table-bordered table-responsive my-3">
-                    <thead class="grey lighten-2">
-                      <tr>
-                        <th scope="col" class="text-nowrap">Image</th>
-                        <th scope="col" class="text-nowrap">Product Name</th>
-                        <!-- <th scope="col" class="text-nowrap">Model</th> -->
-                        <th scope="col" class="text-nowrap">Quantity</th>
-                        <th scope="col" class="text-nowrap">Unit Price</th>
-                        <th scope="col" class="text-nowrap">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <ng-container *ngFor="let cart of cartList; let j=index;">
-                      <tr *ngFor="let product of cart.products; let i=index;">
-                        <th scope="row" class="text-center">
-                            <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg">
-                        </th>
-                        <td>
-                            <p class="m-0">{{product?.productName}}</p>
-                             <!-- <span class="m-0 small">Reward Points: 1000</span> -->
-                        </td>
-                        <!-- <td class="text-nowrap">
-                            <p>SAM1</p>
-                        </td> -->
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <input type="text" name="quantity_{{i}}" [(ngModel)]="product.quantity" style="width: 40px; margin-top: 6px; height: 30px;" class="text-center">
-                                <button class="btn btn-dark btn-sm mx-3 rounded" (click)="updateCart(product, i)"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button class="btn btn-danger btn-sm rounded" (click)="removeCart(product, i)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-                            </div>
-                        </td>
-
-                        <td class="text-nowrap">
-                            <p>{{product?.orderPrice}}</p>
-                        </td>
-                        <td class="text-nowrap">
-                            <p>{{cart?.totalAmnt}}</p>
-                        </td>
-                      </tr>
-                    </ng-container>
-                    </tbody>
-                </table>
-
-                <!-- <h5 class="">What would you like to do next?</h5>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p> -->
-
-                <!-- <div class="accordion" id="accordionExample">
-                    <div class="card border-0 my-3">
-                      <div class="card-header py-1" id="headingOne">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link p-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Use Coupon Code
-                          </button>
-                        </h2>
-                      </div>
-                  
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <div class="row">
-                              <p class="my-2 mr-2 text-dark">Enter Your Coupon Here</p>
-                              <input type="text" class="form-control col" placeholder="Enter your coupon here">
-                              <button class="btn btn-sm btn-dark" style="margin-top: -1.6px;">Apply Coupon</button>
-                          </div>
-                        </div>
-                      </div>
+            <div class="refine-search my-4">
+                <div class="col grey lighten-2">
+                    <p class="py-2 text-dark">Refine Search</p>
+                </div>
+                <!-- <div class="list-group">
+                    <p class="mb-2 font-weight-bold">Category</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="shoes">
+                        <label class="custom-control-label" for="shoes">Shoes</label>
                     </div>
-                    <div class="card border-0 my-3">
-                      <div class="card-header py-1" id="headingTwo">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Estimate Shipping & Taxes
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseTwo" class="collapse000" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <p>Enter your destination to get a shipping estimate.</p>
-                          <div class="row my-2">
-                            <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Country</p>
-                            <select class="col form-control">
-                                <option value="Select Country">Select Country</option>
-                                <option value="India">India</option>
-                            </select>
-                            </div>
 
-
-                        <div class="row my-2">
-                        <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Region / State</p>
-                        <select class="col form-control">
-                            <option value="Select Country">Select State</option>
-                            <option value="India">Haryana</option>
-                        </select>
-                        </div>
-
-                        <div class="row my-2">
-                            <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Post Code</p>
-                            <input type="text" class="col form-control" placeholder="Post Code">
-                        </div>
-
-                        </div>
-                      </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cloths">
+                        <label class="custom-control-label" for="cloths">Cloths</label>
                     </div>
-                    <div class="card border-0 my-3">
-                      <div class="card-header py-1" id="headingThree">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link collapsed p-0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Use Gift Card
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseThree" class="collapse000" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="row">
-                                <p class="my-2 mr-2 text-dark">Gift Card</p>
-                                <input type="text" class="form-control col" placeholder="Enter your gift coupon here">
-                                <button class="btn btn-sm btn-dark" style="margin-top: -1.6px;">Apply Gift Card</button>
-                            </div>
-                        </div>
-                      </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Bags">
+                        <label class="custom-control-label" for="Bags">Bags</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Accessories">
+                        <label class="custom-control-label" for="Accessories">Accessories</label>
                     </div>
                 </div> -->
 
 
-                <div class="row">
-                    <div class="col d-flex justify-content-md-end">
-                        <table class="table table-bordered col-md-4 align-right">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Sub-Total:</b></th>
-                                <td>INR {{subTotal}}</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Discount:</b></th>
-                                <td>NA</td>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="text-right"><b>GST (18%)</b></th>
-                                <td>INR {{gstValue}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Total</b></th>
-                                <td>INR {{total}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <div class="list-group my-3">
+                    <p class="mb-2 font-weight-bold">Color</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Red">
+                        <label class="custom-control-label" for="Red">Red</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Green">
+                        <label class="custom-control-label" for="Green">Green</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Blue">
+                        <label class="custom-control-label" for="Blue">Blue</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Black">
+                        <label class="custom-control-label" for="Black">Black</label>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="my-3 col d-flex justify-content-between">
-                        <a class="btn btn-dark m-0 rounded btn-sm" role="button">Continue Shopping</a>
-                        <a class="btn btn-dark m-0 rounded btn-sm" role="button">Checkout</a>
+                <div class="list-group my-3">
+                    <p class="mb-2 font-weight-bold">Price</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="p1">
+                        <label class="custom-control-label" for="p1">INR 400 - INR 1000</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="p2">
+                        <label class="custom-control-label" for="p2">INR 1100 - INR 2000</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="p3">
+                        <label class="custom-control-label" for="p3">INR 2100 - INR 3000</label>
                     </div>
                 </div>
+
+                <button class="btn btn-sm rounded btn-dark m-0">Refine Search</button>
+            </div>
+
+            <div class="side-advert my-4">
+                <!-- <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/left-banner-266x400.jpg" alt="" class="img-thumbnail col-12"> -->
+            </div>
+        </div>
+        <div class="col-md-10">
+    
+            <h4 class="font-weight-bold">{{categoryName}}</h4>
+            <!-- <p class="mb-2 text-muted small my-4 text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
+
+            <div class="row">
+                <div class="col">
+                    <p class="m-0">Refine Search</p>
+                    <button class="btn btn-outline-dark btn-sm m-0">Workstation</button>
+                    <button class="btn btn-outline-dark btn-sm">Laptop</button>
+                    <button class="btn btn-outline-dark btn-sm">Desktop</button>
+                </div>
+            </div> -->
+
+            <div class="row justify-content-md-end">
+                <div class="row mx-2">
+                    <span class="my-2 mx-2">Sort By</span>
+                    <select class="form-control">
+                        <option value="">Default</option>
+                        <option value="">Name (A - Z) </option>
+                        <option value="">Name (Z - A) </option>
+                        <option value="">Price (Low > High) </option>
+                        <option value="">Price (High > Low) </option>
+                        <option value="">Rating (Highest) </option>
+                        <option value="">Rating (Lowest) </option>
+                        <option value="">Model (A - Z) </option>
+                        <option value="">Model (Z - A) </option>
+                    </select>
+                </div>
+
+                <div class="row mx-2">
+                    <span class="my-2 mx-2">Show</span>
+                    <select class="form-control">
+                        <option value="">12</option>
+                        <option value="">25</option>
+                        <option value="">50</option>
+                        <option value="">100</option>
+                    </select>
+                </div>
+                
+            </div>
+
+            <div class="row my-5" *ngIf="productList.length > 0">
+                <div class="col-sm-6 col-lg-3 mb-5" *ngFor="let product of productList">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img [src]="product?.productImg[0]" alt="">
+                            <div class="icon">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            </div>
+                            <ul>
+                                <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                <li class="quick-view"><a href="#">View Product</a></li>
+                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">{{product?.itemName}}</div>
+                            <!-- <a href="#">
+                                <h5>Microfiber Wool Scarf</h5>
+                            </a> -->
+                            <div class="product-price">
+                                INR {{product?.mrp}}
+                                <!-- <span>INR 35.00</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5" *ngIf="productList.length === 0">
+                <h4 class="font-weight-bold">No products found</h4>
+            </div>
+            <div class="row d-flex justify-content-md-end justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 
 

@@ -11,15 +11,15 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor() { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler) {
-        if(request.url.includes('category')) {
-            this.baseUrl = environment.adminApiUrl;
-        } else {
+        // if(request.url.includes('category')) {
+        //     this.baseUrl = environment.adminApiUrl;
+        // } else {
             this.baseUrl = environment.apiUrl;
-        }
-        if(request.url == 'products/filter-products')
-        {
-            this.baseUrl = environment.sellerUrl;
-        }
+        // }
+        // if(request.url == 'products/filter-products')
+        // {
+        //     this.baseUrl = environment.sellerUrl;
+        // }
         let requestObject = {
             url: `${this.baseUrl}${request.url}`,
             setHeaders: {

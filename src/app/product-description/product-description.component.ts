@@ -11,9 +11,13 @@ export class ProductDescriptionComponent implements OnInit {
   product: any;
   quantity = 1;
   reqBody = {
-    products:[],
-    totalAmnt: ""
-  }
+  productImg: [],
+  productName: "",
+  productId: "",
+  quantity: 1,
+  orderPrice: "",
+  sellerId: ""
+  };
 
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -47,12 +51,31 @@ id = item['id'];
   }
 
   addToCart() {
-    this.reqBody.products = [];
-    for(let i=0; i<this.quantity; i++) {
-      this.reqBody.products.push(this.product);
+    let reqBody = {
+      products:[{
+      productImg: [],
+      productName: "",
+      productId: "",
+      quantity: 1,
+      orderPrice: "",
+      sellerId: ""
+      }],
+    totalAmnt: ""};
+    //reqBody.products = [];
+    // for(let i=0; i<this.quantity; i++) {
+    //   this.reqBody.products.push(this.product);
+    // }
+
+    reqBody.products[0]= {
+      productImg: [],
+      productName: this.product.itemName,
+      productId: this.product._id,
+      quantity: this.quantity,
+      orderPrice: this.product.mrp,
+      sellerId: this.product.userId
     }
-    this.reqBody.totalAmnt = String(this.quantity * this.product.mrp);
-    this.authService.addToCart(this.reqBody).subscribe(data => {
+    reqBody.totalAmnt = String(this.quantity * this.product.mrp);
+    this.authService.addToCart(reqBody).subscribe(data => {
       //console.log(data);
       this.router.navigateByUrl("/cart");
       //this.product = data['data'];

@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   getProducts(data) {
-    return this.http.post('products/filter-products', data);
+    return this.http.post('products/get-all-products', data);
   }
 
   getProduct(id) {
@@ -45,4 +45,11 @@ export class AuthService {
   }
 
 
+  getProductsByCategory(body) {
+    return this.http.post('products/get-products-by-category', body); 
+  }
+
+  getOneCategory(categoryId) {
+    return this.http.get(`category/get-one-category?categoryId=${categoryId}`)
+  }
 }

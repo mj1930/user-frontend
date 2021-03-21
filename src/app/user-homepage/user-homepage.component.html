@@ -249,14 +249,14 @@
                         <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img [src]="(product && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt="">
+                                    <img [src]="(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt="">
                                     <!-- <div class="sale pp-sale">Sale</div> -->
                                     <div class="icon">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                                     </div>
                                     <ul>
                                         <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                        <li class="quick-view" [routerLink]="['/product-description', product._id]"><a>+ Quick View</a></li>
                                         <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                     </ul>
                                 </div>

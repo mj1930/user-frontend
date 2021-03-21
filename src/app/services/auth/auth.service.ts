@@ -20,7 +20,29 @@ export class AuthService {
     return this.http.post('products/filter-products', data);
   }
 
+  getProduct(id) {
+    return this.http.get(`products/get-product-by-id?productId=${id}`);
+  }
+
   getCategories(body) {
     return this.http.post('category/get-all-categories', body); 
   }
+
+  addToCart(data) {
+    return this.http.post('carts/add-cart', data);
+  }
+
+  getCartList(body) {
+    return this.http.post('carts/list-cart', body); 
+  }
+
+  updateCart(data) {
+    return this.http.post('carts/update-quantity', data);
+  }
+
+  removeCart(data) {
+    return this.http.post('carts/remove-cart', data);
+  }
+
+
 }

@@ -176,58 +176,161 @@
         <div class="col-md-10">
     
             <h4 class="font-weight-bold">Order History</h4>
-            <table class="table table-bordered  my-3">
-                <thead class="grey lighten-2">
-                  <tr>
-                    <th scope="col" class="text-nowrap">Order ID</th>
-                    <th scope="col" class="text-nowrap">Customer</th>
-                    <th scope="col" class="text-nowrap">No. of Products</th>
-                    <th scope="col" class="text-nowrap">Status</th>
-                    <th scope="col" class="text-nowrap">Total</th>
-                    <th scope="col" class="text-nowrap">Date Added</th>
-                    <th scope="col" class="text-nowrap">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row" class="text-center">
-                        #9
-                    </th>
-                    <td class="text-nowrap">
-                        <p>Chandan Kanyal</p>
-                    </td>
-                    <td>
-                        3
-                    </td>
+            <div class="table-responsive">
+                <table class="table table-bordered my-3">
+                    <thead class="grey lighten-2">
+                      <tr>
+                        <th class="text-nowrap" colspan="2">Order Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">
+                            <p class="m-0"><span class="font-weight-bold">Order ID: </span> <span>#9</span></p>
+                            <p><span class="font-weight-bold">Date Added: </span> <span>23 Mar 2021</span></p>
+                        </th>
+                        <td class="text-nowrap">
+                            <p class="m-0"><span class="font-weight-bold">Payment Method: </span> <span>Cash On Delivery</span></p>
+                            <p><span class="font-weight-bold">Shipping Method: </span> <span>Flat Shipping Rate</span></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>   
+            
 
-                    <td class="text-nowrap">
-                        <p>Pending</p>
-                    </td>
-                    <td class="text-nowrap">
-                        <p>INR 499</p>
-                    </td>
-                    <td class="text-nowrap">
-                        <p>23 Mar 2021</p>
-                    </td>
-                    <td class="text-nowrap">
-                        <a class="btn-dark btn btn-sm rounded" role="button" href="order-information" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
-
-            <div class="row d-flex justify-content-md-end justify-content-center">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
+            <div class="table-responsive">
+                <table class="table table-bordered my-3">
+                    <thead class="grey lighten-2">
+                        <tr>
+                        <th class="text-nowrap">Payment Address</th>
+                        <th class="text-nowrap">Shipping Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">
+                            <p class="m-0">
+                                Chandan Kanyal <br>
+                                Dewalchaur Kham <br>
+                                263139 <br>
+                                Haldwani 263139 <br>
+                                Uttar Pradesh <br>
+                                India
+                            </p>
+                        </th>
+                        <td class="text-nowrap">
+                            <p class="m-0">
+                                Chandan Kanyal <br>
+                                Dewalchaur Kham <br>
+                                263139 <br>
+                                Haldwani 263139 <br>
+                                Uttar Pradesh <br>
+                                India
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <p>Showing 1 to 1 of 1 (1 Pages)</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered my-3">
+                    <thead class="grey lighten-2">
+                    <tr>
+                        <th scope="col" class="text-nowrap">Product Name</th>
+                        <th scope="col" class="text-nowrap">Model</th>
+                        <th scope="col" class="text-nowrap">Quantity</th>
+                        <th scope="col" class="text-nowrap">Price</th>
+                        <th scope="col" class="text-nowrap">Total</th>
+                        <th scope="col" class="text-nowrap">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-left">
+                                Mechanical watch Slogan any combination wherever
+                            </th>
+                            <td class="text-nowrap">
+                                <p>product 20</p>
+                            </td>
+                            <td>
+                                1
+                            </td>
+        
+                            <td class="text-nowrap">
+                                <p>INR 499</p>
+                            </td>
+                            <td class="text-nowrap">
+                                <p>INR 499</p>
+                            </td>
+                            <td class="text-nowrap">
+                                <a class="btn-dark btn btn-sm rounded mx-2" role="button" href="#" target="_blank"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                <a class="btn-danger btn btn-sm rounded mx-2" role="button" href="#" target="_blank"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="3"></th>
+                            <td class="text-nowrap text-right">
+                                <p><b>Sub-Total:</b></p>
+                            </td>
+                            <td class="text-nowrap">
+                                <p>INR 499</p>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="3"></th>
+                            <td class="text-nowrap text-right">
+                                <p><b>Flat Shipping Rate:</b></p>
+                            </td>
+                            <td class="text-nowrap">
+                                <p>INR 499</p>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="3"></th>
+                            <td class="text-nowrap text-right">
+                                <p><b>Total:</b></p>
+                            </td>
+                            <td class="text-nowrap">
+                                <p>INR 499</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mb-0 mt-3 font-weight-bold">Order History</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="grey lighten-2">
+                        <tr>
+                        <th class="text-nowrap">Date Added</th>
+                        <th class="text-nowrap">Status</th>
+                        <th class="text-nowrap">Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row" class="text-nowrap">
+                            <p class="m-0">23 Mar 2021</p>
+                        </th>
+                        <td class="text-nowrap">
+                            <p class="m-0">Pending</p>
+                        </td>
+                        <td>
+                            <p class="m-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

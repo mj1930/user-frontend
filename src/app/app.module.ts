@@ -17,6 +17,8 @@ import { ProductDescriptionComponent } from './product-description/product-descr
 import { ProductCategoryViewComponent } from './product-category-view/product-category-view.component';
 import { OrderListingComponent } from './order-listing/order-listing.component';
 import { OrderInformationComponent } from './order-information/order-information.component';
+import { AddressBookComponent } from './address-book/address-book.component';
+import { AddressInformationComponent } from './address-information/address-information.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { OrderInformationComponent } from './order-information/order-information
     ProductDescriptionComponent,
     ProductCategoryViewComponent,
     OrderListingComponent,
-    OrderInformationComponent
+    OrderInformationComponent,
+    AddressBookComponent,
+    AddressInformationComponent
   ],
   imports: [
     BrowserModule,

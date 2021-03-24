@@ -191,52 +191,54 @@
 
         <div class="col-lg-9 col-12">
             <div class="col">
-                <h4>Shopping Cart (0.00Kg)</h4>
-                <table class="table table-bordered table-responsive my-3">
+                <h4>Shopping Cart</h4>
+                <table class="col-12 table table-bordered table-responsive my-3">
                     <thead class="grey lighten-2">
                       <tr>
                         <th scope="col" class="text-nowrap">Image</th>
                         <th scope="col" class="text-nowrap">Product Name</th>
-                        <th scope="col" class="text-nowrap">Model</th>
+                        <!-- <th scope="col" class="text-nowrap">Model</th> -->
                         <th scope="col" class="text-nowrap">Quantity</th>
                         <th scope="col" class="text-nowrap">Unit Price</th>
                         <th scope="col" class="text-nowrap">Total</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                        <ng-container *ngFor="let cart of cartList; let j=index;">
+                      <tr *ngFor="let product of cart.products; let i=index;">
                         <th scope="row" class="text-center">
                             <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg">
                         </th>
                         <td>
-                            <p class="m-0">Solid Backpack thinnest headphone jack access</p>
+                            <p class="m-0">{{product?.productName}}</p>
                              <!-- <span class="m-0 small">Reward Points: 1000</span> -->
                         </td>
-                        <td class="text-nowrap">
+                        <!-- <td class="text-nowrap">
                             <p>SAM1</p>
-                        </td>
+                        </td> -->
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <input type="text" value="1" style="width: 40px; margin-top: 6px; height: 30px;" class="text-center">
-                                <button class="btn btn-dark btn-sm mx-3 rounded"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button class="btn btn-danger btn-sm rounded"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                                <input type="text" name="quantity_{{i}}" [(ngModel)]="product.quantity" style="width: 40px; margin-top: 6px; height: 30px;" class="text-center">
+                                <button class="btn btn-dark btn-sm mx-3 rounded" (click)="updateCart(product, i)"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                <button class="btn btn-danger btn-sm rounded" (click)="removeCart(product, i)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
                             </div>
                         </td>
 
                         <td class="text-nowrap">
-                            <p>INR 499</p>
+                            <p>{{product?.orderPrice}}</p>
                         </td>
                         <td class="text-nowrap">
-                            <p>INR 499</p>
+                            <p>{{cart?.totalAmnt}}</p>
                         </td>
                       </tr>
+                    </ng-container>
                     </tbody>
                 </table>
 
-                <h5 class="">What would you like to do next?</h5>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                <!-- <h5 class="">What would you like to do next?</h5>
+                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p> -->
 
-                <div class="accordion" id="accordionExample">
+                <!-- <div class="accordion" id="accordionExample">
                     <div class="card border-0 my-3">
                       <div class="card-header py-1" id="headingOne">
                         <h2 class="mb-0">
@@ -266,7 +268,6 @@
                       </div>
                       <div id="collapseTwo" class="collapse000" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
-                          <!-- To Be Updated -->
                           <p>Enter your destination to get a shipping estimate.</p>
                           <div class="row my-2">
                             <p class="col-sm-3 font-weight-bold m-0 mt-2"><span class="text-danger">*</span>Country</p>
@@ -311,7 +312,7 @@
                         </div>
                       </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <div class="row">
@@ -320,21 +321,21 @@
                             <thead>
                             <tr>
                                 <th scope="col" class="text-right"><b>Sub-Total:</b></th>
-                                <td>INR 1200</td>
+                                <td>INR {{subTotal}}</td>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <th scope="col" class="text-right"><b>Discount:</b></th>
-                                <td>span</td>
+                                <td>NA</td>
                             </tr>
                             <tr>
                                 <th scope="col" class="text-right"><b>GST (18%)</b></th>
-                                <td>INR 456</td>
+                                <td>INR {{gstValue}}</td>
                             </tr>
                             <tr>
                                 <th scope="col" class="text-right"><b>Total</b></th>
-                                <td>INR 1820</td>
+                                <td>INR {{total}}</td>
                             </tr>
                             </tbody>
                         </table>

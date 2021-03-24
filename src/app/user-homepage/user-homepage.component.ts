@@ -25,7 +25,6 @@ export class UserHomepageComponent implements OnInit {
       status: true
     }
     this.authService.getProducts(obj).subscribe(data => {
-      console.log(data);
       this.products = data['data'];
     }, error => {
       console.log(error);

@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from '../app/auth/login/login.component';
 import { SignupComponent } from '../app/auth/signup/signup.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { httpInterceptorProviders } from "./http-interceptor";
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductCategoryViewComponent } from './product-category-view/product-category-view.component';
@@ -37,7 +38,7 @@ import { OrderInformationComponent } from './order-information/order-information
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -197,10 +197,10 @@
         </div>
         <div class="col-md-5">
     
-        <h4 class="font-weight-bold">Mechanical Watch Slogan Any Combination Wherever</h4>
-        <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+        <h4 class="font-weight-bold">{{product?.itemName}}</h4>
+        <p class="mb-2 text-muted text-uppercase small">NA</p>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col d-flex">
                 <p class="align-left">
                     <span class="fa fa-star checked-star"></span>
@@ -212,7 +212,7 @@
                 <span class="small m-1">1 Reviews</span>
                 <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-12">
@@ -221,26 +221,26 @@
                         <tbody>
                         <tr>
                             <th class="pl-0 w-25 text-muted" scope="row"><b>Brand</b></th>
-                            <td class="text-muted">Apple</td>
+                            <td class="text-muted">{{product?.brand}}</td>
                         </tr>
                         <tr>
                             <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
-                            <td class="text-muted">Product 20</td>
+                            <td class="text-muted">{{product?.barcode}}</td>
                         </tr>
                         <tr>
                             <th class="pl-0 w-25 text-muted" scope="row"><b>SKU</b></th>
-                            <td class="text-muted">Test 1</td>
+                            <td class="text-muted">NA</td>
                         </tr>
                         </tbody>
                     </table>
                     </div>
-                    <p class="text-success">Product Available In Stock : 995</p>
+                    <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p>
             </div>
         </div>
         <p class="m-0"><small class="font-weight-bold text-dark">Price</small></p>
-        <p><span class="mr-1"><strong>INR 1499.00</strong></span></p>
+        <p><span class="mr-1"><strong>INR {{product?.mrp}}</strong></span></p>
 
-        <div class="mt-1">
+        <!-- <div class="mt-1">
             <p class="m-0"><small class="font-weight-bold text-dark">Select Size</small></p>
             <div class="form-check form-check-inline pl-0">
                 <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
@@ -258,19 +258,19 @@
                 <label class="form-check-label small text-uppercase card-link-secondary"
                 for="large">L</label>
             </div>
-        </div>
+        </div> -->
         <div class="mt-2">
-            <p class="mb-0"><small class="font-weight-bold text-dark">Quantity</small> <input type="number" class="mx-2" value="1" min="1" max="10"></p>
+            <p class="mb-0"><small class="font-weight-bold text-dark">Quantity</small> <input name="quantity" type="number"(keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
         </div>
 
         <div class="mt-2">
-            <button type="button" class="btn btn-dark rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+            <button type="button" (click)="addToCart()" class="btn btn-dark rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
         </div>
         
-        <div class="mt-2 d-flex justify-content-between">
+        <!-- <div class="mt-2 d-flex justify-content-between">
             <a><small class="text-muted font-weight-light"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wish List</small></a>
             <a><small class="text-muted font-weight-light"> <i class="fa fa-clone" aria-hidden="true"></i> Add To Compare</small></a>
-        </div>
+        </div> -->
         
         
         </div>
@@ -288,7 +288,7 @@
 
     <!-- Description -->
     <div class="row my-3">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>{{product?.description}}</p>
     </div>
 
 

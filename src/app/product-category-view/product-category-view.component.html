@@ -217,20 +217,18 @@
 
                 <div class="list-group my-3">
                     <p class="mb-2 font-weight-bold">Price</p>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="p1">
-                        <label class="custom-control-label" for="p1">INR 400 - INR 1000</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="p2">
-                        <label class="custom-control-label" for="p2">INR 1100 - INR 2000</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="p3">
-                        <label class="custom-control-label" for="p3">INR 2100 - INR 3000</label>
-                    </div>
+                    <div data-role="main" class="ui-content">
+                        <form method="post" action="/action_page_post.php">
+                          <div data-role="rangeslider">
+                            <input type="range" name="price-min" class="form-control" id="price-min" value="0" min="0" max="1000">
+                          </div>
+                          <div class="d-flex justify-content-between">
+                            <input type="text" value="0" style="width: 40px; font-size: 11px;">
+                            <input type="text" value="1200" style="width: 40px; font-size: 11px;">
+                          </div>
+                          
+                        </form>
+                      </div>
                 </div>
 
                 <button class="btn btn-sm rounded btn-dark m-0">Refine Search</button>

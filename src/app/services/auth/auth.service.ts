@@ -49,7 +49,27 @@ export class AuthService {
     return this.http.post('products/get-products-by-category', body); 
   }
 
+  getSortProducts(body) {
+    return this.http.post('products/sort-products', body); 
+  }
+
   getOneCategory(categoryId) {
-    return this.http.get(`category/get-one-category?categoryId=${categoryId}`)
+    return this.http.get(`category/get-one-category?categoryId=${categoryId}`);
+  }
+
+  getUserDetails() {
+    return this.http.get(`users/get-user-details`);
+  }
+
+  searchProduct(data) {
+    return this.http.get(`products/search-products?term=${data}`);
+  }
+
+  getOrders(body) {
+    return this.http.post('orders/list-orders', body); 
+  }
+
+  getProductsByCity(body) {
+    return this.http.post('products/get-products-by-city', body); 
   }
 }

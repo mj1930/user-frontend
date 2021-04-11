@@ -1,5 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class UserCartComponent implements OnInit {
   cartList = [];
   // quantity = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCartList();
@@ -83,6 +84,10 @@ this.subTotal += item.quantity * item.orderPrice;
     }));
     this.gstValue = this.subTotal * 18 / 100;
     this.total = this.subTotal + this.gstValue;
+  }
+
+  checkout() {
+    this.router.navigateByUrl("/address-information");
   }
 
 }

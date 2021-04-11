@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class UserHomepageComponent implements OnInit {
   products;
   imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
   categories = [];
-  constructor(private authService: AuthService) { }
+  term : '';
+  searchResult = [];
+  showSearchResultSection = false;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -41,6 +45,20 @@ export class UserHomepageComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+  }
+
+  searchProduct() {
+    this.authService.searchProduct(this.term).subscribe(data => {
+      console.log(data);
+      this.searchResult=data['data'];
+      this.showSearchResultSection =true;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  setProductSearchText(id) {
+    this.router.navigate(['product-description', id])
   }
 
 

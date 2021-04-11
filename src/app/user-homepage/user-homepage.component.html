@@ -36,11 +36,12 @@
                     <div class="advanced-search">
                         <button type="button" class="category-btn">All Categories</button>
                         <div class="input-group">
-                            <input type="text" placeholder="What do you need?">
-                            <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <input type="text" [(ngModel)]="term" placeholder="What do you need?">
+                            <button type="button" (click)="searchProduct()"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
+               
                 <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
                         <li class="heart-icon">
@@ -97,6 +98,28 @@
                         </li>
                         <li class="cart-price">INR150.00</li>
                     </ul>
+                </div>
+                <div class="col-12" *ngIf="term && showSearchResultSection">
+                    <div class="col">
+                        <p>Search Result</p>
+                        <div class="mb-4" *ngIf="!searchResult.length">
+                          No Product found
+                        </div>
+                        <div class="row" *ngIf="searchResult.length">
+                            <div  *ngFor="let product of searchResult" class="col-sm-4 col-md-3 col-lg-2 my-2">
+                                <div (click)="setProductSearchText(product._id)" class="card px-2 cursor-style">
+                                  <img src="https://rukminim1.flixcart.com/image/150/150/k0cqqvk0/bottle/4/v/c/1000-venice-fridge-water-bottles-120-cello-original-imafk5tysrejtyhj.jpeg" class="card-img-top" style="height: 150px;">
+                                  <div class="card-body px-0">
+                                    <h5 class="card-title">{{product?.itemName}}</h5>
+                                    <p class="card-text">{{product?.description}}</p>
+                                    <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
+                                    <button type="button" class="btn btn-success btn-sm mx-2"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -585,7 +608,7 @@
                     <div class="card shopCategory">
                         <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="product-category/{{category?._id}}">{{category?.categoryName}}</h5>
+                          <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>
                         </div>
                     </div>
                 </div>

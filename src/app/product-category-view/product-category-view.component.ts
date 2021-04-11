@@ -19,6 +19,10 @@ export class ProductCategoryViewComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
+
+  ngOnInit(): void {
     this.getCategories();
     this.categoryId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.categoryId) {
@@ -27,9 +31,6 @@ export class ProductCategoryViewComponent implements OnInit {
     } else {
       this.router.navigate(['']);
     }
-   }
-
-  ngOnInit(): void {
   }
 
   getCategory() {

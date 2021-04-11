@@ -19,6 +19,7 @@ import { OrderListingComponent } from './order-listing/order-listing.component';
 import { OrderInformationComponent } from './order-information/order-information.component';
 import { AddressBookComponent } from './address-book/address-book.component';
 import { AddressInformationComponent } from './address-information/address-information.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddressInformationComponent } from './address-information/address-infor
     OrderListingComponent,
     OrderInformationComponent,
     AddressBookComponent,
-    AddressInformationComponent
+    AddressInformationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

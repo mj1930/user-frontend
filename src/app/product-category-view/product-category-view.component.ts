@@ -28,6 +28,12 @@ export class ProductCategoryViewComponent implements OnInit {
     if (this.categoryId) {
       this.getProducts();
       this.getCategory();
+      let event = {
+        target: {
+          value: 'Hisar'
+        }
+      }
+      this.getProductByCity(event);
     } else {
       this.router.navigate(['']);
     }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
+  productId = new BehaviorSubject('');
+  constructor(private http: HttpClient) {}
 
   register(req) {
     return this.http.post('users/signup', req);
@@ -25,7 +26,7 @@ export class AuthService {
   }
 
   getCategories(body) {
-    return this.http.post('category/get-all-categories', body); 
+    return this.http.post('category/get-all-categories', body);
   }
 
   addToCart(data) {
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   getCartList(body) {
-    return this.http.post('carts/list-cart', body); 
+    return this.http.post('carts/list-cart', body);
   }
 
   updateCart(data) {
@@ -44,13 +45,12 @@ export class AuthService {
     return this.http.post('carts/remove-cart', data);
   }
 
-
   getProductsByCategory(body) {
-    return this.http.post('products/get-products-by-category', body); 
+    return this.http.post('products/get-products-by-category', body);
   }
 
   getSortProducts(body) {
-    return this.http.post('products/sort-products', body); 
+    return this.http.post('products/sort-products', body);
   }
 
   getOneCategory(categoryId) {
@@ -66,10 +66,14 @@ export class AuthService {
   }
 
   getOrders(body) {
-    return this.http.post('orders/list-orders', body); 
+    return this.http.post('orders/list-orders', body);
   }
 
   getProductsByCity(body) {
-    return this.http.post('products/get-products-by-city', body); 
+    return this.http.post('products/get-products-by-city', body);
+  }
+
+  updateNewProductToCart(payload) {
+    return this.http.post('carts/update-cart', payload);
   }
 }

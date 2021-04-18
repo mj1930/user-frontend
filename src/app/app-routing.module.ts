@@ -10,26 +10,24 @@ import { ProductCategoryViewComponent } from './product-category-view/product-ca
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
-
-
+import { AuthGuard } from '../app/services/auth/authGuard';
 const routes: Routes = [
-  {path: '', pathMatch:"full", redirectTo:"/user-home-page"},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'cart', component: UserCartComponent},
-  {path: 'product-description/:id', component: ProductDescriptionComponent},
-  {path: 'order-listing', component: OrderListingComponent},
-  {path: 'product-category/:id', component: ProductCategoryViewComponent},
-  {path: 'user-home-page', component: UserHomepageComponent},
-  {path: 'address-book', component: AddressBookComponent},
-  {path: 'address-information', component: AddressInformationComponent},
-  {path:'**', component: LoginComponent}
-
-
+  { path: '', pathMatch: 'full', redirectTo: '/user-home-page' },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
+  { path: 'product-description/:id', component: ProductDescriptionComponent },
+  { path: 'order-listing', component: OrderListingComponent },
+  { path: 'product-category/:id', component: ProductCategoryViewComponent },
+  { path: 'user-home-page', component: UserHomepageComponent },
+  { path: 'address-book', component: AddressBookComponent },
+  { path: 'address-information', component: AddressInformationComponent },
+  // {path: ''  }
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

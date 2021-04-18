@@ -34,9 +34,9 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories</button>
+                        <button type="button" class="category-btn">All Categories From header</button>
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="term" placeholder="What do you need?">
+                            <input type="text" (keyup)="getSearchValue($event)" placeholder="What do you need?" >
                             <button type="button" (click)="searchProduct()"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -99,9 +99,9 @@
                         <li class="cart-price">INR150.00</li>
                     </ul>
                 </div>
-                <div class="col-12" *ngIf="term && showSearchResultSection">
+                <div class="col-12" *ngIf="showSearchResultSection">
                     <div class="col">
-                        <p>Search Result</p>
+                        <p>Search Result From header</p>
                         <div class="mb-4" *ngIf="!searchResult.length">
                           No Product found
                         </div>

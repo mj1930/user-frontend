@@ -19,6 +19,9 @@ import { OrderInformationComponent } from './order-information/order-information
 import { AddressBookComponent } from './address-book/address-book.component';
 import { AddressInformationComponent } from './address-information/address-information.component';
 import { HeaderComponent } from './header/header.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { LoginSecurityComponent } from './login-security/login-security.component';
+import { MyAddressComponent } from './my-address/my-address.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { HeaderComponent } from './header/header.component';
     OrderInformationComponent,
     AddressBookComponent,
     AddressInformationComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyAccountComponent,
+    LoginSecurityComponent,
+    MyAddressComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,9 @@ import { LoginComponent } from '../app/auth/login/login.component';
 import { SignupComponent } from '../app/auth/signup/signup.component';
 import { AddressBookComponent } from './address-book/address-book.component';
 import { AddressInformationComponent } from './address-information/address-information.component';
+import { LoginSecurityComponent } from './login-security/login-security.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { MyAddressComponent } from './my-address/my-address.component';
 import { OrderInformationComponent } from './order-information/order-information.component';
 import { OrderListingComponent } from './order-listing/order-listing.component';
 import { ProductCategoryViewComponent } from './product-category-view/product-category-view.component';
@@ -23,6 +26,9 @@ const routes: Routes = [
   {path: 'user-home-page', component: UserHomepageComponent},
   {path: 'address-book', component: AddressBookComponent},
   {path: 'address-information', component: AddressInformationComponent},
+  {path: 'my-account', component: MyAccountComponent},
+  {path: 'login-security', component: LoginSecurityComponent},
+  {path: 'my-address', component: MyAddressComponent},
   {path:'**', component: LoginComponent}
 
 

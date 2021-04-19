@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { LoginSecurityComponent } from './login-security/login-security.component';
 import { MyAddressComponent } from './my-address/my-address.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { MyAddressComponent } from './my-address/my-address.component';
     HeaderComponent,
     MyAccountComponent,
     LoginSecurityComponent,
-    MyAddressComponent
+    MyAddressComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

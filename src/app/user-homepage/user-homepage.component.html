@@ -1,127 +1,3 @@
-<!-- <header class="header-section">
-    <div class="header-top">
-        <div class="container">
-            <div class="row py-2">
-                <div class="contact-display col-12 text-center col-md-3 text-md-left">
-                    <div class="logo my-1 text-center">
-                        <a href="/">
-                            <img src="../../assets/images/logo.png" alt="" style="width: 90px;">
-                        </a>
-                    </div>
-                    <!-- <p class="m-0 text-dark">vkreta@gmail.com</p>
-                    <span><i class="fa fa-phone"></i>+91 8909.41.41.41</span> -->
-                </div>
-                <div class="search-display my-2 col-12 col-md-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="What do you need?">
-                        <button type="button" class="btn m-0 btn-sm shadow-none btn-warning">Search <i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
-                    <div class="inner-header mx-1 my-n1 p-0">
-                        <ul class="nav-right p-0">
-                          
-                            <li class="cart-icon">
-                                <a href="#">
-                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                    <span>3</span>
-                                </a>
-                                <div class="cart-hover">
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>INR60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>INR60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>INR120.00</h5>
-                                    </div>
-                                    <div class="select-button">
-                                        <a href="cart" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="checkout" class="primary-btn checkout-btn">CHECK OUT</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="login" class="text-dark mx-2"><i class="fa fa-user" aria-hidden="true"></i> Account Login</a>
-                    <div class="dropdown my-n2 mx-2">
-                        <button class="dropbtn btn btn-warning btn-sm">Account</button>
-                        <div class="dropdown-content">
-                          <a href="my-account">My Account</a>
-                          <a href="logout">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="nav-item">
-        <div class="container">
-            <div class="nav-depart">
-                <div class="depart-btn">
-                    <i class="fa fa-bars" aria-hidden="true"></i>                    
-                    <span>Categories</span>
-                    <ul class="depart-hover">
-                        <li *ngFor="let category of categories"class="active" routerLink="/product-category/{{category._id}}"><a>{{category?.categoryName}}</a></li>
-                    </ul>
-                </div>
-            </div>
-            <nav class="nav-menu mobile-menu">
-                <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="./shop">Shop</a></li>
-                    <li><a href="#">Collection</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Men's</a></li>
-                            <li><a href="#">Women's</a></li>
-                            <li><a href="#">Kid's</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="./blog">Blog</a></li>
-                    <li><a href="./contact">Contact</a></li>
-                    <li><a href="#">Pages</a>
-                        <ul class="dropdown">
-                            <li><a href="./blog-details">Blog Details</a></li>
-                            <li><a href="./shopping-cart">Shopping Cart</a></li>
-                            <li><a href="./check-out">Checkout</a></li>
-                            <li><a href="./faq">Faq</a></li>
-                            <li><a href="./register">Register</a></li>
-                            <li><a href="./login">Login</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </div>
-</header> -->
-
 <app-header></app-header>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -228,8 +104,9 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
                             <div class="product-item">
-                                <div class="pi-pic" style="background-image: url('(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink');">
-                                    <!-- <img [src]="(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt=""> -->
+                                <!-- <div class="pi-pic" style="background-image: url('(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink');"></div> -->
+                                <div class="pi-pic">
+                                    <img [src]="(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt="" style="min-width: 100%;min-height: 100%;">
                                     <!-- <div class="sale pp-sale">Sale</div> -->
                                     <div class="icon">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -252,6 +129,182 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-2.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Coat</div>
+                                    <a href="#">
+                                        <h5>Guangzhou sweater</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 13.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-3.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Shoes</div>
+                                    <a href="#">
+                                        <h5>Guangzhou sweater</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 34.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-2.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Coat</div>
+                                    <a href="#">
+                                        <h5>Guangzhou sweater</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 13.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-3.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Shoes</div>
+                                    <a href="#">
+                                        <h5>Guangzhou sweater</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 34.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Coat</div>
+                                    <a href="#">
+                                        <h5>Microfiber Wool Scarf</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 64.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-5.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Shoes</div>
+                                    <a href="#">
+                                        <h5>Men's Painted Hat</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 44.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-6.jpg" alt="">
+                                    <div class="icon">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                                        <li class="quick-view"><a href="#">View Product</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Shoes</div>
+                                    <a href="#">
+                                        <h5>Converse Shoes</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        INR 34.00
+                                        <span>INR 35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -260,7 +313,7 @@
 </section>
 
 <!-- Featured Items -->
-<!-- <section class="product-shop spad">
+<section class="product-shop spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -378,7 +431,7 @@
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
 <!-- Shob By Category -->
 <div class="jumbotron jumbotron-fluid shadow-none" style="background-image: url('http://opencart.templatemela.com/OPC10/OPC100240/OPC2/catalog/view/theme/OPC100240_3/image/megnor/Parralax.jpg');">
@@ -387,14 +440,41 @@
         <div class="row">
             <ng-container *ngFor="let category of categories">
                 <div class="col-md-3 col-sm-6 my-2">
-                    <div class="card pi-pic" style="background-image: url('http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg');">
-                        <!-- <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap"> -->
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>
+                    <div class="card shopCategory">
+                        <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>
+                        </div>
                     </div>
                 </div>
             </ng-container>
+    
+            <!-- <div class="col-md-3 col-sm-6 my-2">
+                <div class="card shopCategory">
+                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title text-center text-white">Appliances</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-3 col-sm-6 my-2">
+                <div class="card shopCategory">
+                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title text-center text-white">Appliances</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 my-2">
+                <div class="card shopCategory">
+                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title text-center text-white">Appliances</h5>
+                    </div>
+                </div>
+            </div> -->
         </div>
         
     </div>
@@ -553,73 +633,4 @@
 
 
 <!-- Footer Section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="footer-left">
-                    <div class="footer-logo">
-                        <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                    </div>
-                    <ul>
-                        <li>Address: 60-49 Road 11378 New York</li>
-                        <li>Phone: +65 11.188.888</li>
-                        <li>Email: hello.chandan@gmail.com</li>
-                    </ul>
-                    <div class="footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 offset-lg-1">
-                <div class="footer-widget">
-                    <h5>Information</h5>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Serivius</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="footer-widget">
-                    <h5>My Account</h5>
-                    <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Shopping Cart</a></li>
-                        <li><a href="#">Shop</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="newslatter-item">
-                    <h5>Join Our Newsletter Now</h5>
-                    <p>Get E-mail updates about our latest shop and special offers.</p>
-                    <form action="#" class="subscribe-form">
-                        <input type="text" placeholder="Enter Your Mail">
-                        <button type="button">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-reserved">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copyright-text">
-                        Copyright &copy; All rights reserved 2021 Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/" target="_blank">Admin</a>.
-                    </div>
-                    <div class="payment-pic">
-                        <img src="img/payment-method.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<app-footer></app-footer>

@@ -27,16 +27,10 @@
         >
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
-              <!-- <li class="heart-icon">
-                                        <a href="#">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <span>1</span>
-                                        </a>
-                                    </li> -->
               <li class="cart-icon">
                 <a href="#">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                  <span>{{ productCount }}</span>
+                  <span *ngIf="productCount">{{ productCount }}</span>
                 </a>
                 <div class="cart-hover">
                   <div class="select-items">
@@ -235,10 +229,9 @@
 
   <div class="col-12" *ngIf="showSearchResultSection">
     <div class="col">
-      <p>Search Result From header</p>
-      <div class="mb-4" *ngIf="!searchResult.length">
+      <!-- <div class="mb-4" *ngIf="!searchResult.length">
         No Product found
-      </div>
+      </div> -->
       <div class="row" *ngIf="searchResult.length">
         <div
           *ngFor="let product of searchResult"

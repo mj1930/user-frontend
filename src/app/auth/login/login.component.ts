@@ -46,16 +46,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    // let param = sessionStorage.getItem('currentUrl');
-    // if (param) {
-    //   console.log('Hi', param);
-    //   // this.router.navigate([]);
-    //   const productId = this.authService.productId.subscribe(id => {
-    //     return id;
-    //   });
-    //   this.router.navigate(['/product-description', productId]);
-    // }
-
     let reqData = {
       email: this.loginForm.controls['email'].value,
       password: this.loginForm.controls['password'].value

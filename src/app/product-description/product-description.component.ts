@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { ToastService } from '../services/shared/toast.service';
 
 @Component({
   selector: 'app-product-description',
@@ -22,7 +23,8 @@ export class ProductDescriptionComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -106,20 +108,17 @@ export class ProductDescriptionComponent implements OnInit {
     this.authService.getCartList(obj).subscribe(
       (resp: any) => {
         response = resp;
-        console.log(resp);
-        console.log(response);
-
         if (response.data.length === 0) {
           //call addTocart
           this.addToCart();
         } else {
           //update updateNewProductToCart() product totalamt
-          console.log('INSIDE ELSE');
           let temp = [];
           response.data.map(item => {
             temp.push(item.products[0]);
           });
 
+          console.log('temp----', temp);
           let totalAmt: number = 0;
           temp.map(item => {
             totalAmt = item.orderPrice * item.quantity + totalAmt;
@@ -129,10 +128,14 @@ export class ProductDescriptionComponent implements OnInit {
             product: temp,
             totalAmnt: totalAmt
           };
-
+          console.log('PAYYYYYYYYLOAD', payload);
           this.authService.updateNewProductToCart(payload).subscribe(
-            resp => {
-              this.router.navigate(['cart']);
+            (resp: any) => {
+              this.toastService.openSnackbar(
+                'Product added to cart successfully!!'
+              );
+              const productCount = resp.data.products.length.toString();
+              this.authService.productCount.next(productCount);
             },
             error => {
               console.log(error);

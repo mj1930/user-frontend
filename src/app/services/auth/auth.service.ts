@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  productCount = new BehaviorSubject('');
   productId = new BehaviorSubject('');
   constructor(private http: HttpClient) {}
 
@@ -75,5 +76,9 @@ export class AuthService {
 
   updateNewProductToCart(payload) {
     return this.http.post('carts/update-cart', payload);
+  }
+
+  getProductByPrice(payload) {
+    return this.http.post('products/get-products-by-price', payload);
   }
 }

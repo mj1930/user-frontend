@@ -2,6 +2,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { ToastService } from '../services/shared/toast.service';
 
 @Component({
   selector: 'app-user-cart',
@@ -15,7 +16,11 @@ export class UserCartComponent implements OnInit {
   total = null;
   gstValue = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.getCartList();
@@ -72,7 +77,7 @@ export class UserCartComponent implements OnInit {
     };
     this.authService.removeCart(reqBody).subscribe(
       data => {
-        console.log('remove', data);
+        this.toastService.openSnackbar('Item removed successfully!!');
         this.getCartList();
         //this.calculateTotal();
         // for(let i=0; i<this.cartList.length; i++) {

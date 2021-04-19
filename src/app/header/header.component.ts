@@ -17,14 +17,18 @@ export class HeaderComponent implements OnInit {
   categories = [];
   searchSubject = new Subject<any>();
   filteredList$: any;
-
+  productCount: any;
+  isAuthenticated: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.getAuthenticatedUser();
+    this.getProductCount();
+    this.updatedProductCount();
     this.getCategories();
     this.searchSubject
       .pipe(
-        debounceTime(2000),
+        debounceTime(1000),
         distinctUntilChanged()
       )
       .subscribe(d => {
@@ -54,14 +58,36 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearchProduct(searchValue) {
-    this.filteredList$ = this.authService
-      .searchProduct(searchValue)
-      .subscribe(resp => {
-        this.searchResult = resp['data'];
-        this.showSearchResultSection = true;
-        console.log('DATA--------', this.searchResult);
-      });
+    if (searchValue === '') {
+      console.log('searchResult', this.searchResult);
+      this.searchResult = [];
+    }
+    this.authService.searchProduct(searchValue).subscribe(resp => {
+      this.searchResult = resp['data'];
+      this.showSearchResultSection = true;
+      console.log('DATA--------', this.searchResult);
+    });
     console.log('FILTEREDLIST', this.filteredList$);
+  }
+
+  getProductCount() {
+    let obj = {
+      skip: 0,
+      limit: 10
+    };
+    this.authService.getCartList(obj).subscribe((resp: any) => {
+      console.log('RESP----', resp.data[0].products.length);
+      this.productCount = localStorage.getItem('user')
+        ? resp.data[0].products.length
+        : '';
+    });
+  }
+
+  updatedProductCount() {
+    this.authService.productCount.subscribe(count => {
+      console.log('COUNT-----', count);
+      this.productCount = localStorage.getItem('user') ? count : '';
+    });
   }
 
   searchProduct() {
@@ -79,5 +105,10 @@ export class HeaderComponent implements OnInit {
 
   setProductSearchText(id) {
     this.router.navigate(['product-description', id]);
+  }
+
+  getAuthenticatedUser() {
+    this.isAuthenticated = localStorage.getItem('user') ? true : false;
+    console.log(this.isAuthenticated);
   }
 }

@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth/auth.service';
-import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from '../app/auth/login/login.component';
 import { SignupComponent } from '../app/auth/signup/signup.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
@@ -20,11 +19,13 @@ import { AddressBookComponent } from './address-book/address-book.component';
 import { AddressInformationComponent } from './address-information/address-information.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './services/auth/authGuard';
-
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     LoginComponent,
     SignupComponent,
     UserHomepageComponent,
@@ -42,7 +43,11 @@ import { AuthGuard } from './services/auth/authGuard';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSliderModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [AuthService, httpInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]

@@ -14,6 +14,13 @@ import { ProductDescriptionComponent } from './product-description/product-descr
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AuthGuard } from '../app/services/auth/authGuard';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { PaymentResponseComponent } from './payment-response/payment-response.component';
+
+
+
+
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/user-home-page' },
   { path: 'login', component: LoginComponent },
@@ -27,7 +34,9 @@ const routes: Routes = [
   { path: 'address-information', component: AddressInformationComponent },
   {path: 'my-account', component: MyAccountComponent},
   {path: 'login-security', component: LoginSecurityComponent},
-  {path: 'my-address', component: MyAddressComponent},
+  {path: 'my-addresses', component: MyAddressComponent},
+  {path: 'add-address', component: AddAddressComponent},
+  {path: 'response', component: PaymentResponseComponent},
   { path: '**', component: LoginComponent }
 ];
 

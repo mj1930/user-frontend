@@ -2,9 +2,10 @@
   <div class="header-top">
     <div class="container">
       <div class="row py-2">
-        <div class="contact-display col-12 text-center col-md-3 text-md-left">
-          <p class="m-0 text-dark">vkreta@gmail.com</p>
-          <span><i class="fa fa-phone"></i>+91 8909.41.41.41</span>
+        <div class="contact-display col-12 text-center col-md-3">
+          <!-- <p class="m-0 text-dark">vkreta@gmail.com</p>
+          <span><i class="fa fa-phone"></i>+91 8909.41.41.41</span> -->
+          <img src="../../assets/images/logo.png" alt="">
         </div>
         <div class="search-display my-2 col-12 col-md-6">
           <div class="input-group">
@@ -21,10 +22,21 @@
               Search <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </div>
+
+          <div class="col">
+            <div class="row">
+              <ul class="list-group col position-absolute" style="z-index: 1000;">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+              
+            </div>
+          </div>
         </div>
-        <div
-          class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end"
-        >
+        <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
               <li class="cart-icon">
@@ -98,169 +110,21 @@
               <a href="logout">Logout</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- <div class="container">
-            <div class="ht-left">
-                <div class="mail-service">
-                    <i class=" fa fa-envelope"></i>
-                    hello.chandan@gmail.com
-                </div>
-                <div class="phone-service">
-                    <i class=" fa fa-phone"></i>
-                    +65 11.188.888
-                </div>
-            </div>
-            <div class="ht-right">
-                <a href="login" class="login-panel"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
-                <div class="top-social">
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> -->
-  </div>
-  <!-- <div class="container">
-        <div class="inner-header">
-            <div class="row">
-                <div class="col-lg-2 col-md-2">
-                    <div class="logo">
-                        <a href="./index">
-                            <img src="img/logo.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-7">
-                    <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories From header</button>
-                        <div class="input-group">
-                            <input type="text" (keyup)="getSearchValue($event)" placeholder="What do you need?" >
-                            <button type="button" (click)="searchProduct()"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="col-lg-3 text-right col-md-3">
-                    <ul class="nav-right">
-                        <li class="heart-icon">
-                            <a href="#">
-                                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                <span>1</span>
-                            </a>
-                        </li>
-                        <li class="cart-icon">
-                            <a href="#">
-                                <i class="fa fa-shopping-bag test1" aria-hidden="true"></i>
-                                <span>{{ productCount }}</span>
-                            </a>
-                            <div class="cart-hover">
-                                <div class="select-items">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td class="si-pic"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>INR60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="si-pic"><img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>INR60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="select-total">
-                                    <span>total:</span>
-                                    <h5>INR120.00</h5>
-                                </div>
-                                <div class="select-button">
-                                    <a href="cart" class="primary-btn view-card">VIEW CART</a>
-                                    <a href="checkout" class="primary-btn checkout-btn">CHECK OUT</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="cart-price">INR150.00</li>
-                    </ul>
-                </div>
-                <div class="col-12" *ngIf="showSearchResultSection">
-                    <div class="col">
-                        <p>Search Result From header</p>
-                        <div class="mb-4" *ngIf="!searchResult.length">
-                          No Product found
-                        </div>
-                        <div class="row" *ngIf="searchResult.length">
-                            <div  *ngFor="let product of searchResult" class="col-sm-4 col-md-3 col-lg-2 my-2">
-                                <div (click)="setProductSearchText(product._id)" class="card px-2 cursor-style">
-                                  <img src="https://rukminim1.flixcart.com/image/150/150/k0cqqvk0/bottle/4/v/c/1000-venice-fridge-water-bottles-120-cello-original-imafk5tysrejtyhj.jpeg" class="card-img-top" style="height: 150px;">
-                                  <div class="card-body px-0">
-                                    <h5 class="card-title">{{product?.itemName}}</h5>
-                                    <p class="card-text">{{product?.description}}</p>
-                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
-              <button type="button" class="btn btn-success btn-sm mx-2"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-  <div class="col-12" *ngIf="showSearchResultSection">
-    <div class="col">
-      <!-- <div class="mb-4" *ngIf="!searchResult.length">
-        No Product found
-      </div> -->
-      <div class="row" *ngIf="searchResult.length">
-        <div
-          *ngFor="let product of searchResult"
-          class="col-sm-4 col-md-3 col-lg-2 my-2"
-        >
-          <div
-            (click)="setProductSearchText(product._id)"
-            class="card px-2 cursor-style"
-          >
-            <img
-              src="https://rukminim1.flixcart.com/image/150/150/k0cqqvk0/bottle/4/v/c/1000-venice-fridge-water-bottles-120-cello-original-imafk5tysrejtyhj.jpeg"
-              class="card-img-top"
-              style="height: 150px;"
-            />
-            <div class="card-body px-0">
-              <h5 class="card-title">{{ product?.itemName }}</h5>
-              <p class="card-text">{{ product?.description }}</p>
-              <a href="#" class="btn btn-primary btn-sm"
-                ><i class="fa fa-eye" aria-hidden="true"></i
-              ></a>
-              <button type="button" class="btn btn-success btn-sm mx-2">
-                <i class="fa fa-check" aria-hidden="true"></i>
-              </button>
+          <div class="dropdown">
+            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">Chandan Kanyal Hello</button>
+            <div class="dropdown-menu mya-dropdown-menu p-0">
+              <a href="my-account" class="dropdown-item">My Account</a>
+              <a href="logout" class="dropdown-item">Logout</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+   </div>
+
+  
 
   <div class="nav-item">
     <div class="container">

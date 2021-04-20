@@ -27,6 +27,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { LoginSecurityComponent } from './login-security/login-security.component';
 import { MyAddressComponent } from './my-address/my-address.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { PaymentResponseComponent } from './payment-response/payment-response.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { FooterComponent } from './footer/footer.component';
     MyAccountComponent,
     LoginSecurityComponent,
     MyAddressComponent,
-    FooterComponent
+    FooterComponent,
+    AddAddressComponent,
+    PaymentResponseComponent
   ],
   imports: [
     BrowserModule,

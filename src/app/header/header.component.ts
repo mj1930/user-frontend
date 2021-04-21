@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { FormControl } from '@angular/forms';
@@ -10,7 +10,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   term = '';
   searchResult = [];
   showSearchResultSection = false;
@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   dataResponse: any;
   totalAmout: any = 0;
+  showDropdown = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe(d => {
-        console.log(d);
+        //console.log(d);
         this.onSearchProduct(d);
       });
   }
@@ -61,15 +62,16 @@ export class HeaderComponent implements OnInit {
 
   onSearchProduct(searchValue) {
     if (searchValue === '') {
-      console.log('searchResult', this.searchResult);
       this.searchResult = [];
     }
-    this.authService.searchProduct(searchValue).subscribe(resp => {
-      this.searchResult = resp['data'];
-      this.showSearchResultSection = true;
-      console.log('DATA--------', this.searchResult);
-    });
-    console.log('FILTEREDLIST', this.filteredList$);
+    this.searchResult = this.dataResponse.filter(item =>
+      item.productName.includes(searchValue)
+    );
+    // this.authService.searchProduct(searchValue).subscribe(resp => {
+    //   this.searchResult = resp['data'];
+    //   this.showSearchResultSection = true;
+    //   console.log('DATA--------', this.searchResult);
+    // });
   }
 
   getProductCount() {
@@ -122,5 +124,17 @@ export class HeaderComponent implements OnInit {
   getAuthenticatedUser() {
     this.isAuthenticated = localStorage.getItem('user') ? true : false;
     console.log(this.isAuthenticated);
+  }
+
+  ngOnDestroy() {
+    this.searchSubject.unsubscribe();
+  }
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  redirectToProdDescription(id) {
+    this.router.navigate(['product-description/', id]);
   }
 }

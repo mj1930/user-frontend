@@ -45,37 +45,17 @@
                   <span *ngIf="productCount">{{ productCount }}</span>
                 </a>
                 <div class="cart-hover">
-                  <div class="select-items">
+                  <div class="select-items" *ngFor="let item of dataResponse">
                     <table>
                       <tbody>
                         <tr>
                           <td class="si-pic">
-                            <img
-                              src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg"
-                              alt=""
-                            />
+                            <img [src]="item.productImg[0]" alt="" />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
-                              <p>INR60.00 x 1</p>
-                              <h6>Kabino Bedside Table</h6>
-                            </div>
-                          </td>
-                          <td class="si-close">
-                            <i class="ti-close"></i>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="si-pic">
-                            <img
-                              src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg"
-                              alt=""
-                            />
-                          </td>
-                          <td class="si-text">
-                            <div class="product-selected">
-                              <p>INR60.00 x 1</p>
-                              <h6>Kabino Bedside Table</h6>
+                              <p>{{ item.orderPrice }}</p>
+                              <h6>{{ item.productName }}</h6>
                             </div>
                           </td>
                           <td class="si-close">
@@ -87,10 +67,10 @@
                   </div>
                   <div class="select-total">
                     <span>total:</span>
-                    <h5>INR120.00</h5>
+                    <h5>{{ totalAmout }}</h5>
                   </div>
                   <div class="select-button">
-                    <a href="cart" class="primary-btn view-card">VIEW CART</a>
+                    <!-- <a href="cart" class="primary-btn view-card">VIEW CART</a> -->
                     <a href="checkout" class="primary-btn checkout-btn"
                       >CHECK OUT</a
                     >

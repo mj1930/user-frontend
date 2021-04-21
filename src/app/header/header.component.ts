@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   filteredList$: any;
   productCount: any;
   isAuthenticated: boolean = false;
+  dataResponse: any;
+  totalAmout: any = 0;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -76,7 +78,10 @@ export class HeaderComponent implements OnInit {
       limit: 10
     };
     this.authService.getCartList(obj).subscribe((resp: any) => {
-      console.log('RESP----', resp.data[0].products.length);
+      this.dataResponse = resp.data[0].products;
+      this.dataResponse.map(item => {
+        this.totalAmout = this.totalAmout + +item.orderPrice;
+      });
       this.productCount = localStorage.getItem('user')
         ? resp.data[0].products.length
         : '';
@@ -84,9 +89,16 @@ export class HeaderComponent implements OnInit {
   }
 
   updatedProductCount() {
+    this.authService.productData.subscribe(data => {
+      this.dataResponse = localStorage.getItem('user') ? data : '';
+    });
+
     this.authService.productCount.subscribe(count => {
-      console.log('COUNT-----', count);
       this.productCount = localStorage.getItem('user') ? count : '';
+    });
+
+    this.authService.totalPrice.subscribe(totalPrice => {
+      this.totalAmout = localStorage.getItem('user') ? totalPrice : '';
     });
   }
 

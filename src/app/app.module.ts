@@ -29,6 +29,7 @@ import { MyAddressComponent } from './my-address/my-address.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
+import { OrderDeatilsComponent } from './order-deatils/order-deatils.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { PaymentResponseComponent } from './payment-response/payment-response.co
     MyAddressComponent,
     FooterComponent,
     AddAddressComponent,
-    PaymentResponseComponent
+    PaymentResponseComponent,
+    OrderDeatilsComponent
   ],
   imports: [
     BrowserModule,

@@ -134,6 +134,12 @@ export class ProductDescriptionComponent implements OnInit {
               this.toastService.openSnackbar(
                 'Product added to cart successfully!!'
               );
+              let tempAmount = 0;
+              resp.data.products.map(item => {
+                tempAmount = tempAmount + +item.orderPrice;
+              });
+              this.authService.totalPrice.next(tempAmount);
+              this.authService.productData.next(resp.data.products);
               const productCount = resp.data.products.length.toString();
               this.authService.productCount.next(productCount);
             },

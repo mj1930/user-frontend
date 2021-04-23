@@ -16,6 +16,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AuthGuard } from '../app/services/auth/authGuard';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
+import { OrderDeatilsComponent } from './order-deatils/order-deatils.component';
 
 
 

@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   productCount = new BehaviorSubject('');
   productId = new BehaviorSubject('');
+  orderAmount=new BehaviorSubject(0);
+  order=new BehaviorSubject(null);
   constructor(private http: HttpClient) {}
 
   register(req) {

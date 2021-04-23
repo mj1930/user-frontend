@@ -23,7 +23,7 @@
             </div>
         </div> -->
         <div class="col-md-12">
-    
+
             <h4 class="font-weight-bold">Order History</h4>
             <table class="table table-bordered  my-3">
                 <thead class="grey lighten-2">
@@ -40,10 +40,10 @@
                 <tbody>
                   <tr *ngFor="let order of orders; let i=index;">
                     <th scope="row" class="text-center">
-                        {{order?._id}}
+                      <a [href]="'/order-detail/'+order?._id" class="orderLink">#{{order?._id}}</a>
                     </th>
                     <td class="text-nowrap">
-                        <p>{{order?.customerName}}</p>
+                        <p>{{order?.customerName |  titlecase}}</p>
                     </td>
                     <td>
                         {{order?.products.length}}

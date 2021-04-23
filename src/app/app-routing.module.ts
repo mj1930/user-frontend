@@ -37,6 +37,8 @@ const routes: Routes = [
   {path: 'my-addresses', component: MyAddressComponent},
   {path: 'add-address', component: AddAddressComponent},
   {path: 'response', component: PaymentResponseComponent},
+  {path:'order-status/:orderId',component:PaymentResponseComponent},
+  {path:'order-detail/:orderId',component:OrderInformationComponent},
   { path: '**', component: LoginComponent }
 ];
 

@@ -60,6 +60,39 @@ export class ProductDescriptionComponent implements OnInit {
     this.router.navigateByUrl('/cart');
   }
 
+  addDataToCart() {
+    let reqBody = {
+      products: [
+        {
+          productImg: [],
+          productName: '',
+          productId: '',
+          quantity: 1,
+          orderPrice: '',
+          sellerId: ''
+        }
+      ],
+      totalAmnt: ''
+    };
+
+    reqBody.products[0] = {
+      productImg: [],
+      productName: this.product.itemName,
+      productId: this.product._id,
+      quantity: this.quantity,
+      orderPrice: this.product.mrp,
+      sellerId: this.product.userId
+    };
+    reqBody.totalAmnt = String(this.quantity * this.product.mrp);
+    this.authService.addToCart(reqBody).subscribe(
+      () => {
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   onAddToCart() {
     let obj = {
       skip: 0,
@@ -71,7 +104,7 @@ export class ProductDescriptionComponent implements OnInit {
         response = resp;
         if (response.data.length === 0) {
           //call addTocart
-          this.addToCart();
+          this.addDataToCart();
         } else {
           //update updateNewProductToCart() product totalamt
           let temp = [];

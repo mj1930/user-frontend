@@ -105,7 +105,7 @@
                         <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
                             <div class="product-item">
                                 <div class="pi-pic"
-                                    [ngStyle]="{'background-image': (product && product.productImg && product.productImg.length > 0) ? 'url(' + product?.productImg[0] + ')' : 'url(' + 'imgLink' + ')' }">
+                                    [ngStyle]="{'background-image': (product && product.productImg && product.productImg.length > 0) ? 'url(' + product?.productImg[0] + ')' : 'url(' + imgLink + ')' }">
                                     <!-- <div class="sale pp-sale">Sale</div> -->
                                     <div class="icon">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -167,8 +167,8 @@
         <div class="row">
             <ng-container *ngFor="let category of categories">
                 <div class="col-md-3 col-sm-6 my-2">
-                    <div class="card shopCategory"
-                        [ngStyle]="{'background-image': category?.img  ? 'url(' + category?.img  + ')' : 'url(catImg)' }">
+                    <div class="card"
+                    [ngStyle]="{'background-image': category?.img ? 'url(' + category?.img + ')' : 'url(' + catImg + ')' }">
                         <!-- <img class="card-img-top" [src]="category?.img ? category?.img: catImg" alt="Category image"> -->
                         <div class="card-body">
                           <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>

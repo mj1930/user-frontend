@@ -8,34 +8,16 @@
               <div class="row product-gallery">
                 <div class="col-12 mb-0">
                   <figure class="view overlay rounded z-depth-1 main-img">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg" data-size="710x823">
-                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg" class="img-fluid z-depth-1">
+                    <a [href]="product?.productImg[0]" data-size="710x823">
+                      <img [src]="product?.productImg[0]" class="img-fluid z-depth-1">
                     </a>
                   </figure>
                 </div>
                 <div class="col-12">
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" *ngFor="let img of product?.productImg">
                       <div class="view overlay rounded z-depth-1 gallery-item">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" class="img-fluid">
-                        <div class="mask rgba-white-slight"></div>
-                      </div>
-                    </div>
-                    <div class="col-3">
-                      <div class="view overlay rounded z-depth-1 gallery-item">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg" class="img-fluid">
-                        <div class="mask rgba-white-slight"></div>
-                      </div>
-                    </div>
-                    <div class="col-3">
-                      <div class="view overlay rounded z-depth-1 gallery-item">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg" class="img-fluid">
-                        <div class="mask rgba-white-slight"></div>
-                      </div>
-                    </div>
-                    <div class="col-3">
-                      <div class="view overlay rounded z-depth-1 gallery-item">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg" class="img-fluid">
+                        <img [src]="img" class="img-fluid">
                         <div class="mask rgba-white-slight"></div>
                       </div>
                     </div>
@@ -86,8 +68,7 @@
                     <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p>
             </div>
         </div>
-        <p class="m-0"><small class="font-weight-bold text-dark">Price</small></p>
-        <p><span class="mr-1"><strong>INR {{product?.mrp}}</strong></span></p>
+        <p class="m-0"><small class="font-weight-bold text-dark">Price INR {{product?.mrp}}</small></p>
 
         <!-- <div class="mt-1">
             <p class="m-0"><small class="font-weight-bold text-dark">Select Size</small></p>

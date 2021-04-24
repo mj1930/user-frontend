@@ -22,7 +22,10 @@
                             <p><span class="font-weight-bold">Date Added: </span> <span>{{order?.createdAt | date:'mediumDate'}}</span></p>
                         </th>
                         <td class="text-nowrap">
-                            <p class="m-0"><span class="font-weight-bold">Payment Method: </span> <span>PAID {{order?.paymentMode | uppercase}}</span></p>
+                            <p class="m-0">
+                                <span class="font-weight-bold">Payment Method: </span> 
+                                <span>{{order?.paymentMode | uppercase}}</span>
+                            </p>
                             <p><span class="font-weight-bold">Shipping Method: </span> <span>Flat Shipping Rate</span></p>
                         </td>
                       </tr>

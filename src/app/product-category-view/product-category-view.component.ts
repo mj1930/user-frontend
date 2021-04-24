@@ -76,12 +76,6 @@ export class ProductCategoryViewComponent implements OnInit {
     if (this.categoryId) {
       this.getProducts();
       this.getCategory();
-      let event = {
-        target: {
-          value: 'Hisar'
-        }
-      };
-      this.getProductByCity(event);
     } else {
       this.router.navigate(['']);
     }
@@ -213,8 +207,8 @@ export class ProductCategoryViewComponent implements OnInit {
       skip: 0,
       limit: 10
     };
-
-    this.getProductByColor(colorPayload);
+    if (colorArray.length)
+      this.getProductByColor(colorPayload);
 
     const payload = {
       categoryId: this.categoryId,
@@ -230,7 +224,7 @@ export class ProductCategoryViewComponent implements OnInit {
   getProductByColor(payload) {
     this.authService.getProductByColor(payload).subscribe(
       resp => {
-        console.log(resp);
+        this.productList  = resp['data']
       },
       error => {
         console.log(error);
@@ -242,7 +236,7 @@ export class ProductCategoryViewComponent implements OnInit {
     this.authService.getProductByPrice(payload).subscribe(
       data => {
         this.loaderService.closeLoading();
-        console.log(data);
+        this.productList  = data['data']
       },
       error => {
         console.log(error);

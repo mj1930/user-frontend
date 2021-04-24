@@ -17,34 +17,33 @@ export class OrderInformationComponent implements OnInit {
 
   }
 
-  async ngOnInit(){
-    this.orderId= this.route.snapshot.url[1].path;
-    const order:any= await this.httpClient.post('paytm/getOrderById',{"orderId":this.orderId}).toPromise();
-    this.order=order;
-    this.address=order.address;
-    this.address=Object.values(this.address).reduce((prev:any, curr,index) =>{
-      if(curr=="true" || curr =="false")
+  async ngOnInit() {
+    this.orderId = this.route.snapshot.url[1].path;
+    const order:any = await this.httpClient.get('orders/get-order/'+this.orderId).toPromise();
+    this.order = order.data;
+    this.address = this.order.address;
+    this.address = Object.values(this.address).reduce((prev:any, curr,index) =>{
+      if(curr == "true" || curr == "false")
         return prev;
       return prev+curr+'<br>'
     });
-    console.log(order);
-    //this.paymentMethod= this.order.paymentResult[0].BANKNAME+ " " +this.order.paymentResult[0].PAYMENTMODE;
   }
- getOrderStatus(s){
-  switch(s) {
-    case 'P' :
-      return "Pending";
-      break;
-    case 'D' :
-      return "Dispatched";
-      break;
-      case 'RF' :
-      return "Refunded";
-      break;
-      case 'RT' :
-      return "Returned";
-      break;
+  
+  getOrderStatus(s){
+    switch(s) {
+      case 'P' :
+        return "Pending";
+        break;
+      case 'D' :
+        return "Dispatched";
+        break;
+        case 'RF' :
+        return "Refunded";
+        break;
+        case 'RT' :
+        return "Returned";
+        break;
+    }
   }
- }
 
 }

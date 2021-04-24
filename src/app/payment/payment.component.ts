@@ -77,7 +77,7 @@ export class PaymentComponent implements OnInit {
   async payLater() {
     let order: any = await this.authService.order.value;
     order.paymentMode = 'cash on delivery';
-    order.address = this.address;
+    order.address = this.userData.address;
     const tempProduct = order.products[0];
     order.products = tempProduct;
     console.log('ORDER', order);

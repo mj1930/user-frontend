@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     let user = JSON.parse(localStorage.getItem('user'));
     this.name = user ? user.fname + ' ' + user.lname : '';
     this.getAuthenticatedUser();
-    this.getProductCount();
+    if (this.isAuthenticated)
+      this.getProductCount();
     this.updatedProductCount();
     this.getCategories();
     this.searchSubject

@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   dataResponse: any;
   totalAmout: any = 0;
   name: string;
+  imgLink: string = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class HeaderComponent implements OnInit {
     this.getCategories();
     this.searchSubject
       .pipe(
-        debounceTime(1000),
+        debounceTime(200),
         distinctUntilChanged()
       )
       .subscribe(d => {
@@ -69,7 +70,6 @@ export class HeaderComponent implements OnInit {
 
   onSearchProduct(searchValue) {
     if (searchValue === '') {
-      console.log('searchResult', this.searchResult);
       this.searchResult = [];
     }
     this.authService.searchProduct(searchValue).subscribe(resp => {
@@ -84,13 +84,15 @@ export class HeaderComponent implements OnInit {
       limit: 10
     };
     this.authService.getCartList(obj).subscribe((resp: any) => {
-      this.dataResponse = resp.data[0].products;
-      this.dataResponse.map(item => {
-        this.totalAmout = this.totalAmout + +item.orderPrice;
-      });
-      this.productCount = localStorage.getItem('user')
-        ? resp.data[0].products.length
-        : '';
+      if (resp.data.length) {
+        this.dataResponse = resp.data[0].products;
+        this.dataResponse.map(item => {
+          this.totalAmout = this.totalAmout + +item.orderPrice;
+        });
+        this.productCount = localStorage.getItem('user')
+          ? resp.data[0].products.length
+          : '';
+      }
     });
   }
 

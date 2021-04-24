@@ -43,7 +43,6 @@ export class ProductDescriptionComponent implements OnInit {
     };
     this.authService.getProduct(id).subscribe(
       data => {
-        console.log(data);
         this.product = data['data'];
         this.authService.productId.next(this.product._id);
       },
@@ -83,7 +82,7 @@ export class ProductDescriptionComponent implements OnInit {
     reqBody.totalAmnt = String(this.quantity * this.product.mrp);
     this.authService.addToCart(reqBody).subscribe(
       () => {
-        this.router.navigateByUrl('/cart');
+        // this.router.navigateByUrl('/cart');
       },
       error => {
         console.log(error);
@@ -107,7 +106,8 @@ export class ProductDescriptionComponent implements OnInit {
           //update updateNewProductToCart() product totalamt
           let temp = [];
           response.data.map(item => {
-            temp.push(item.products[0]);
+            if (item)
+              temp.push(item.products[0]);
           });
           let totalAmt: number = 0;
           temp.map(item => {

@@ -26,7 +26,11 @@
           <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
               <ul class="list-group col position-absolute" style="z-index: 1000;" *ngFor="let product of searchResult">
-                <li class="list-group-item" routerLink="/product-description/{{product?._id}}">{{product?.itemName}}</li>
+                <a class="text-primary" href="/product-description/{{product?._id}}">
+                  <li class="list-group-item" style="cursor: pointer;">
+                    {{product?.itemName}}
+                  </li>
+                </a>
               </ul>
 
             </div>
@@ -35,7 +39,7 @@
         <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
-              <li class="cart-icon">
+              <li class="cart-icon" [class.cartDisplay]="productCount > 0">
                 <a href="#">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                   <span *ngIf="productCount">{{ productCount }}</span>
@@ -46,7 +50,7 @@
                       <tbody>
                         <tr>
                           <td class="si-pic">
-                            <img [src]="item.productImg[0]" alt="" />
+                            <img [src]="item.productImg ? item.productImg[0] : imgLink" alt="" />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
@@ -67,7 +71,7 @@
                   </div>
                   <div class="select-button">
                     <!-- <a href="cart" class="primary-btn view-card">VIEW CART</a> -->
-                    <a href="checkout" class="primary-btn checkout-btn"
+                    <a routerLink="cart" class="primary-btn checkout-btn"
                       >CHECK OUT</a
                     >
                   </div>
@@ -81,7 +85,7 @@
 
           <div class="dropdown my-n1" *ngIf="isAuthenticated">
             <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">{{name ? name : 'Account Login'}}</button>
-            <div class="dropdown-menu mya-dropdown-menu p-0">
+            <div class="dropdown-menu mya-dropdown-menu p-0" style="margin-left: -20px;">
               <a href="my-account" class="dropdown-item">My Account</a>
               <a href="logout" class="dropdown-item" (click)="logout()">Logout</a>
             </div>

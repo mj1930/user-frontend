@@ -15,4 +15,14 @@
 }
 
 
+.inner-header .nav-right li.cart-icon {
+	position: relative;
+}
+
+.inner-header .nav-right li.cartDisplay:hover .cart-hover {
+	opacity: 1;
+	visibility: visible;
+	top: 60px;
+}
+
 .dropdown:hover .mya-dropdown-menu {display: block;}

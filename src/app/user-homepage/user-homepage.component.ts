@@ -61,5 +61,4 @@ export class UserHomepageComponent implements OnInit {
     this.router.navigate(['product-description', id])
   }
 
-
 }

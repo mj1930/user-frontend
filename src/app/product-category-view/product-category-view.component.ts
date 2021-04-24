@@ -2,14 +2,15 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { Options, LabelType } from '@angular-slider/ngx-slider';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-product-category-view',
   templateUrl: './product-category-view.component.html',
   styleUrls: ['./product-category-view.component.css']
 })
 export class ProductCategoryViewComponent implements OnInit {
-  imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
+  imgLink =
+    'http://www.thejungleadventure.com/assets/images/noimage/noimage.png';
   categoryId: String = '';
   productList = [];
   categoryName: String = '';
@@ -35,7 +36,14 @@ export class ProductCategoryViewComponent implements OnInit {
   //productPriceForm: FormGroup;
   minValueChange: any;
   maxValueChange: any;
-  tempForm: FormGroup;
+  // tempForm: FormGroup;
+  colorForm: FormGroup;
+  colors = [
+    { name: 'Red', checked: false },
+    { name: 'Green', checked: false },
+    { name: 'Black', checked: false },
+    { name: 'Blue', checked: false }
+  ];
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -44,10 +52,10 @@ export class ProductCategoryViewComponent implements OnInit {
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
-    this.tempForm = this.fb.group({
-      minValueF: [this.minValue],
-      maxValueF: [this.maxValue]
-    });
+    // this.tempForm = this.fb.group({
+    //   minValueF: [this.minValue],
+    //   maxValueF: [this.maxValue]
+    // });
 
     // this.tempForm.get('minValueF').valueChanges.subscribe(minData => {
     //   console.log('----', minData);
@@ -60,6 +68,7 @@ export class ProductCategoryViewComponent implements OnInit {
 
   ngOnInit(): void {
     //this.createProductPriceForm();
+    this.createColorForm();
     this.getCategories();
     this.categoryId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.categoryId) {
@@ -82,6 +91,25 @@ export class ProductCategoryViewComponent implements OnInit {
   //     maxValue: ['']
   //   });
   // }
+
+  createColorForm() {
+    this.colorForm = this.fb.group({
+      colors: new FormArray([])
+    });
+    this.patchValues();
+  }
+
+  patchValues() {
+    const formArray = this.colorForm.get('colors') as FormArray;
+    this.colors.forEach(color => {
+      formArray.push(
+        new FormGroup({
+          name: new FormControl(color.name),
+          checked: new FormControl(color.checked)
+        })
+      );
+    });
+  }
 
   getCategory() {
     this.authService.getOneCategory(this.categoryId).subscribe((res: any) => {
@@ -161,20 +189,22 @@ export class ProductCategoryViewComponent implements OnInit {
     this.minValueChange = minValue;
     this.maxValueChange = maxValue;
   }
-  getProductByPrice() {
-    // let temp1: any;
-    // let temp2: any;
-    // this.tempForm.get('minValueF').valueChanges.subscribe(minData => {
-    //   console.log('----', minData);
-    //   temp1 = minData;
-    // });
 
-    // this.tempForm.get('maxValueF').valueChanges.subscribe(maxData => {
-    //   console.log('----', maxData);
-    //   temp2 = maxData;
-    // });
+  getProductsOnSubmit() {
+    const selectedColor = this.colorForm.value.colors.filter(
+      item => item.checked
+    );
 
-    // console.log(temp1, temp2);
+    const colorArray = selectedColor.map(item => item.name);
+
+    const colorPayload = {
+      color: colorArray,
+      skip: 0,
+      limit: 10
+    };
+
+    this.getProductByColor(colorPayload);
+
     const payload = {
       categoryId: this.categoryId,
       skip: 0,
@@ -183,6 +213,21 @@ export class ProductCategoryViewComponent implements OnInit {
       higherPrice: this.maxValueChange
     };
 
+    this.getProductByPrice(payload);
+  }
+
+  getProductByColor(payload) {
+    this.authService.getProductByColor(payload).subscribe(
+      resp => {
+        console.log(resp);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getProductByPrice(payload) {
     this.authService.getProductByPrice(payload).subscribe(
       data => {
         console.log(data);

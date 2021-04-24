@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { FormControl } from '@angular/forms';
@@ -11,7 +11,7 @@ import { LoaderService } from '../services/shared/loader.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   term = '';
   searchResult = [];
   showSearchResultSection = false;
@@ -23,16 +23,17 @@ export class HeaderComponent implements OnInit {
   dataResponse: any;
   totalAmout: any = 0;
   name: string;
-  imgLink: string = 'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg';
+  imgLink: string =
+    'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg';
   constructor(
-    private authService: AuthService, 
-    private router: Router, 
-    private loaderService:LoaderService
-    ) {}
+    private authService: AuthService,
+    private router: Router,
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
-    this.name = user ? user.fname + " " + user.lname : '';
+    this.name = user ? user.fname + ' ' + user.lname : '';
     this.getAuthenticatedUser();
     this.getProductCount();
     this.updatedProductCount();
@@ -43,7 +44,7 @@ export class HeaderComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe(d => {
-        console.log(d);
+        //console.log(d);
         this.onSearchProduct(d);
       });
   }
@@ -98,7 +99,9 @@ export class HeaderComponent implements OnInit {
       if (resp.data.length) {
         this.dataResponse = resp.data[0].products;
         this.dataResponse.map(item => {
-          this.totalAmout = parseInt(this.totalAmout) + (parseInt(item.orderPrice) * parseInt(item.quantity));
+          this.totalAmout =
+            parseInt(this.totalAmout) +
+            parseInt(item.orderPrice) * parseInt(item.quantity);
         });
         this.productCount = localStorage.getItem('user')
           ? resp.data[0].products.length
@@ -140,5 +143,17 @@ export class HeaderComponent implements OnInit {
 
   getAuthenticatedUser() {
     this.isAuthenticated = localStorage.getItem('user') ? true : false;
+  }
+
+  ngOnDestroy() {
+    this.searchSubject.unsubscribe();
+  }
+
+  // toggleDropdown() {
+  //   this.showDropdown = !this.showDropdown;
+  // }
+
+  redirectToProdDescription(id) {
+    this.router.navigate(['product-description/', id]);
   }
 }

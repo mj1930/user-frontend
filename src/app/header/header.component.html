@@ -5,7 +5,7 @@
         <div class="contact-display col-12 text-center col-md-3">
           <!-- <p class="m-0 text-dark">vkreta@gmail.com</p>
           <span><i class="fa fa-phone"></i>+91 8909.41.41.41</span> -->
-          <img src="../../assets/images/logo.png" alt="">
+          <img src="../../assets/images/logo.png" alt="" />
         </div>
         <div class="search-display my-2 col-12 col-md-6">
           <div class="input-group">
@@ -25,18 +25,26 @@
 
           <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
-              <ul class="list-group col position-absolute" style="z-index: 1000;" *ngFor="let product of searchResult">
-                <a class="text-primary" href="/product-description/{{product?._id}}">
+              <ul
+                class="list-group col position-absolute"
+                style="z-index: 1000;"
+                *ngFor="let product of searchResult"
+              >
+                <a
+                  class="text-primary"
+                  href="/product-description/{{ product?._id }}"
+                >
                   <li class="list-group-item" style="cursor: pointer;">
-                    {{product?.itemName}}
+                    {{ product?.itemName }}
                   </li>
                 </a>
               </ul>
-
             </div>
           </div>
         </div>
-        <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
+        <div
+          class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end"
+        >
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
               <li class="cart-icon" [class.cartDisplay]="productCount > 0">
@@ -79,11 +87,20 @@
           </div>
           <a href="login" class="text-dark mx-2" *ngIf="!isAuthenticated">
             <i class="fa fa-user" aria-hidden="true"></i>
-            Account Login</a>
+            Account Login</a
+          >
 
           <div class="dropdown my-n1" *ngIf="isAuthenticated">
-            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">{{name ? name : 'Account Login'}}</button>
-            <div class="dropdown-menu mya-dropdown-menu p-0" style="margin-left: -20px;">
+            <button
+              class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3"
+              type="button"
+            >
+              {{ name ? name : "Account Login" }}
+            </button>
+            <div
+              class="dropdown-menu mya-dropdown-menu p-0"
+              style="margin-left: -20px;"
+            >
               <a href="my-account" class="dropdown-item">My Account</a>
               <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
@@ -91,10 +108,7 @@
         </div>
       </div>
     </div>
-
-   </div>
-
-
+  </div>
 
   <div class="nav-item">
     <div class="container">
@@ -103,7 +117,11 @@
           <i class="fa fa-bars" aria-hidden="true"></i>
           <span>Categories</span>
           <ul class="depart-hover">
-            <li *ngFor="let category of categories" class="active" routerLink="/product-category/{{ category._id }}">
+            <li
+              *ngFor="let category of categories"
+              class="active"
+              routerLink="/product-category/{{ category._id }}"
+            >
               <a>{{ category?.categoryName }}</a>
             </li>
           </ul>

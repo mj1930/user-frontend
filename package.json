@@ -28,6 +28,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "mdbootstrap": "^4.19.2",
+    "ng4-loading-spinner": "^1.2.3",
     "ng5-slider": "^1.2.6",
     "owl.carousel": "^2.3.4",
     "rxjs": "~6.6.0",

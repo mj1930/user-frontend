@@ -3,13 +3,13 @@
 
 <div class="banner-section">
     <div class="container">
-        
-        <form class="col-md-6 border py-3 rounded mx-auto">
-            <h2>Add New Address</h2>
+
+        <div class="col-md-6 border py-3 rounded mx-auto">
+            <h2>Add Address</h2>
             <hr>
             <div class="form-group">
               <label>Country/Region</label>
-              <select id="country" name="country" class="form-control">
+              <select id="country" name="country" class="form-control" [(ngModel)]="address.country">
                 <option value="Afganistan">Afghanistan</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
@@ -260,48 +260,79 @@
             </div>
             <div class="form-group">
               <label>Full Name (First and last name)</label>
-              <input type="text" class="form-control" placeholder="">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="address.name">
             </div>
             <div class="form-group">
               <label>Mobile number</label>
-              <input type="text" class="form-control" placeholder="10-digit mobile number without prefixes">
+              <input type="text" class="form-control" placeholder="10-digit mobile number without prefixes" [(ngModel)]="address.mobile">
             </div>
             <div class="form-group">
               <label>PIN code</label>
-              <input type="text" class="form-control" placeholder="6 digits [0-9] PIN code">
+              <input type="text" class="form-control" placeholder="6 digits [0-9] PIN code" [(ngModel)]="address.postal_code">
             </div>
             <div class="form-group">
               <label>Flat, House no., Building, Company, Apartment</label>
-              <input type="text" class="form-control" placeholder="">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="address.address1">
             </div>
             <div class="form-group">
               <label>Area, Colony, Street, Sector, Village</label>
-              <input type="text" class="form-control" placeholder="">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="address.address2">
             </div>
             <div class="form-group">
               <label>Landmark</label>
-              <input type="text" class="form-control" placeholder="E.g. Near AIIMS Flyover, Behind Regal Cinema, etc.">
+              <input type="text" class="form-control" placeholder="E.g. Near AIIMS Flyover, Behind Regal Cinema, etc." [(ngModel)]="address.landmark">
             </div>
             <div class="form-group">
               <label>Town/City</label>
-              <input type="text" class="form-control" placeholder="">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="address.city">
             </div>
-            
+
             <div class="form-group">
                 <label>State / Province / Region</label>
-                <select name="" id="" class="form-control">
+                <select name="" id="" class="form-control" [(ngModel)]="address.state">
                     <option value="" selected>Select state</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
                 </select>
               </div>
-            <button type="submit" class="btn btn-warning text-dark mx-0 rounded btn-sm">Add Address</button>
-          </form>
+            <button type="button" class="btn btn-warning text-dark mx-0 rounded btn-sm" (click)="updateAddress()">Add Address</button>
+          </div>
     </div>
 </div>
-
-
-
-
-
 
 <!-- Blog Section -->
 <section class="latest-blog spad">

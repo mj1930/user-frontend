@@ -492,16 +492,6 @@ ol {
 	line-height: 15px;
 }
 
-.inner-header .nav-right li.cart-icon {
-	position: relative;
-}
-
-.inner-header .nav-right li.cart-icon:hover .cart-hover {
-	opacity: 1;
-	visibility: visible;
-	top: 60px;
-}
-
 .inner-header .nav-right li.cart-icon a {
 	color: #252525;
 	position: relative;

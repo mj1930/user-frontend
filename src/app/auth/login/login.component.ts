@@ -1,3 +1,4 @@
+import { LoaderService } from './../../services/shared/loader.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import {
@@ -29,7 +30,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private loaderService:LoaderService
+
   ) {}
 
   ngOnInit(): void {
@@ -50,9 +53,10 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls['email'].value,
       password: this.loginForm.controls['password'].value
     };
-
+    this.loaderService.showLoading();
     this.authService.login(reqData).subscribe(
       data => {
+        this.loaderService.closeLoading();
         console.log(data);
         sessionStorage.setItem('token', data['accessToken']);
         localStorage.setItem('user', JSON.stringify(data['data']));

@@ -11,6 +11,7 @@ export class UserHomepageComponent implements OnInit {
 
   products;
   imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
+  catImg = "http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg";
   categories = [];
   term : '';
   searchResult = [];
@@ -60,6 +61,5 @@ export class UserHomepageComponent implements OnInit {
   setProductSearchText(id) {
     this.router.navigate(['product-description', id])
   }
-
 
 }

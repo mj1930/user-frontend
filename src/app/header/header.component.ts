@@ -21,17 +21,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean = false;
   dataResponse: any;
   totalAmout: any = 0;
-  showDropdown = false;
+  name: string;
+  imgLink: string =
+    'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.name = user ? user.fname + ' ' + user.lname : '';
     this.getAuthenticatedUser();
     this.getProductCount();
     this.updatedProductCount();
     this.getCategories();
     this.searchSubject
       .pipe(
-        debounceTime(1000),
+        debounceTime(200),
         distinctUntilChanged()
       )
       .subscribe(d => {
@@ -60,18 +64,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.searchSubject.next(value);
   }
 
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
+
   onSearchProduct(searchValue) {
     if (searchValue === '') {
       this.searchResult = [];
     }
-    this.searchResult = this.dataResponse.filter(item =>
-      item.productName.includes(searchValue)
-    );
-    // this.authService.searchProduct(searchValue).subscribe(resp => {
-    //   this.searchResult = resp['data'];
-    //   this.showSearchResultSection = true;
-    //   console.log('DATA--------', this.searchResult);
-    // });
+    this.authService.searchProduct(searchValue).subscribe(resp => {
+      this.searchResult = resp['data'];
+      this.showSearchResultSection = true;
+    });
   }
 
   getProductCount() {
@@ -80,13 +85,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
       limit: 10
     };
     this.authService.getCartList(obj).subscribe((resp: any) => {
-      this.dataResponse = resp.data[0].products;
-      this.dataResponse.map(item => {
-        this.totalAmout = this.totalAmout + +item.orderPrice;
-      });
-      this.productCount = localStorage.getItem('user')
-        ? resp.data[0].products.length
-        : '';
+      if (resp.data.length) {
+        this.dataResponse = resp.data[0].products;
+        this.dataResponse.map(item => {
+          this.totalAmout =
+            parseInt(this.totalAmout) + parseInt(item.orderPrice);
+        });
+        this.productCount = localStorage.getItem('user')
+          ? resp.data[0].products.length
+          : '';
+      }
     });
   }
 
@@ -123,16 +131,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getAuthenticatedUser() {
     this.isAuthenticated = localStorage.getItem('user') ? true : false;
-    console.log(this.isAuthenticated);
   }
 
   ngOnDestroy() {
     this.searchSubject.unsubscribe();
   }
 
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
-  }
+  // toggleDropdown() {
+  //   this.showDropdown = !this.showDropdown;
+  // }
 
   redirectToProdDescription(id) {
     this.router.navigate(['product-description/', id]);

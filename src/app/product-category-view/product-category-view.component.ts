@@ -15,7 +15,7 @@ export class ProductCategoryViewComponent implements OnInit {
   categories: any = [];
   showLocationDropdown = false;
   minValue: number = 0;
-  maxValue: number = 1000;
+  maxValue: number = 100000;
   options: Options = {
     floor: 0,
     ceil: 1000,
@@ -23,11 +23,11 @@ export class ProductCategoryViewComponent implements OnInit {
       this.onGetValue(this.minValue, this.maxValue);
       switch (label) {
         case LabelType.Low:
-          return '<b>Min price:</b> $' + value;
+          return '<b></b> ' + value;
         case LabelType.High:
-          return '<b>Max price:</b> $' + value;
+          return '<b></b>' + value;
         default:
-          return '$' + value;
+          return '' + value;
       }
     }
   };

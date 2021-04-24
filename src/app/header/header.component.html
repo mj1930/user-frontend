@@ -14,7 +14,6 @@
               class="form-control"
               placeholder="What do you need?"
               (keyup)="getSearchValue($event)"
-              (click)="toggleDropdown()"
             />
             <button
               type="button"
@@ -24,19 +23,21 @@
             </button>
           </div>
 
-          <div class="col">
-            <div class="row" *ngIf="showDropdown">
+          <div class="col" *ngIf="searchResult.length > 0">
+            <div class="row">
               <ul
                 class="list-group col position-absolute"
                 style="z-index: 1000;"
+                *ngFor="let product of searchResult"
               >
-                <li
-                  (click)="redirectToProdDescription(item.productId)"
-                  class="list-group-item"
-                  *ngFor="let item of searchResult"
+                <a
+                  class="text-primary"
+                  href="/product-description/{{ product?._id }}"
                 >
-                  {{ item.productName }}
-                </li>
+                  <li class="list-group-item" style="cursor: pointer;">
+                    {{ product?.itemName }}
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
@@ -46,7 +47,7 @@
         >
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
-              <li class="cart-icon">
+              <li class="cart-icon" [class.cartDisplay]="productCount > 0">
                 <a href="#">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                   <span *ngIf="productCount">{{ productCount }}</span>
@@ -57,28 +58,33 @@
                       <tbody>
                         <tr>
                           <td class="si-pic">
-                            <img [src]="item.productImg[0]" alt="" />
+                            <img
+                              [src]="
+                                item.productImg.length > 0
+                                  ? item.productImg[0]
+                                  : imgLink
+                              "
+                              alt=""
+                            />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
-                              <p>{{ item.orderPrice }}</p>
-                              <h6>{{ item.productName }}</h6>
+                              <h4>{{ item.productName }}</h4>
                             </div>
                           </td>
-                          <td class="si-close">
-                            <i class="ti-close"></i>
+                          <td class="si-close text-right">
+                            <h5>{{ item.orderPrice }}</h5>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="select-total">
-                    <span>total:</span>
+                    <span>Total:</span>
                     <h5>{{ totalAmout }}</h5>
                   </div>
                   <div class="select-button">
-                    <!-- <a href="cart" class="primary-btn view-card">VIEW CART</a> -->
-                    <a href="checkout" class="primary-btn checkout-btn"
+                    <a routerLink="/cart" class="primary-btn checkout-btn"
                       >CHECK OUT</a
                     >
                   </div>
@@ -90,24 +96,20 @@
             <i class="fa fa-user" aria-hidden="true"></i>
             Account Login</a
           >
-          <div class="dropdown my-n2 mx-2" *ngIf="isAuthenticated">
-            <button class="dropbtn btn btn-warning btn-sm">Account</button>
-            <div class="dropdown-content">
-              <a href="my-account">My Account</a>
-              <a href="logout">Logout</a>
-            </div>
-          </div>
 
-          <div class="dropdown">
+          <div class="dropdown my-n1" *ngIf="isAuthenticated">
             <button
               class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3"
               type="button"
             >
-              Chandan Kanyal Hello
+              {{ name ? name : "Account Login" }}
             </button>
-            <div class="dropdown-menu mya-dropdown-menu p-0">
+            <div
+              class="dropdown-menu mya-dropdown-menu p-0"
+              style="margin-left: -20px;"
+            >
               <a href="my-account" class="dropdown-item">My Account</a>
-              <a href="logout" class="dropdown-item">Logout</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
           </div>
         </div>
@@ -146,7 +148,7 @@
           </li>
           <li><a href="./blog">Blog</a></li>
           <li><a href="./contact">Contact</a></li>
-          <li>
+          <!-- <li>
             <a href="#">Pages</a>
             <ul class="dropdown">
               <li><a href="./blog-details">Blog Details</a></li>
@@ -156,7 +158,7 @@
               <li><a href="./register">Register</a></li>
               <li><a href="./login">Login</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>

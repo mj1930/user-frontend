@@ -11,6 +11,7 @@ import { ToastService } from '../services/shared/toast.service';
 })
 export class UserCartComponent implements OnInit {
   cartList = [];
+  imgDefault = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
   // quantity = null;
   subTotal = 0;
   total = null;
@@ -20,7 +21,7 @@ export class UserCartComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getCartList();
@@ -33,8 +34,9 @@ export class UserCartComponent implements OnInit {
     };
     this.authService.getCartList(obj).subscribe(
       data => {
-        console.log(data);
+        console.log(data, "Cart");
         this.cartList = data['data'];
+
         //this.cartList.forEach(item => item['quantity'] = item.products.length);
         this.calculateTotal();
       },
@@ -104,7 +106,20 @@ export class UserCartComponent implements OnInit {
     this.total = this.subTotal + this.gstValue;
   }
 
-  checkout() {
+  async checkout() {
+    this.authService.orderAmount.next(this.total);
+    let productArr=await this.cartList.map((cart)=>cart.products);
+
+    this.authService.order.next({
+      "products":productArr,
+      "totalAmnt":("" + this.total).toString(),
+      "address":{},
+      "userGstin":" ",
+      "businessName":" ",
+      "paymentMode":"",
+    });
+
     this.router.navigateByUrl('/address-information');
   }
+
 }

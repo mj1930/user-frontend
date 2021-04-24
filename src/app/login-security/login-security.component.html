@@ -1,22 +1,18 @@
 <app-header></app-header>
-
-
-
-
 <div class="banner-section">
     <div class="container">
-        
+
         <div class="row">
             <h4 class="my-3">Login & Security</h4>
             <div class="col-md-12 rounded border py-3 my-2">
                 <div class="row d-flex justify-content-between">
                     <div class="display-box col-md-10">
                         <label>Name:</label>
-                        <input type="text" class="form-control" value="Mihir Jain" readonly>
+                        <input type="text" class="form-control"  [(ngModel)]="name">
                     </div>
-                    <div class="action-box col-md-2 text-md-right pt-4">
+                    <!-- <div class="action-box col-md-2 text-md-right pt-4">
                         <button class="btn btn-warning mx-0 btn-sm text-dark">Change</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -24,11 +20,11 @@
                 <div class="row d-flex justify-content-between">
                     <div class="display-box col-md-10">
                         <label>Email:</label>
-                        <input type="email" class="form-control" value="jainmihir84@gmail.com" readonly>
+                        <input type="email" class="form-control" [value]="userData?.email" readonly>
                     </div>
-                    <div class="action-box col-md-2 text-md-right pt-4">
+                    <!-- <div class="action-box col-md-2 text-md-right pt-4">
                         <button class="btn btn-warning mx-0 btn-sm text-dark">Change</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -38,14 +34,17 @@
                         <label>Mobile Number:</label>
                         <input type="text" class="form-control" value="+918791050551" readonly>
                     </div>
-                    <div class="action-box col-md-2 text-md-right pt-4">
+                    <!-- <div class="action-box col-md-2 text-md-right pt-4">
                         <button class="btn btn-warning mx-0 btn-sm text-dark">Change</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
+            <div class="col-md-12">
+              <div class="pull-right"><button class="btn btn-danger" (click)="update()">Update</button></div>
+            </div>
 
-            
-            <div class="col-md-12 rounded border py-3 my-2">
+
+            <!-- <div class="col-md-12 rounded border py-3 my-2">
                 <div class="row d-flex justify-content-between">
                     <div class="display-box col-md-10">
                         <label>Password:</label>
@@ -55,9 +54,9 @@
                         <button class="btn btn-warning mx-0 btn-sm text-dark">Change</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            
+
         </div>
     </div>
 </div>

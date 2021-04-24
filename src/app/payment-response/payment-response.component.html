@@ -3,15 +3,17 @@
 
 <div class="banner-section">
     <div class="container">
-        
-        <div class="col-md-6 border py-3 rounded mx-auto text-center fa-5x">
+
+        <div class="col-md-6 border py-3 rounded mx-auto text-center fa-5x" *ngIf="orderStatus">
             <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
             <h1>Thank You!</h1>
-            <h3>Your payment processed successfully. Your order has been booked with order id <a href="" class="text-primary">#12345670</a>. You can check your order details in <a href="my-orders" class="text-primary">My orders</a> section.</h3>
+            <h3>Your payment of {{amount}} &#8377; processed successfully. Your order has been booked with order id
+              <a [href]="'/order-detail/'+orderId"  class="text-primary">#{{orderId}}</a>.
+               You can check your order details in <a href="/order-listing" class="text-primary">My orders</a> section.</h3>
         </div>
 
 
-        <div class="col-md-6 border py-3 rounded mx-auto text-center fa-5x">
+        <div class="col-md-6 border py-3 rounded mx-auto text-center fa-5x" *ngIf="!orderStatus">
             <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
             <h1>Oops! Payment Error</h1>
             <h3>Unable to process your payment. Please Retry after sometime or with different payment method. Thank You</h3>

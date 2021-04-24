@@ -1,3 +1,29 @@
-.mya-dropdown:hover + .mya-dropdown-menu{
-	display: block !important;
+.dropdown {
+	position: relative;
+	display: inline-block;
 }
+
+.mya-dropdown-menu {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+
+.mya-dropdown-menu a {
+	text-decoration: none;
+	display: block;
+}
+
+
+.inner-header .nav-right li.cart-icon {
+	position: relative;
+}
+
+.inner-header .nav-right li.cartDisplay:hover .cart-hover {
+	opacity: 1;
+	visibility: visible;
+	top: 25px;
+	right: -100px;
+}
+
+.dropdown:hover .mya-dropdown-menu {display: block;}

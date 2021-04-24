@@ -16,10 +16,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AuthGuard } from '../app/services/auth/authGuard';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
-
-
-
-
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/user-home-page' },
@@ -32,16 +29,19 @@ const routes: Routes = [
   { path: 'user-home-page', component: UserHomepageComponent },
   { path: 'address-book', component: AddressBookComponent },
   { path: 'address-information', component: AddressInformationComponent },
-  {path: 'my-account', component: MyAccountComponent},
-  {path: 'login-security', component: LoginSecurityComponent},
-  {path: 'my-addresses', component: MyAddressComponent},
+  {path: 'my-account', component: MyAccountComponent,  canActivate: [AuthGuard]},
+  {path: 'login-security', component: LoginSecurityComponent,  canActivate: [AuthGuard]},
+  {path: 'my-addresses', component: MyAddressComponent, canActivate: [AuthGuard]},
   {path: 'add-address', component: AddAddressComponent},
-  {path: 'response', component: PaymentResponseComponent},
-  { path: '**', component: LoginComponent }
+  {path: 'response', component: PaymentResponseComponent, canActivate: [AuthGuard]},
+  {path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
+  {path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
+  {path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
+  { path: '**', component: UserHomepageComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
             url: `${this.baseUrl}${request.url}`,
             setHeaders: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+                Authorization: `${sessionStorage.getItem('token')}`,
                 Accept: 'application/json'
             }
         };

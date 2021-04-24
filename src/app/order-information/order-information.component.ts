@@ -22,11 +22,6 @@ export class OrderInformationComponent implements OnInit {
     const order:any = await this.httpClient.get('orders/get-order/'+this.orderId).toPromise();
     this.order = order.data;
     this.address = this.order.address;
-    this.address = Object.values(this.address).reduce((prev:any, curr,index) =>{
-      if(curr == "true" || curr == "false")
-        return prev;
-      return prev+curr+'<br>'
-    });
   }
   
   getOrderStatus(s){

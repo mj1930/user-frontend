@@ -45,14 +45,30 @@
                     <tbody>
                     <tr>
                         <th scope="row">
-                            <p class="m-0" [innerHtml]="address">
-
-                            </p>
+                            <div class="m-0">
+                                <p>{{address.name | uppercase }}</p>
+                                <p>{{address.mobile | uppercase }}</p>
+                                <p>{{address.address1 | uppercase }}</p>
+                                <p>{{address.address2 | uppercase }}</p>
+                                <p>{{address.landmark | uppercase }}</p>
+                                <p>{{address.postal_code | uppercase }}</p>
+                                <p>{{address.city | uppercase }}</p>
+                                <p>{{address.state | uppercase }}</p>
+                                <p>{{address.country | uppercase }}</p>
+                            </div>
                         </th>
                         <td class="text-nowrap">
-                          <p class="m-0" [innerHtml]="address">
-
-                            </p>
+                            <div class="m-0">
+                                <p>{{address.name | uppercase }}</p>
+                                <p>{{address.mobile | uppercase }}</p>
+                                <p>{{address.address1 | uppercase }}</p>
+                                <p>{{address.address2 | uppercase }}</p>
+                                <p>{{address.landmark | uppercase }}</p>
+                                <p>{{address.postal_code | uppercase }}</p>
+                                <p>{{address.city | uppercase }}</p>
+                                <p>{{address.state | uppercase }}</p>
+                                <p>{{address.country | uppercase }}</p>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
@@ -64,15 +80,14 @@
                     <thead class="grey lighten-2">
                     <tr>
                         <th scope="col" class="text-nowrap">Product Name</th>
-                        <th scope="col" class="text-nowrap">Model</th>
+                        <th scope="col" class="text-nowrap">Product Id</th>
                         <th scope="col" class="text-nowrap">Quantity</th>
                         <th scope="col" class="text-nowrap">Price</th>
                         <th scope="col" class="text-nowrap">Total</th>
                     </tr>
                     </thead>
                     <tbody>
-                      <ng-container *ngFor="let products of order?.products;let i=index">
-                        <ng-container  *ngFor="let product of products;let j=index;">
+                      <ng-container *ngFor="let product of order?.products;let i=index">
                         <tr>
                             <th scope="row" class="text-left">
                               {{product.productName}}
@@ -92,8 +107,6 @@
                             </td>
                         </tr>
                       </ng-container>
-
-                    </ng-container>
                         <tr>
                             <th scope="row" colspan="2"></th>
                             <td class="text-nowrap text-right">

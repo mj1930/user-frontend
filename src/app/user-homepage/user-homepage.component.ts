@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { LoaderService } from '../services/shared/loader.service';
 
 @Component({
   selector: 'app-user-homepage',
@@ -10,13 +11,17 @@ import { AuthService } from '../services/auth/auth.service';
 export class UserHomepageComponent implements OnInit {
 
   products;
-  imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
-  catImg = "http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg";
+  imgLink = "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg";
+  catImg = "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg";
   categories = [];
   term : '';
   searchResult = [];
   showSearchResultSection = false;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+      private authService: AuthService,
+      private loaderService : LoaderService,
+      private router: Router
+     ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -29,7 +34,9 @@ export class UserHomepageComponent implements OnInit {
       limit: 10,
       status: true
     }
+    this.loaderService.showLoading();
     this.authService.getProducts(obj).subscribe(data => {
+      this.loaderService.closeLoading();
       this.products = data['data'];
     }, error => {
       console.log(error);
@@ -41,7 +48,9 @@ export class UserHomepageComponent implements OnInit {
       skip: 0,
       limit: 100
     };
+    this.loaderService.showLoading();
     this.authService.getCategories(reqBody).subscribe(data => {
+      this.loaderService.closeLoading();
       this.categories = data['data'];
     }, error => {
       console.log(error);
@@ -49,8 +58,9 @@ export class UserHomepageComponent implements OnInit {
   }
 
   searchProduct() {
+    this.loaderService.showLoading();
     this.authService.searchProduct(this.term).subscribe(data => {
-      console.log(data);
+      this.loaderService.closeLoading();
       this.searchResult=data['data'];
       this.showSearchResultSection =true;
     }, error => {

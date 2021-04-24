@@ -3,6 +3,7 @@ import { AuthService } from './../services/auth/auth.service';
 import { ToastService } from './../services/shared/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from '../services/shared/loader.service';
 
 @Component({
   selector: 'app-add-address',
@@ -26,6 +27,7 @@ userData: any;
     private notification:ToastService,
     private authService: AuthService,
     private httpClient:HttpClient,
+    private loaderService:LoaderService,
     private router: Router
     ) { }
 
@@ -42,10 +44,10 @@ userData: any;
 
   }
   async getUserDetails() {
-    return new Promise((resolve)=>{
+    return new Promise((resolve) => {
+      this.loaderService.showLoading();
       this.authService.getUserDetails().subscribe(data => {
-        //console.log(data);
-        //this.router.navigateByUrl("/address-information");
+        this.loaderService.closeLoading();
         resolve(data['data']);
       }, error => {
         console.log(error);
@@ -71,7 +73,7 @@ userData: any;
       const res: any = await this.httpClient.put('users/save-address', {'address':this.address}).toPromise();
       if(res.ok) {
         localStorage.setItem('user', JSON.stringify(res.data))
-        this.notification.openSnackbar("Adress Saved Successfully");
+        this.notification.openSnackbar("Address Saved Successfully");
         this.router.navigate(['/my-addresses']);
       }
     }

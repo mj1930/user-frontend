@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
+import { LoaderService } from '../services/shared/loader.service';
 
 @Component({
   selector: 'app-order-listing',
@@ -16,7 +17,7 @@ export class OrderListingComponent implements OnInit {
     {text: 'Cancelled', value: 'C'},
     {text: 'Returned', value: 'RT'}
   ];
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private loaderService : LoaderService) { }
 
   ngOnInit(): void {
     this.getOrders();
@@ -27,7 +28,9 @@ export class OrderListingComponent implements OnInit {
       skip: 0,
       limit: 10000
     };
+    this.loaderService.showLoading();
     this.authService.getOrders(reqBody).subscribe(data => {
+      this.loaderService.closeLoading();
       this.orders = data['data']['orders'];
       this.orders.forEach(item => {
         item['customerName'] =  data['data']['name'];

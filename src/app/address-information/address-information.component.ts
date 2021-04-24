@@ -24,10 +24,11 @@ export class AddressInformationComponent implements OnInit {
   }
 
   constructor(
-    private authService: AuthService,
+     private authService: AuthService,
      private router: Router ,
      private httpClient:HttpClient,
-     private notification:ToastService) { }
+     private notification:ToastService
+     ) { }
 
   async ngOnInit() {
     this.userData = await this.getUserDetails();
@@ -60,24 +61,7 @@ export class AddressInformationComponent implements OnInit {
   async payNow() {
     if( !this.validateAddress())
       return;
-
-    const amt = this.authService.orderAmount.value.toString();
-    let order:any=await this.authService.order.value;
-    order.address=this.address;
-
-    const orderGot:any=await this.httpClient.post('orders/add-order',order).toPromise();
-    console.log(orderGot);
-    const payload = {
-      "email": this.userData.email,
-      "phone": this.userData.address.mobile,
-      "amount": amt,
-      "userId": this.userData._id,
-      "orderId": orderGot.data._id
-    };
-    console.log(payload,"Payload");
-    const res=await this.httpClient.post("paytm/payment", payload).toPromise();
-    this.post(res, "https://securegw-stage.paytm.in/theia/processTransaction");
-
+    this.router.navigate(['/transaction']);
   }
   validateAddress() {
   for(let key in this.address){

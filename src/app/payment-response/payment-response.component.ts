@@ -10,19 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 export class PaymentResponseComponent implements OnInit {
   orderId;
   paymentId;
-  orderStatus=true;
-  amount=0;
-  constructor(private route: ActivatedRoute ,private httpClient:HttpClient) { }
+  orderStatus = true;
+  amount = 0;
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {}
 
-  async ngOnInit(){
-   this.paymentId = this.route.snapshot.url[1].path;
-
-   //get Order Status
-    const orderDetails:any=await this.httpClient.get('paytm/payment-details/'+this.paymentId).toPromise();
-    this.orderStatus=orderDetails.paymentResult[0].STATUS=="TXN_FAILURE"?false:true;
-    this.orderId=orderDetails.paymentResult[0].ORDERID;
-    this.amount=orderDetails.paymentResult[0].TXNAMOUNT;
-
+  async ngOnInit() {
+    this.paymentId = this.route.snapshot.url[1].path;
+    console.log('payment', this.paymentId);
+    //get Order Status
+    const orderDetails: any = await this.httpClient
+      .get('paytm/payment-details/' + this.paymentId)
+      .toPromise();
+    console.log(orderDetails);
+    this.orderStatus =
+      orderDetails.paymentResult[0].STATUS == 'TXN_FAILURE' ? false : true;
+    this.orderId = orderDetails.paymentResult[0].ORDERID;
+    this.amount = orderDetails.paymentResult[0].TXNAMOUNT;
   }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { LoaderService } from '../services/shared/loader.service';
 import { ToastService } from '../services/shared/toast.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class ProductDescriptionComponent implements OnInit {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private loaderService : LoaderService,
     private toastService: ToastService
   ) {}
 
@@ -41,8 +43,10 @@ export class ProductDescriptionComponent implements OnInit {
       limit: 10,
       status: true
     };
+    this.loaderService.showLoading();
     this.authService.getProduct(id).subscribe(
       data => {
+        this.loaderService.closeLoading();
         this.product = data['data'];
         this.authService.productId.next(this.product._id);
       },
@@ -84,8 +88,10 @@ export class ProductDescriptionComponent implements OnInit {
       sellerId: this.product.userId
     };
     reqBody.totalAmnt = String(this.quantity * this.product.mrp);
+    this.loaderService.showLoading();
     this.authService.addToCart(reqBody).subscribe(
       () => {
+        this.loaderService.closeLoading();
       },
       error => {
         console.log(error);
@@ -99,8 +105,10 @@ export class ProductDescriptionComponent implements OnInit {
       limit: 10
     };
     let response: any = [];
+    this.loaderService.showLoading();
     this.authService.getCartList(obj).subscribe(
       (resp: any) => {
+        this.loaderService.closeLoading();
         response = resp;
         if (response.data.length === 0) {
           //call addTocart

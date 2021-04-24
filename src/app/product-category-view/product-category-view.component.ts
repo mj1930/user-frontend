@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { Options, LabelType } from '@angular-slider/ngx-slider';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { LoaderService } from '../services/shared/loader.service';
 @Component({
   selector: 'app-product-category-view',
   templateUrl: './product-category-view.component.html',
@@ -40,6 +41,7 @@ export class ProductCategoryViewComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private loaderService : LoaderService,
     private fb: FormBuilder
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -84,7 +86,9 @@ export class ProductCategoryViewComponent implements OnInit {
   // }
 
   getCategory() {
+    this.loaderService.showLoading();
     this.authService.getOneCategory(this.categoryId).subscribe((res: any) => {
+      this.loaderService.closeLoading();
       this.categoryName = res.data.categoryName;
       if (this.categoryName === 'Food and Beverages') {
         this.showLocationDropdown = true;
@@ -100,7 +104,9 @@ export class ProductCategoryViewComponent implements OnInit {
       limit: 20,
       categoryId: this.categoryId
     };
+    this.loaderService.showLoading();
     this.authService.getProductsByCategory(obj).subscribe((res: any) => {
+      this.loaderService.closeLoading();
       if (res.code === 200) {
         this.productList = res.data;
       }
@@ -108,7 +114,6 @@ export class ProductCategoryViewComponent implements OnInit {
   }
 
   sortData(event) {
-    console.log(event);
     let obj = {
       key: event.target.value ? event.target.value.split('-')[0] : '',
       sortBy: event.target.value
@@ -119,7 +124,9 @@ export class ProductCategoryViewComponent implements OnInit {
       skip: 0,
       limit: 100
     };
+    this.loaderService.showLoading();
     this.authService.getSortProducts(obj).subscribe((res: any) => {
+      this.loaderService.closeLoading();
       if (res.code === 200) {
         this.productList = res.data;
       }
@@ -131,8 +138,10 @@ export class ProductCategoryViewComponent implements OnInit {
       skip: 0,
       limit: 100
     };
+    this.loaderService.showLoading();
     this.authService.getCategories(reqBody).subscribe(
       data => {
+        this.loaderService.closeLoading();
         this.categories = data['data'];
       },
       error => {
@@ -147,8 +156,10 @@ export class ProductCategoryViewComponent implements OnInit {
       limit: 100,
       city: event.target.value
     };
+    this.loaderService.showLoading();
     this.authService.getProductsByCity(reqBody).subscribe(
       data => {
+        this.loaderService.closeLoading();
         this.productList = data['data'];
       },
       error => {
@@ -162,19 +173,6 @@ export class ProductCategoryViewComponent implements OnInit {
     this.maxValueChange = maxValue;
   }
   getProductByPrice() {
-    // let temp1: any;
-    // let temp2: any;
-    // this.tempForm.get('minValueF').valueChanges.subscribe(minData => {
-    //   console.log('----', minData);
-    //   temp1 = minData;
-    // });
-
-    // this.tempForm.get('maxValueF').valueChanges.subscribe(maxData => {
-    //   console.log('----', maxData);
-    //   temp2 = maxData;
-    // });
-
-    // console.log(temp1, temp2);
     const payload = {
       categoryId: this.categoryId,
       skip: 0,
@@ -183,8 +181,10 @@ export class ProductCategoryViewComponent implements OnInit {
       higherPrice: this.maxValueChange
     };
 
+    this.loaderService.showLoading();
     this.authService.getProductByPrice(payload).subscribe(
       data => {
+        this.loaderService.closeLoading();
         console.log(data);
       },
       error => {

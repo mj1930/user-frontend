@@ -12,6 +12,7 @@ import {
   PathLocationStrategy,
   Location
 } from '@angular/common';
+import { ToastService } from 'src/app/services/shared/toast.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,9 +30,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private location: Location,
-    private route: ActivatedRoute,
-    private loaderService:LoaderService
+    private loaderService:LoaderService,
+    private notification: ToastService,
 
   ) {}
 
@@ -55,24 +55,28 @@ export class LoginComponent implements OnInit {
     };
     this.loaderService.showLoading();
     this.authService.login(reqData).subscribe(
-      data => {
+      (data: any) => {
         this.loaderService.closeLoading();
-        console.log(data);
-        sessionStorage.setItem('token', data['accessToken']);
-        localStorage.setItem('user', JSON.stringify(data['data']));
-        if (this.loginForm.controls['rememberMe'].value) {
-          localStorage.setItem('remember', JSON.stringify(true));
-          localStorage.setItem('email', this.loginForm.controls['email'].value);
-          localStorage.setItem(
-            'password',
-            this.loginForm.controls['password'].value
-          );
+        if (data.code == 200) {
+          sessionStorage.setItem('token', data['accessToken']);
+          localStorage.setItem('user', JSON.stringify(data['data']));
+          if (this.loginForm.controls['rememberMe'].value) {
+            localStorage.setItem('remember', JSON.stringify(true));
+            localStorage.setItem('email', this.loginForm.controls['email'].value);
+            localStorage.setItem(
+              'password',
+              this.loginForm.controls['password'].value
+            );
+          } else {
+            localStorage.setItem('remember', JSON.stringify(false));
+            localStorage.setItem('email', '');
+            localStorage.setItem('password', '');
+          }
+          this.notification.openSnackbar(data.message);
+          this.router.navigateByUrl('/user-home-page');
         } else {
-          localStorage.setItem('remember', JSON.stringify(false));
-          localStorage.setItem('email', '');
-          localStorage.setItem('password', '');
+          this.notification.openSnackbar(data.message);
         }
-        this.router.navigateByUrl('/user-home-page');
       },
       error => {
         console.log(error);

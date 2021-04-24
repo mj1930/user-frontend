@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { LoaderService } from '../services/shared/loader.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,11 @@ export class HeaderComponent implements OnInit {
   totalAmout: any = 0;
   name: string;
   imgLink: string = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private loaderService:LoaderService
+    ) {}
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
@@ -48,8 +53,10 @@ export class HeaderComponent implements OnInit {
       skip: 0,
       limit: 100
     };
+    this.loaderService.showLoading();
     this.authService.getCategories(reqBody).subscribe(
       data => {
+        this.loaderService.closeLoading();
         this.categories = data['data'];
       },
       error => {
@@ -72,7 +79,9 @@ export class HeaderComponent implements OnInit {
     if (searchValue === '') {
       this.searchResult = [];
     }
+    this.loaderService.showLoading();
     this.authService.searchProduct(searchValue).subscribe(resp => {
+      this.loaderService.closeLoading();
       this.searchResult = resp['data'];
       this.showSearchResultSection = true;
     });
@@ -83,7 +92,9 @@ export class HeaderComponent implements OnInit {
       skip: 0,
       limit: 10
     };
+    this.loaderService.showLoading();
     this.authService.getCartList(obj).subscribe((resp: any) => {
+      this.loaderService.closeLoading();
       if (resp.data.length) {
         this.dataResponse = resp.data[0].products;
         this.dataResponse.map(item => {

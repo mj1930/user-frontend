@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from "@angular/router";
+import { ToastService } from 'src/app/services/shared/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private notification: ToastService,
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +44,15 @@ export class SignupComponent implements OnInit {
      // gender: this.registerForm.controls['gender'].value
     }
 
-    this.authService.register(reqData).subscribe(data => {
-      console.log(data);
-      this.router.navigateByUrl('/login');
+    this.authService.register(reqData).subscribe((data: any) => {
+      if (data.code === 200)
+      {
+        this.notification.openSnackbar(data.message);
+        this.router.navigateByUrl('/login');
+      }
+      else {
+        this.notification.openSnackbar(data.message); 
+      }
     }, error => {
       console.log(error);
     })

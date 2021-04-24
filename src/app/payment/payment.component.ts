@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { LoaderService } from '../services/shared/loader.service';
 
 @Component({
   selector: 'app-payment',
@@ -25,6 +26,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     private authService: AuthService,
      private router: Router ,
+     private loaderService : LoaderService,
      private httpClient : HttpClient
   ) { }
 
@@ -33,10 +35,10 @@ export class PaymentComponent implements OnInit {
   }
 
   async getUserDetails() {
-    return new Promise((resolve)=>{
+    return new Promise((resolve) => {
+      this.loaderService.showLoading();
       this.authService.getUserDetails().subscribe(data => {
-        //console.log(data);
-        //this.router.navigateByUrl("/address-information");
+        this.loaderService.closeLoading();
         resolve(data['data']);
       }, error => {
         console.log(error);
@@ -63,7 +65,6 @@ export class PaymentComponent implements OnInit {
   }
 
   async payLater() {
-    const amt = this.authService.orderAmount.value.toString();
     let order:any = await this.authService.order.value;
     order.paymentMode = 'cash on delivery';
     order.address = this.address;

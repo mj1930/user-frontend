@@ -2,6 +2,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { LoaderService } from '../services/shared/loader.service';
 import { ToastService } from '../services/shared/toast.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class UserCartComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private loaderService : LoaderService,
     private toastService: ToastService
   ) { }
 
@@ -32,9 +34,10 @@ export class UserCartComponent implements OnInit {
       skip: 0,
       limit: 10
     };
+    this.loaderService.showLoading();
     this.authService.getCartList(obj).subscribe(
       data => {
-        console.log(data, "Cart");
+        this.loaderService.closeLoading();
         this.cartList = data['data'];
 
         //this.cartList.forEach(item => item['quantity'] = item.products.length);
@@ -52,9 +55,10 @@ export class UserCartComponent implements OnInit {
       quantity: product.quantity,
       totalAmnt: String(product.orderPrice * product.quantity)
     };
+    this.loaderService.showLoading();
     this.authService.updateCart(reqBody).subscribe(
       data => {
-        console.log('update', data);
+        this.loaderService.closeLoading();
         this.getCartList();
         this.calculateTotal();
         // for(let i=0; i<this.cartList.length; i++) {
@@ -71,23 +75,17 @@ export class UserCartComponent implements OnInit {
   }
 
   removeCart(product, index) {
-    console.log(product, index);
     let reqBody = {
       productId: product.productId,
       quantity: product.quantity,
       totalAmnt: product.orderPrice * product.quantity
     };
+    this.loaderService.showLoading();
     this.authService.removeCart(reqBody).subscribe(
-      data => {
+      () => {
+        this.loaderService.closeLoading();
         this.toastService.openSnackbar('Item removed successfully!!');
         this.getCartList();
-        //this.calculateTotal();
-        // for(let i=0; i<this.cartList.length; i++) {
-        //   if(data["data"]._id === this.cartList[i]._id) {
-        //     this.cartList[i] = data['data'];
-        //     this.cartList[i]["quantity"] = data['data']["products"].length;
-        //   }
-        // }
       },
       error => {
         console.log(error);

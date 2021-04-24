@@ -91,22 +91,21 @@
 <!-- Top Selling -->
 <section class="product-shop spad">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-left">
                     <h4><b> Top Products </b></h4>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col">
                 <div class="product-list">
                     <div class="row">
                         <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
                             <div class="product-item">
-                                <!-- <div class="pi-pic" style="background-image: url('(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink');"></div> -->
-                                <div class="pi-pic">
-                                    <img [src]="(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0]: imgLink" alt="" style="min-width: 100%;min-height: 100%;">
+                                <div class="pi-pic"
+                                    [ngStyle]="{'background-image': (product && product.productImg && product.productImg.length > 0) ? 'url(' + product?.productImg[0] + ')' : 'url(' + 'imgLink' + ')' }">
                                     <!-- <div class="sale pp-sale">Sale</div> -->
                                     <div class="icon">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -154,278 +153,6 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- 
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-3.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Guangzhou sweater</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 34.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-2.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Coat</div>
-                                    <a href="#">
-                                        <h5>Guangzhou sweater</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 13.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-3.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Guangzhou sweater</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 34.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Coat</div>
-                                    <a href="#">
-                                        <h5>Microfiber Wool Scarf</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 64.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-5.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Men's Painted Hat</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 44.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-6.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Converse Shoes</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 34.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Items -->
-<section class="product-shop spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title text-left">
-                    <h4><b> Featured Items </b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="product-list">
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Coat</div>
-                                    <a href="#">
-                                        <h5>Microfiber Wool Scarf</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 64.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-5.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Men's Painted Hat</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 44.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-6.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Converse Shoes</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 34.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <img src="https://preview.colorlib.com/theme/fashi/img/products/product-6.jpg" alt="">
-                                    <div class="icon">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                                        <li class="quick-view"><a href="#">View Product</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Shoes</div>
-                                    <a href="#">
-                                        <h5>Converse Shoes</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        INR 34.00
-                                        <span>INR 35.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -440,8 +167,9 @@
         <div class="row">
             <ng-container *ngFor="let category of categories">
                 <div class="col-md-3 col-sm-6 my-2">
-                    <div class="card shopCategory">
-                        <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
+                    <div class="card shopCategory"
+                        [ngStyle]="{'background-image': category?.img  ? 'url(' + category?.img  + ')' : 'url(catImg)' }">
+                        <!-- <img class="card-img-top" [src]="category?.img ? category?.img: catImg" alt="Category image"> -->
                         <div class="card-body">
                           <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>
                         </div>
@@ -479,78 +207,6 @@
         
     </div>
   </div>
-
-
-<!-- Deal Of The Day -->
-<!-- <section class="deal-of-week set-bg spad" style="background-image: url('https://preview.colorlib.com/theme/fashi/img/time-bg.jpg');">
-    <div class="container">
-        <div class="col-lg-6 text-center">
-            <div class="section-title">
-                <h2>Deal Of The Week</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br /> do ipsum dolor sit amet,
-                consectetur adipisicing elit </p>
-                <div class="product-price">
-                    INR35.00
-                    <span>/ HanBag</span>
-                </div>
-            </div>
-            <div class="countdown-timer" id="countdown">
-                <div class="cd-item">
-                    <span>56</span>
-                    <p>Days</p>
-                </div>
-                <div class="cd-item">
-                    <span>12</span>
-                    <p>Hrs</p>
-                </div>
-                <div class="cd-item">
-                    <span>40</span>
-                    <p>Mins</p>
-                </div>
-                <div class="cd-item">
-                    <span>52</span>
-                    <p>Secs</p>
-                </div>
-            </div>
-            <a href="#" class="primary-btn">Shop Now</a>
-        </div>
-    </div>
-</section> -->
-<!-- Special Offer -->
-<div class="container">
-    <div class="row my-5 d-flex justify-content-between">
-        <div class="col-12 col-md-5 my-2" style="background-image: url('http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cms-banner-1.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            <div class="p-5">
-                <div>
-                    <p class="text-white"><b> Special Offer Deals </b></p>
-
-                    <h4 class="text-white"><b> Rest Chair </b></h4>
-                    <h5 class="text-white"><b> Wodden Collection</b></h5>
-                </div>
-                <button type="button" class="btn btn-sm btn-light mx-0 my-3">Shop Now</button>
-            </div>
-            
-        </div>
-        
-        
-        <div class="col-12 col-md-5 my-2" style="background-image: url('http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cms-banner-2.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            <div class="p-5">
-                <div>
-                    <p class="text-white"><b> Special Offer Deals </b></p>
-
-                    <h4 class="text-white"><b> Rest Chair </b></h4>
-                    <h5 class="text-white"><b> Wodden Collection</b></h5>
-                </div>
-                <button type="button" class="btn btn-sm btn-light mx-0 my-3">Shop Now</button>
-            </div>
-            
-        </div>
-    </div>
-</div>
-
-
-
-
 
 <!-- Blog Section -->
 <section class="latest-blog spad">
@@ -594,42 +250,6 @@
         </div>
     </div>
 </section>
-
-
-
-
-<!-- Patner Logo -->
-<!-- <div class="partner-logo">
-    <div class="container">
-        <div class="row d-flex justify-content-around">
-            <div class="col-md py-4 text-center col-4">
-                <div class="tablecell-inner">
-                    <img src="https://preview.colorlib.com/theme/fashi/img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="col-md py-4 text-center col-4">
-                <div class="tablecell-inner">
-                    <img src="https://preview.colorlib.com/theme/fashi/img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="col-md py-4 text-center col-4">
-                <div class="tablecell-inner">
-                    <img src="https://preview.colorlib.com/theme/fashi/img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="col-md py-4 text-center col-4">
-                <div class="tablecell-inner">
-                    <img src="https://preview.colorlib.com/theme/fashi/img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="col-md py-4 text-center col-4">
-                <div class="tablecell-inner">
-                    <img src="https://preview.colorlib.com/theme/fashi/img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 <!-- Footer Section -->

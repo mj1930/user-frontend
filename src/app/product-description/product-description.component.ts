@@ -57,37 +57,7 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addToCart() {
-    let reqBody = {
-      products: [
-        {
-          productImg: [],
-          productName: '',
-          productId: '',
-          quantity: 1,
-          orderPrice: '',
-          sellerId: ''
-        }
-      ],
-      totalAmnt: ''
-    };
-
-    reqBody.products[0] = {
-      productImg: this.product.productImg,
-      productName: this.product.itemName,
-      productId: this.product._id,
-      quantity: this.quantity,
-      orderPrice: this.product.mrp,
-      sellerId: this.product.userId
-    };
-    reqBody.totalAmnt = String(this.quantity * this.product.mrp);
-    this.authService.addToCart(reqBody).subscribe(
-      () => {
-        this.router.navigateByUrl('/cart');
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.router.navigateByUrl('/cart');
   }
 
   onAddToCart() {

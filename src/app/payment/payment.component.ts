@@ -47,9 +47,10 @@ export class PaymentComponent implements OnInit {
   async payNow() {
     const amt = this.authService.orderAmount.value.toString();
     let order:any = await this.authService.order.value;
+    order.paymentMode = 'Paytm';
     order.address = this.address;
 
-    const orderGot:any = await this.httpClient.post('orders/add-order',order).toPromise();
+    const orderGot : any = await this.httpClient.post('orders/add-order', order).toPromise();
     const payload = {
       "email": this.userData.email,
       "phone": this.userData.address.mobile,
@@ -64,10 +65,9 @@ export class PaymentComponent implements OnInit {
   async payLater() {
     const amt = this.authService.orderAmount.value.toString();
     let order:any = await this.authService.order.value;
+    order.paymentMode = 'cash on delivery';
     order.address = this.address;
-
-    const orderGot : any = await this.httpClient.post('orders/add-order',order).toPromise();
-    console.log(orderGot);
+    const orderGot : any = await this.httpClient.post('orders/add-order', order).toPromise();
     this.router.navigate([`/order-status/${orderGot.data._id}`])
   }
 

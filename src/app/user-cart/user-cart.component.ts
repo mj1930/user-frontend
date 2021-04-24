@@ -116,7 +116,7 @@ export class UserCartComponent implements OnInit {
       "address":{},
       "userGstin":" ",
       "businessName":" ",
-      "paymentMode":"Paytm",
+      "paymentMode":"",
     });
 
     this.router.navigateByUrl('/address-information');

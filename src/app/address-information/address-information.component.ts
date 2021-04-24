@@ -32,13 +32,13 @@ export class AddressInformationComponent implements OnInit {
 
   async ngOnInit() {
     this.userData = await this.getUserDetails();
-    this.address.name=this.userData.fname + " " +this.userData.lname;
+    this.address.name = this.userData.fname + " " +this.userData.lname;
     //set all data from user address
-    this.address.address1=this.userData.address.address1?this.userData.address.address1:'';
-    this.address.address2=this.userData.address.address2?this.userData.address.address2:'';
-    this.address.city=this.userData.address.city?this.userData.address.city:'';
-    this.address.state=this.userData.address.state?this.userData.address.state:'';
-    this.address.postal_code=this.userData.address.postal_code?this.userData.address.postal_code:'';
+    this.address.address1 = this.userData.address.address1?this.userData.address.address1:'';
+    this.address.address2 = this.userData.address.address2?this.userData.address.address2:'';
+    this.address.city = this.userData.address.city?this.userData.address.city:'';
+    this.address.state = this.userData.address.state?this.userData.address.state:'';
+    this.address.postal_code = this.userData.address.postal_code?this.userData.address.postal_code:'';
 
   }
 
@@ -63,18 +63,20 @@ export class AddressInformationComponent implements OnInit {
       return;
     this.router.navigate(['/transaction']);
   }
+
   validateAddress() {
   for(let key in this.address){
-    if(key=='company' || key=='default')
+    if(key=='company')
       continue;
-    if(this.address[key]==''){
-      //alert(key + " can not be empty");
+    if(this.address[key]=='') {
       this.notification.openSnackbar(key + " can not be empty");
       return false;
     }
   }
    return true;
   }
+
+
   post(obj, url) {
     var mapForm = document.createElement("form");
     //mapForm.target = "_blank";

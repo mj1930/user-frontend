@@ -12,12 +12,7 @@ export class OrderInformationComponent implements OnInit {
   orderId;
   order;
  // paymentMethod="Paytm"; Implemented once order model have this
-  address=` Chandan Kanyal <br>
-  Dewalchaur Kham <br>
-  263139 <br>
-  Haldwani 263139 <br>
-  Uttar Pradesh <br>
-  India`;
+  address : any;
   constructor(private route: ActivatedRoute ,private httpClient:HttpClient) {
 
   }

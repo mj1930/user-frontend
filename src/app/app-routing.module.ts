@@ -16,11 +16,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AuthGuard } from '../app/services/auth/authGuard';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
-import { OrderDeatilsComponent } from './order-deatils/order-deatils.component';
-
-
-
-
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/user-home-page' },
@@ -40,6 +36,7 @@ const routes: Routes = [
   {path: 'response', component: PaymentResponseComponent, canActivate: [AuthGuard]},
   {path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
   {path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
+  {path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
   { path: '**', component: UserHomepageComponent }
 ];
 

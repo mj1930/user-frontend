@@ -50,28 +50,27 @@
                       <tbody>
                         <tr>
                           <td class="si-pic">
-                            <img [src]="item.productImg ? item.productImg[0] : imgLink" alt="" />
+                            <img [src]="item.productImg.length > 0 ? item.productImg[0] : imgLink" alt="" />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
-                              <p>{{ item.orderPrice }}</p>
-                              <h6>{{ item.productName }}</h6>
+                              <h4>{{ item.productName }}</h4>
                             </div>
                           </td>
-                          <td class="si-close">
-                            <i class="ti-close"></i>
+                          <td class="si-close text-right">
+                            <h5>{{ item.orderPrice }}</h5>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="select-total">
-                    <span>total:</span>
+                    <span>Total:</span>
                     <h5>{{ totalAmout }}</h5>
                   </div>
                   <div class="select-button">
                     <!-- <a href="cart" class="primary-btn view-card">VIEW CART</a> -->
-                    <a routerLink="cart" class="primary-btn checkout-btn"
+                    <a routerLink="/cart" class="primary-btn checkout-btn"
                       >CHECK OUT</a
                     >
                   </div>

@@ -82,7 +82,7 @@ export class ProductDescriptionComponent implements OnInit {
     reqBody.totalAmnt = String(this.quantity * this.product.mrp);
     this.authService.addToCart(reqBody).subscribe(
       () => {
-        // this.router.navigateByUrl('/cart');
+        this.router.navigateByUrl('/cart');
       },
       error => {
         console.log(error);

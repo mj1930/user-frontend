@@ -30,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
 import { OrderDeatilsComponent } from './order-deatils/order-deatils.component';
+import { PaymentComponent } from './payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { OrderDeatilsComponent } from './order-deatils/order-deatils.component';
     FooterComponent,
     AddAddressComponent,
     PaymentResponseComponent,
-    OrderDeatilsComponent
+    OrderDeatilsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

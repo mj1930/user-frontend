@@ -87,7 +87,7 @@ export class HeaderComponent implements OnInit {
       if (resp.data.length) {
         this.dataResponse = resp.data[0].products;
         this.dataResponse.map(item => {
-          this.totalAmout = this.totalAmout + +item.orderPrice;
+          this.totalAmout = parseInt(this.totalAmout) + parseInt(item.orderPrice);
         });
         this.productCount = localStorage.getItem('user')
           ? resp.data[0].products.length

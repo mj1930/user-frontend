@@ -22,7 +22,8 @@
 .inner-header .nav-right li.cartDisplay:hover .cart-hover {
 	opacity: 1;
 	visibility: visible;
-	top: 60px;
+	top: 25px;
+	right: -100px;
 }
 
 .dropdown:hover .mya-dropdown-menu {display: block;}

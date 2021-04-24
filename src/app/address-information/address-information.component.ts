@@ -20,9 +20,7 @@ export class AddressInformationComponent implements OnInit {
     'postal_code':'',
     'country':'India',
     'state':'',
-    'default':'true',
-
-
+    'default':'true'
   }
 
   constructor(
@@ -32,7 +30,7 @@ export class AddressInformationComponent implements OnInit {
      private notification:ToastService) { }
 
   async ngOnInit() {
-    this.userData=await this.getUserDetails();
+    this.userData = await this.getUserDetails();
     this.address.name=this.userData.fname + " " +this.userData.lname;
     //set all data from user address
     this.address.address1=this.userData.address.address1?this.userData.address.address1:'';
@@ -66,18 +64,18 @@ export class AddressInformationComponent implements OnInit {
     const amt = this.authService.orderAmount.value.toString();
     let order:any=await this.authService.order.value;
     order.address=this.address;
-    console.log(order,"Order");
-    //return;
 
     const orderGot:any=await this.httpClient.post('orders/add-order',order).toPromise();
     console.log(orderGot);
-    const payload={"email":this.userData.email,"phone":"7273000898","amount":amt,"userId":this.userData._id,"orderId":orderGot.data._id};
+    const payload = {
+      "email": this.userData.email,
+      "phone": this.userData.address.mobile,
+      "amount": amt,
+      "userId": this.userData._id,
+      "orderId": orderGot.data._id
+    };
     console.log(payload,"Payload");
-
-
-
     const res=await this.httpClient.post("paytm/payment", payload).toPromise();
-    console.log(res);
     this.post(res, "https://securegw-stage.paytm.in/theia/processTransaction");
 
   }

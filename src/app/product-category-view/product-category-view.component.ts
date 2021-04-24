@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./product-category-view.component.css']
 })
 export class ProductCategoryViewComponent implements OnInit {
+  imgLink = "http://www.thejungleadventure.com/assets/images/noimage/noimage.png";
   categoryId: String = '';
   productList = [];
   categoryName: String = '';

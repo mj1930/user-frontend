@@ -99,16 +99,6 @@
     </div>
     <div class="col-md-10">
       <h4 class="font-weight-bold">{{ categoryName }}</h4>
-      <!-- <p class="mb-2 text-muted small my-4 text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
-
-            <div class="row">
-                <div class="col">
-                    <p class="m-0">Refine Search</p>
-                    <button class="btn btn-outline-dark btn-sm m-0">Workstation</button>
-                    <button class="btn btn-outline-dark btn-sm">Laptop</button>
-                    <button class="btn btn-outline-dark btn-sm">Desktop</button>
-                </div>
-            </div> -->
 
       <div class="row justify-content-md-end">
         <div class="row mx-2">
@@ -147,7 +137,8 @@
       <div class="row my-5" *ngIf="productList.length > 0">
         <div class="col-sm-6 col-lg-3 mb-5" *ngFor="let product of productList">
           <div class="product-item">
-            <div class="pi-pic">
+            <div class="pi-pic"
+              [ngStyle]="{'background-image': (product && product.productImg && product.productImg.length > 0) ? 'url(' + product?.productImg[0] + ')' : 'url(' + imgLink + ')' }">
               <img [src]="product?.productImg[0]" alt="" />
               <div class="icon">
                 <i class="fa fa-heart-o" aria-hidden="true"></i>

@@ -15,11 +15,10 @@ export class PaymentResponseComponent implements OnInit {
   constructor(private route: ActivatedRoute ,private httpClient:HttpClient) { }
 
   async ngOnInit(){
-   this.paymentId= this.route.snapshot.url[1].path;
+   this.paymentId = this.route.snapshot.url[1].path;
 
    //get Order Status
     const orderDetails:any=await this.httpClient.get('paytm/payment-details/'+this.paymentId).toPromise();
-    console.log(orderDetails);
     this.orderStatus=orderDetails.paymentResult[0].STATUS=="TXN_FAILURE"?false:true;
     this.orderId=orderDetails.paymentResult[0].ORDERID;
     this.amount=orderDetails.paymentResult[0].TXNAMOUNT;

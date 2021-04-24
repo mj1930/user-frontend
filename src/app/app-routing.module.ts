@@ -33,14 +33,14 @@ const routes: Routes = [
   { path: 'user-home-page', component: UserHomepageComponent },
   { path: 'address-book', component: AddressBookComponent },
   { path: 'address-information', component: AddressInformationComponent },
-  {path: 'my-account', component: MyAccountComponent},
-  {path: 'login-security', component: LoginSecurityComponent},
-  {path: 'my-addresses', component: MyAddressComponent},
+  {path: 'my-account', component: MyAccountComponent,  canActivate: [AuthGuard]},
+  {path: 'login-security', component: LoginSecurityComponent,  canActivate: [AuthGuard]},
+  {path: 'my-addresses', component: MyAddressComponent, canActivate: [AuthGuard]},
   {path: 'add-address', component: AddAddressComponent},
-  {path: 'response', component: PaymentResponseComponent},
-  {path:'order-status/:orderId',component:PaymentResponseComponent},
-  {path:'order-detail/:orderId',component:OrderInformationComponent},
-  { path: '**', component: LoginComponent }
+  {path: 'response', component: PaymentResponseComponent, canActivate: [AuthGuard]},
+  {path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
+  {path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
+  { path: '**', component: UserHomepageComponent }
 ];
 
 @NgModule({

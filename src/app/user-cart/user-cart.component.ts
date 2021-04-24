@@ -11,6 +11,7 @@ import { ToastService } from '../services/shared/toast.service';
 })
 export class UserCartComponent implements OnInit {
   cartList = [];
+  imgDefault = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
   // quantity = null;
   subTotal = 0;
   total = null;

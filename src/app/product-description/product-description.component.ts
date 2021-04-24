@@ -58,7 +58,6 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addToCart() {
-    // this.router.navigateByUrl('/cart');
     let reqBody = {
       products: [
         {
@@ -72,26 +71,19 @@ export class ProductDescriptionComponent implements OnInit {
       ],
       totalAmnt: ''
     };
-    //reqBody.products = [];
-    // for(let i=0; i<this.quantity; i++) {
-    //   this.reqBody.products.push(this.product);
-    // }
 
     reqBody.products[0] = {
-      productImg: [],
+      productImg: this.product.productImg,
       productName: this.product.itemName,
       productId: this.product._id,
       quantity: this.quantity,
       orderPrice: this.product.mrp,
       sellerId: this.product.userId
     };
-    console.log(reqBody);
     reqBody.totalAmnt = String(this.quantity * this.product.mrp);
     this.authService.addToCart(reqBody).subscribe(
-      data => {
-        //console.log(data);
+      () => {
         this.router.navigateByUrl('/cart');
-        //this.product = data['data'];
       },
       error => {
         console.log(error);
@@ -117,8 +109,6 @@ export class ProductDescriptionComponent implements OnInit {
           response.data.map(item => {
             temp.push(item.products[0]);
           });
-
-          console.log('temp----', temp);
           let totalAmt: number = 0;
           temp.map(item => {
             totalAmt = item.orderPrice * item.quantity + totalAmt;
@@ -128,7 +118,6 @@ export class ProductDescriptionComponent implements OnInit {
             product: temp,
             totalAmnt: totalAmt
           };
-          console.log('PAYYYYYYYYLOAD', payload);
           this.authService.updateNewProductToCart(payload).subscribe(
             (resp: any) => {
               this.toastService.openSnackbar(
@@ -148,8 +137,6 @@ export class ProductDescriptionComponent implements OnInit {
             }
           );
         }
-
-        //console.log('RESPONSE', response.data.length);
       },
       error => {
         console.log('ERROR', error);

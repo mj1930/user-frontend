@@ -23,18 +23,14 @@
             </button>
           </div>
 
-          <!-- <div class="col">
+          <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
-              <ul class="list-group col position-absolute" style="z-index: 1000;">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+              <ul class="list-group col position-absolute" style="z-index: 1000;" *ngFor="let product of searchResult">
+                <li class="list-group-item" routerLink="/product-description/{{product?._id}}">{{product?.itemName}}</li>
               </ul>
 
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
           <div class="inner-header mx-1 my-n1 p-0">
@@ -84,10 +80,10 @@
             Account Login</a>
 
           <div class="dropdown my-n1" *ngIf="isAuthenticated">
-            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">Chandan Kanyal</button>
+            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">{{name ? name : 'Account Login'}}</button>
             <div class="dropdown-menu mya-dropdown-menu p-0">
               <a href="my-account" class="dropdown-item">My Account</a>
-              <a href="logout" class="dropdown-item">Logout</a>
+              <a href="logout" class="dropdown-item" (click)="logout()">Logout</a>
             </div>
           </div>
         </div>
@@ -125,7 +121,7 @@
           </li>
           <li><a href="./blog">Blog</a></li>
           <li><a href="./contact">Contact</a></li>
-          <li>
+          <!-- <li>
             <a href="#">Pages</a>
             <ul class="dropdown">
               <li><a href="./blog-details">Blog Details</a></li>
@@ -135,7 +131,7 @@
               <li><a href="./register">Register</a></li>
               <li><a href="./login">Login</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>

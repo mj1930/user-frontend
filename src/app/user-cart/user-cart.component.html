@@ -2,7 +2,7 @@
 
 <div class="container my-5">
     <div class="row">
-        <div class="col-lg-3 col-12">
+        <!-- <div class="col-lg-3 col-12">
             <div class="col grey lighten-2">
                 <p class="py-2 text-dark">Latest</p>
             </div>
@@ -38,9 +38,9 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-lg-9 col-12">
+        <div class="col-lg-12 col-12">
             <div class="col">
                 <h4>Shopping Cart</h4>
                 <div class="table-responsive">
@@ -59,7 +59,7 @@
                             <ng-container *ngFor="let cart of cartList; let j=index;">
                         <tr *ngFor="let product of cart.products; let i=index;">
                             <th scope="row" class="text-center">
-                                <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg">
+                                <img [src]="product?.productImg ? product?.productImg[0]: imgDefault">
                             </th>
                             <td>
                                 <p class="m-0">{{product?.productName}}</p>

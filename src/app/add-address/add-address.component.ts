@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './../services/auth/auth.service';
 import { ToastService } from './../services/shared/toast.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-address',
@@ -10,19 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAddressComponent implements OnInit {
 address={
-'country':'India',
-'name':'',
-'mobile':'',
-'address1':'',
-'address2':'',
-'postal_code':'',
-'landmark':'',
-'city':'',
-'state':'',
-
+  'country':'India',
+  'name':'',
+  'mobile':'',
+  'address1':'',
+  'address2':'',
+  'postal_code':'',
+  'landmark':'',
+  'city':'',
+  'state':''
 };
 userData: any;
-  constructor(private notification:ToastService,private authService: AuthService,private httpClient:HttpClient) { }
+  constructor(
+    private notification:ToastService,
+    private authService: AuthService,
+    private httpClient:HttpClient,
+    private router: Router
+    ) { }
 
   async ngOnInit() {
     this.userData=await this.getUserDetails();
@@ -47,6 +52,7 @@ userData: any;
       })
     })
   }
+
   validateAddress() {
     for(let key in this.address){
       if(key=='company' || key=='default')
@@ -62,10 +68,11 @@ userData: any;
     async updateAddress(){
       if(!this.validateAddress())
         return;
-      const res:any=await this.httpClient.put('users/save-address',{'address':this.address}).toPromise();
-      console.log(res);
-      if(res.ok){
+      const res: any = await this.httpClient.put('users/save-address', {'address':this.address}).toPromise();
+      if(res.ok) {
+        localStorage.setItem('user', JSON.stringify(res.data))
         this.notification.openSnackbar("Adress Saved Successfully");
+        this.router.navigate(['/my-addresses']);
       }
     }
 }

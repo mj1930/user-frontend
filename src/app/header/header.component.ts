@@ -21,9 +21,12 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   dataResponse: any;
   totalAmout: any = 0;
+  name: string;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.name = user ? user.fname + " " + user.lname : '';
     this.getAuthenticatedUser();
     this.getProductCount();
     this.updatedProductCount();
@@ -59,6 +62,11 @@ export class HeaderComponent implements OnInit {
     this.searchSubject.next(value);
   }
 
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
+
   onSearchProduct(searchValue) {
     if (searchValue === '') {
       console.log('searchResult', this.searchResult);
@@ -67,9 +75,7 @@ export class HeaderComponent implements OnInit {
     this.authService.searchProduct(searchValue).subscribe(resp => {
       this.searchResult = resp['data'];
       this.showSearchResultSection = true;
-      console.log('DATA--------', this.searchResult);
     });
-    console.log('FILTEREDLIST', this.filteredList$);
   }
 
   getProductCount() {
@@ -121,6 +127,5 @@ export class HeaderComponent implements OnInit {
 
   getAuthenticatedUser() {
     this.isAuthenticated = localStorage.getItem('user') ? true : false;
-    console.log(this.isAuthenticated);
   }
 }

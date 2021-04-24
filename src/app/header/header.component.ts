@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   dataResponse: any;
   totalAmout: any = 0;
   name: string;
-  imgLink: string = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
+  imgLink: string = 'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg';
   constructor(
     private authService: AuthService, 
     private router: Router, 
@@ -98,7 +98,7 @@ export class HeaderComponent implements OnInit {
       if (resp.data.length) {
         this.dataResponse = resp.data[0].products;
         this.dataResponse.map(item => {
-          this.totalAmout = parseInt(this.totalAmout) + parseInt(item.orderPrice);
+          this.totalAmout = parseInt(this.totalAmout) + (parseInt(item.orderPrice) * parseInt(item.quantity));
         });
         this.productCount = localStorage.getItem('user')
           ? resp.data[0].products.length

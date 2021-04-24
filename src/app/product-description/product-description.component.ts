@@ -61,10 +61,10 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addToCart() {
-    this.router.navigateByUrl('/cart');
+    this.addDataToCart(true);
   }
 
-  addDataToCart() {
+  addDataToCart(isFromBuy= false) {
     let reqBody = {
       products: [
         {
@@ -92,6 +92,9 @@ export class ProductDescriptionComponent implements OnInit {
     this.authService.addToCart(reqBody).subscribe(
       () => {
         this.loaderService.closeLoading();
+        if (isFromBuy) {
+          this.router.navigateByUrl('/cart');
+        }
       },
       error => {
         console.log(error);

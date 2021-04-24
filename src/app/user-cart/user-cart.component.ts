@@ -39,8 +39,6 @@ export class UserCartComponent implements OnInit {
       data => {
         this.loaderService.closeLoading();
         this.cartList = data['data'];
-
-        //this.cartList.forEach(item => item['quantity'] = item.products.length);
         this.calculateTotal();
       },
       error => {

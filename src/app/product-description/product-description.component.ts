@@ -37,6 +37,35 @@ export class ProductDescriptionComponent implements OnInit {
     this.getProduct(id);
   }
 
+  updateCart(isFromBuy= false) {
+    let product = this.product
+    let reqBody = {
+      productId: product._id,
+      quantity: this.quantity,
+      totalAmnt: String(parseInt(product.mrp) * this.quantity)
+    };
+    this.loaderService.showLoading();
+    this.authService.updateCart(reqBody).subscribe(
+      () => {
+        this.loaderService.closeLoading();
+        if (isFromBuy) {
+          this.router.navigate(['/cart']);
+        } else {
+          this.toastService.openSnackbar(
+            'Product added to cart successfully!!'
+          );
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  changeQuantity() {
+    console.log('qqqq', this.quantity);
+  }
+  
   getProduct(id) {
     let obj = {
       skip: 0,
@@ -54,10 +83,6 @@ export class ProductDescriptionComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  changeQuantity() {
-    console.log('qqqq', this.quantity);
   }
 
   addToCart() {
@@ -82,7 +107,7 @@ export class ProductDescriptionComponent implements OnInit {
       };
   
       reqBody.products[0] = {
-        productImg: [],
+        productImg: this.product.productImg,
         productName: this.product.itemName,
         productId: this.product._id,
         quantity: this.quantity,
@@ -91,17 +116,73 @@ export class ProductDescriptionComponent implements OnInit {
       };
       reqBody.totalAmnt = String(this.quantity * this.product.mrp);
       this.loaderService.showLoading();
-      this.authService.addToCart(reqBody).subscribe(
-        () => {
-          this.loaderService.closeLoading();
-          if (isFromBuy) {
-            this.router.navigateByUrl('/cart');
+      this.authService.getCartList({
+        skip: 0,
+        limit: 10
+      }).subscribe((resp: any) => {
+        this.loaderService.closeLoading()
+        if (resp['data'] && resp['data'].length > 0) {
+          let temp = [];
+          resp.data.map(item => {
+            if (item)
+              temp.push(item.products[0]);
+          });
+          let productAvailable = temp.filter((res) => {
+            if (res.productId == this.product._id) return res;
+          });
+          if (productAvailable.length == 0) {
+            let productData = [{
+              productImg: this.product.productImg,
+              productName: this.product.itemName,
+              productId: this.product._id,
+              quantity: this.quantity,
+              orderPrice: this.product.mrp,
+              sellerId: this.product.userId
+            }]
+            let totalAmt: number = 0;
+            temp.map(item => {
+              totalAmt = item.orderPrice * item.quantity + totalAmt;
+            });
+            totalAmt += parseInt(this.product.mrp);
+            const payload = {
+              product: productData,
+              totalAmnt: totalAmt
+            };
+            this.authService.updateNewProductToCart(payload).subscribe(
+              (resp: any) => {
+                this.toastService.openSnackbar(
+                  'Product added to cart successfully!!'
+                );
+                let tempAmount = 0;
+                resp.data.products.map(item => {
+                  tempAmount = tempAmount + +item.orderPrice;
+                });
+                this.authService.totalPrice.next(tempAmount);
+                this.authService.productData.next(resp.data.products);
+                const productCount = resp.data.products.length.toString();
+                this.authService.productCount.next(productCount);
+              },
+              error => {
+                console.log(error);
+              }
+            );
+          } else {
+            this.updateCart(isFromBuy)
           }
-        },
-        error => {
-          console.log(error);
+        } else {
+          this.authService.addToCart(reqBody).subscribe(
+            () => {
+              this.loaderService.closeLoading();
+              if (isFromBuy) {
+                this.router.navigateByUrl('/cart');
+              }
+            },
+            error => {
+              console.log(error);
+            }
+          );
         }
-      );
+      })
     } else {
       this.router.navigate(['/login'])
     }
@@ -128,33 +209,49 @@ export class ProductDescriptionComponent implements OnInit {
             if (item)
               temp.push(item.products[0]);
           });
-          let totalAmt: number = 0;
-          temp.map(item => {
-            totalAmt = item.orderPrice * item.quantity + totalAmt;
+          let productAvailable = temp.filter((res) => {
+            if (res.productId == this.product._id) return res;
           });
-
-          const payload = {
-            product: temp,
-            totalAmnt: totalAmt
-          };
-          this.authService.updateNewProductToCart(payload).subscribe(
-            (resp: any) => {
-              this.toastService.openSnackbar(
-                'Product added to cart successfully!!'
-              );
-              let tempAmount = 0;
-              resp.data.products.map(item => {
-                tempAmount = tempAmount + +item.orderPrice;
-              });
-              this.authService.totalPrice.next(tempAmount);
-              this.authService.productData.next(resp.data.products);
-              const productCount = resp.data.products.length.toString();
-              this.authService.productCount.next(productCount);
-            },
-            error => {
-              console.log(error);
-            }
-          );
+          if (productAvailable.length == 0) {
+            let productData = [{
+              productImg: this.product.productImg,
+              productName: this.product.itemName,
+              productId: this.product._id,
+              quantity: this.quantity,
+              orderPrice: this.product.mrp,
+              sellerId: this.product.userId
+            }]
+            let totalAmt: number = 0;
+            temp.map(item => {
+              totalAmt = item.orderPrice * item.quantity + totalAmt;
+            });
+            totalAmt += parseInt(this.product.mrp);
+            const payload = {
+              product: productData,
+              totalAmnt: totalAmt
+            };
+            this.authService.updateNewProductToCart(payload).subscribe(
+              (resp: any) => {
+                this.toastService.openSnackbar(
+                  'Product added to cart successfully!!'
+                );
+                let tempAmount = 0;
+                resp.data.products.map(item => {
+                  tempAmount = tempAmount + +item.orderPrice;
+                });
+                this.authService.totalPrice.next(tempAmount);
+                this.authService.productData.next(resp.data.products);
+                const productCount = resp.data.products.length.toString();
+                this.authService.productCount.next(productCount);
+              },
+              error => {
+                console.log(error);
+              }
+            );
+          } else {
+            this.updateCart()
+          }
+          
         }
       },
       error => {

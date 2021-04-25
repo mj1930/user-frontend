@@ -17,10 +17,26 @@ import { AuthGuard } from '../app/services/auth/authGuard';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
+
+
+
+
+
+
+
+
+
 
 const routes: Routes = [
   { path: '', component: UserHomepageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
   { path: 'product-description/:id', component: ProductDescriptionComponent },

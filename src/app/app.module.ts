@@ -30,6 +30,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { PaymentResponseComponent } from './payment-response/payment-response.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +53,10 @@ import { PaymentComponent } from './payment/payment.component';
     FooterComponent,
     AddAddressComponent,
     PaymentResponseComponent,
-    PaymentComponent
+    PaymentComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

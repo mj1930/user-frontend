@@ -65,41 +65,46 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addDataToCart(isFromBuy= false) {
-    let reqBody = {
-      products: [
-        {
-          productImg: [],
-          productName: '',
-          productId: '',
-          quantity: 1,
-          orderPrice: '',
-          sellerId: ''
+    let token = sessionStorage.getItem('token');
+    if (token) {
+      let reqBody = {
+        products: [
+          {
+            productImg: [],
+            productName: '',
+            productId: '',
+            quantity: 1,
+            orderPrice: '',
+            sellerId: ''
+          }
+        ],
+        totalAmnt: ''
+      };
+  
+      reqBody.products[0] = {
+        productImg: [],
+        productName: this.product.itemName,
+        productId: this.product._id,
+        quantity: this.quantity,
+        orderPrice: this.product.mrp,
+        sellerId: this.product.userId
+      };
+      reqBody.totalAmnt = String(this.quantity * this.product.mrp);
+      this.loaderService.showLoading();
+      this.authService.addToCart(reqBody).subscribe(
+        () => {
+          this.loaderService.closeLoading();
+          if (isFromBuy) {
+            this.router.navigateByUrl('/cart');
+          }
+        },
+        error => {
+          console.log(error);
         }
-      ],
-      totalAmnt: ''
-    };
-
-    reqBody.products[0] = {
-      productImg: [],
-      productName: this.product.itemName,
-      productId: this.product._id,
-      quantity: this.quantity,
-      orderPrice: this.product.mrp,
-      sellerId: this.product.userId
-    };
-    reqBody.totalAmnt = String(this.quantity * this.product.mrp);
-    this.loaderService.showLoading();
-    this.authService.addToCart(reqBody).subscribe(
-      () => {
-        this.loaderService.closeLoading();
-        if (isFromBuy) {
-          this.router.navigateByUrl('/cart');
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      );
+    } else {
+      this.router.navigate(['/login'])
+    }
   }
 
   onAddToCart() {

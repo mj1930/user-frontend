@@ -19,14 +19,13 @@ import { PaymentResponseComponent } from './payment-response/payment-response.co
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/user-home-page' },
+  { path: '', component: UserHomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
   { path: 'product-description/:id', component: ProductDescriptionComponent },
   { path: 'order-listing', component: OrderListingComponent },
   { path: 'product-category/:id', component: ProductCategoryViewComponent },
-  { path: 'user-home-page', component: UserHomepageComponent },
   { path: 'address-book', component: AddressBookComponent },
   { path: 'address-information', component: AddressInformationComponent },
   {path: 'my-account', component: MyAccountComponent,  canActivate: [AuthGuard]},

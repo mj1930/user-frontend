@@ -16,7 +16,8 @@ export class PaymentResponseComponent implements OnInit {
 
   async ngOnInit() {
     this.paymentId = this.route.snapshot.url[1].path;
-    const orderData: any = await this.httpClient.get(`orders/get-orders`);
+    let orderData: any = await this.httpClient.get(`orders/get-order/`+this.paymentId).toPromise();
+    orderData = orderData['data']
     if (orderData.paymentMode == 'cash on delivery') {
       this.amount = parseInt(orderData.totalAmnt);
       this.orderId = orderData._id;

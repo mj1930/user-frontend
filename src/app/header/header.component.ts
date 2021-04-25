@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.getCategories();
     this.searchSubject
       .pipe(
-        debounceTime(200),
+        debounceTime(500),
         distinctUntilChanged()
       )
       .subscribe(d => {
@@ -74,6 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     localStorage.removeItem('user');
+    sessionStorage.removeItem('token')
     this.router.navigate(['/']);
   }
 

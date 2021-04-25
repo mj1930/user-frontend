@@ -50,6 +50,10 @@ export class AuthService {
     return this.http.post('carts/remove-cart', data);
   }
 
+  removeCartOrder() {
+    return this.http.get('carts/remove-cart-order');
+  }
+
   getProductsByCategory(body) {
     return this.http.post('products/get-products-by-category', body);
   }

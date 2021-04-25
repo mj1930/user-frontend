@@ -11,6 +11,6 @@ export class LoaderService {
     // this.isLoading$.next(true);
   }
   async closeLoading(){
-    this.isLoading$.next(false);
+    // this.isLoading$.next(false);
   }
 }

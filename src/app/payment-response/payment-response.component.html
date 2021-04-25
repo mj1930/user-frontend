@@ -11,10 +11,10 @@
       <h3>
         Your payment of {{ amount }} &#8377; processed successfully. Your order
         has been booked with order id
-        <a [href]="'/order-detail/' + paymentId" class="text-primary"
+        <a routerLink='/order-detail/{{paymentId}}' class="text-primary"
           >#{{ paymentId }}</a
         >. You can check your order details in
-        <a href="/order-listing" class="text-primary">My orders</a> section.
+        <a routerLink="/order-listing" class="text-primary">My orders</a> section.
       </h3>
     </div>
 

@@ -59,12 +59,6 @@ export class UserCartComponent implements OnInit {
         this.loaderService.closeLoading();
         this.getCartList();
         this.calculateTotal();
-        // for(let i=0; i<this.cartList.length; i++) {
-        //   if(data["data"]._id === this.cartList[i]._id) {
-        //     this.cartList[i] = data['data'];
-        //     this.cartList[i]["quantity"] = data['data']["products"].length;
-        //   }
-        // }
       },
       error => {
         console.log(error);
@@ -72,10 +66,11 @@ export class UserCartComponent implements OnInit {
     );
   }
 
-  removeCart(product, index) {
+  removeCart(product) {
+    product.quantity -= 1;
     let reqBody = {
       productId: product.productId,
-      quantity: product.quantity,
+      quantity: 1,
       totalAmnt: product.orderPrice * product.quantity
     };
     this.loaderService.showLoading();

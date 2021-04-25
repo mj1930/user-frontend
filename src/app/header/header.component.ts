@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LoaderService } from '../services/shared/loader.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   dataResponse: any;
   totalAmout: any = 0;
   name: string;
+  hideLoader = false;
   imgLink: string =
     'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg';
   constructor(
@@ -29,8 +31,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private loaderService: LoaderService
   ) {}
-
+  
+  ngAfterViewInit() {
+    this.hideLoader = true;
+  }
   ngOnInit(): void {
+    
     let user = JSON.parse(localStorage.getItem('user'));
     this.name = user ? user.fname + ' ' + user.lname : '';
     this.getAuthenticatedUser();

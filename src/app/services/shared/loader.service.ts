@@ -8,7 +8,7 @@ export class LoaderService {
   isLoading$=new BehaviorSubject(false);
   constructor() { }
   async showLoading(){
-    this.isLoading$.next(true);
+    // this.isLoading$.next(true);
   }
   async closeLoading(){
     this.isLoading$.next(false);

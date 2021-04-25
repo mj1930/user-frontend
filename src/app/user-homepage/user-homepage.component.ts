@@ -12,7 +12,7 @@ export class UserHomepageComponent implements OnInit {
 
   products;
   imgLink = "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg";
-  catImg = "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg";
+  catImg = "http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg";
   categories = [];
   term : '';
   searchResult = [];

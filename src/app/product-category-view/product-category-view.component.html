@@ -99,6 +99,7 @@
             <option value="model-desc">Model (Z - A) </option>
           </select>
         </div>
+      </div>
 
         <!-- <div class="row mx-2">
           <span class="my-2 mx-2">Show</span>
@@ -118,11 +119,9 @@
         </div>
       </div> -->
 
-        <div class="row my-5" *ngIf="productList.length > 0">
-          <div
-            class="col-sm-6 col-lg-3 mb-5 ml-3"
-            *ngFor="let product of productList"
-          >
+      <!-- <div class="row"> -->
+        <div class="row my-2" *ngIf="productList.length > 0">
+          <div class="col-sm-6 col-md-3 col-lg-2" *ngFor="let product of productList" >
             <div class="product-item">
               <div
                 class="pi-pic"
@@ -135,10 +134,10 @@
                       : 'url(' + imgLink + ')'
                 }"
               >
-                <img [src]="(product?.productImg)[0]" alt="" />
-                <div class="icon">
+                <!-- <img [src]="(product?.productImg)[0]" alt="" /> -->
+                <!-- <div class="icon">
                   <i class="fa fa-heart-o" aria-hidden="true"></i>
-                </div>
+                </div> -->
                 <ul>
                   <!-- <li class="w-icon active">
                   <a href="#"
@@ -175,7 +174,7 @@
             </ul>
           </nav>
         </div> -->
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>

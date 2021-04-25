@@ -167,44 +167,16 @@
         <div class="row">
             <ng-container *ngFor="let category of categories">
                 <div class="col-md-3 col-sm-6 my-2">
-                    <div class="card"
-                    [ngStyle]="{'background-image': category?.img ? 'url(' + category?.img + ')' : 'url(' + catImg + ')' }">
-                        <!-- <img class="card-img-top" [src]="category?.img ? category?.img: catImg" alt="Category image"> -->
+                    <div class="card overflow-hidden bg-transparent border-0">
+                        <div class="category-class" [ngStyle]="{'background-image': category?.img ? 'url(' + category?.img + ')' : 'url(' + catImg + ')' }">
+                        </div>
                         <div class="card-body">
-                          <h5 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h5>
+                          <h4 class="card-title text-center text-white" style="cursor: pointer;" routerLink="/product-category/{{category?._id}}">{{category?.categoryName}}</h4>
                         </div>
                     </div>
                 </div>
             </ng-container>
-    
-            <!-- <div class="col-md-3 col-sm-6 my-2">
-                <div class="card shopCategory">
-                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title text-center text-white">Appliances</h5>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-3 col-sm-6 my-2">
-                <div class="card shopCategory">
-                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title text-center text-white">Appliances</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 my-2">
-                <div class="card shopCategory">
-                    <img class="card-img-top" src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title text-center text-white">Appliances</h5>
-                    </div>
-                </div>
-            </div> -->
         </div>
-        
     </div>
   </div>
 

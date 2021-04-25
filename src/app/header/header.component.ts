@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
-import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LoaderService } from '../services/shared/loader.service';
@@ -81,6 +80,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSearchProduct(searchValue) {
     if (searchValue === '') {
       this.searchResult = [];
+      this.loaderService.closeLoading();
     }
     this.loaderService.showLoading();
     this.authService.searchProduct(searchValue).subscribe(resp => {

@@ -7,17 +7,22 @@
             <div class="mdb-lightbox">
               <div class="row product-gallery">
                 <div class="col-12 mb-0">
-                  <figure class="view overlay rounded z-depth-1 main-img">
-                    <a [href]="product?.productImg[0]" data-size="710x823">
-                      <img [src]="product?.productImg[0]" class="img-fluid z-depth-1">
+                  <figure class="view overlay rounded main-img">
+                    <a [href]="product?.productImg[0]" data-size="710x823" target="_blank">
+                        <div class="img-wrap">
+                            <img [src]="product?.productImg[0]" class="img-fluid">
+                        </div>
                     </a>
                   </figure>
                 </div>
                 <div class="col-12">
                   <div class="row">
                     <div class="col-3" *ngFor="let img of product?.productImg">
-                      <div class="view overlay rounded z-depth-1 gallery-item">
-                        <img [src]="img" class="img-fluid">
+                      <div class="view overlay rounded gallery-item">
+                        <div class="product-icon">
+                            <img [src]="img">
+                        </div>
+                        
                         <div class="mask rgba-white-slight"></div>
                       </div>
                     </div>

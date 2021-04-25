@@ -58,24 +58,24 @@
                         <tbody>
                             <ng-container *ngFor="let cart of cartList; let j=index;">
                                 <tr *ngFor="let product of cart.products; let i=index;">
-                                    <th scope="row" class="text-center">
+                                    <th scope="row" class="text-center align-middle" style="max-width: 100px;">
                                         <img [src]="product?.productImg.length > 0 ? product?.productImg[0]: imgDefault">
                                     </th>
-                                    <td>
+                                    <td class="align-middle">
                                         <p class="m-0">{{product?.productName}}</p>
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <input type="text" name="quantity_{{i}}" [(ngModel)]="product.quantity" style="width: 40px; margin-top: 6px; height: 30px;" class="text-center" disabled>
-                                            <button class="btn btn-dark btn-sm mx-3 rounded" (click)="updateCart(product, i)"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                                            <button class="btn btn-danger btn-sm rounded" (click)="removeCart(product, product.productId)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                                            <button class="btn btn-dark btn-sm mx-3 rounded" (click)="updateCart(product, i)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                            <button class="btn btn-danger btn-sm rounded" (click)="removeCart(product, product.productId)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                         </div>
                                     </td>
 
-                                    <td class="text-nowrap">
+                                    <td class="text-nowrap align-middle">
                                         <p>{{product?.orderPrice}}</p>
                                     </td>
-                                    <td class="text-nowrap">
+                                    <td class="text-nowrap align-middle">
                                         <p>{{(product?.orderPrice * product?.quantity)}}</p>
                                     </td>
                                 </tr>

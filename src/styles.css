@@ -622,7 +622,7 @@ ol {
 .inner-header .nav-right li.cart-icon .cart-hover .select-items table tr td.si-close {
 	color: #252525;
 	font-size: 16px;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .inner-header .nav-right li.cart-icon .cart-hover .select-total {
@@ -777,6 +777,9 @@ ol {
 	background: #e7ab3c;
 }
 
+.mobile-menu-list{
+	display: none;
+}
 .nav-item .nav-menu li a {
 	font-size: 14px;
 	font-weight: 700;
@@ -4157,7 +4160,11 @@ ol {
 		padding-left: 25px;
 	}
 	.nav-item .nav-depart {
-		display: none;
+		/* display: none; */
+		width: 100%;
+	}
+	.mobile-menu-list{
+		display: block;
 	}
 	.slicknav_btn {
 		border-radius: 0;

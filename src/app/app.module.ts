@@ -33,6 +33,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     PaymentComponent,
     ContactUsComponent,
     AboutUsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

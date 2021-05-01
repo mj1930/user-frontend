@@ -93,4 +93,8 @@ export class AuthService {
   getProductByColor(payload) {
     return this.http.post('products/get-products-by-color', payload);
   }
+
+  getProductByLocation(payload) {
+    return this.http.post(`products/get-products-by-city`, payload)
+  }
 }

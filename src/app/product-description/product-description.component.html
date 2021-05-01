@@ -63,6 +63,10 @@
                             <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
                             <td class="text-muted">{{product?.barcode}}</td>
                         </tr>
+                        <tr>
+                            <th class="pl-0 w-25 text-muted" scope="row"><b>Price INR</b></th>
+                            <td class="text-muted">{{product?.mrp}}</td>
+                        </tr>
                         <!-- <tr>
                             <th class="pl-0 w-25 text-muted" scope="row"><b>SKU</b></th>
                             <td class="text-muted">NA</td>
@@ -70,10 +74,9 @@
                         </tbody>
                     </table>
                     </div>
-                    <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p>
+                    <!-- <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p> -->
             </div>
         </div>
-        <p class="m-0"><small class="font-weight-bold text-dark">Price INR {{product?.mrp}}</small></p>
 
         <!-- <div class="mt-1">
             <p class="m-0"><small class="font-weight-bold text-dark">Select Size</small></p>

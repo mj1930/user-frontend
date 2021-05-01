@@ -87,6 +87,15 @@
           <h4 class="font-weight-bold col-md my-2 my-md-0 col-12 text-md-left text-center">{{ categoryName }}</h4>
   
           <div class="row">
+            <div class="col" *ngIf="categoryName.toLowerCase() == 'food and beverages' ">
+              <span class="my-1">Location</span>
+              <select class="form-control" (change)="getDataByLocation($event)">
+                <option value="hisar">Hisar</option>
+                <option value="karnal">Karnal</option>
+                <option value="panipat">Panipat</option>
+                <option value="ambala">Ambala</option>
+              </select>
+            </div>
             <div class="col">
               <span class="my-1">Sort By</span>
               <select class="form-control" (change)="sortData($event)">

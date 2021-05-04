@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private loaderService: LoaderService
-  ) {}
+  ) {
+  }
   
   ngAfterViewInit() {
     this.hideLoader = true;

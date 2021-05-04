@@ -55,7 +55,15 @@ export class UserCartComponent implements OnInit {
     };
     this.loaderService.showLoading();
     this.authService.updateCart(reqBody).subscribe(
-      data => {
+      (resp: any)  => {
+        let tempAmount = 0;
+        resp.data.products.map(item => {
+          tempAmount = tempAmount + +item.orderPrice;
+        });
+        this.authService.totalPrice.next(tempAmount);
+        this.authService.productData.next(resp.data.products);
+        const productCount = resp.data.products.length.toString();
+        this.authService.productCount.next(productCount);
         this.loaderService.closeLoading();
         this.getCartList();
         this.calculateTotal();
@@ -75,7 +83,15 @@ export class UserCartComponent implements OnInit {
     };
     this.loaderService.showLoading();
     this.authService.removeCart(reqBody).subscribe(
-      () => {
+      (resp: any) => {
+        let tempAmount = 0;
+        resp.data.products.map(item => {
+          tempAmount = tempAmount + +item.orderPrice;
+        });
+        this.authService.totalPrice.next(tempAmount);
+        this.authService.productData.next(resp.data.products);
+        const productCount = resp.data.products.length.toString();
+        this.authService.productCount.next(productCount);
         this.loaderService.closeLoading();
         this.toastService.openSnackbar('Item removed successfully!!');
         this.getCartList();

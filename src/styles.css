@@ -700,7 +700,7 @@ ol {
 .nav-item .nav-depart .depart-btn:before {
 	position: absolute;
 	color: #ffffff;
-	right: 20px;
+	right: 10px;
 	top: 13px;
 	content: "";
 	font-family: FontAwesome;
@@ -709,12 +709,12 @@ ol {
 
 .nav-item .nav-depart .depart-btn i {
 	color: #ffffff;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .nav-item .nav-depart .depart-btn span {
-	font-size: 14px;
-	font-weight: 700;
+	font-size: 12px;
+	/* font-weight: 700; */
 	text-transform: uppercase;
 	margin-left: 16px;
 }
@@ -781,13 +781,13 @@ ol {
 	display: none;
 }
 .nav-item .nav-menu li a {
-	font-size: 14px;
-	font-weight: 700;
+	font-size: 12px;
+	font-weight: 400;
 	display: block;
 	color: #ffffff;
 	border-right: 2px solid #3b3b3b;
 	text-transform: uppercase;
-	padding: 16px 42px 15px;
+	padding: 14px 19px 14px;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
@@ -3923,7 +3923,7 @@ ol {
 		padding: 16px 12px 12px 11px;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 45px 15px;
+		padding: 14px 19px 14px;
 	}
 }
 
@@ -3943,7 +3943,7 @@ ol {
 		max-width: 64%;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 26px 15px;
+		padding: 14px 12px 14px;
 	}
 	.hero-items .owl-nav button[type=button] {
 		left: 5px;
@@ -4055,7 +4055,7 @@ ol {
 		margin-left: 8px;
 	}
 	.nav-item .nav-depart .depart-btn {
-		padding: 14px 40px 14px 18px;
+		padding: 14px 28px 14px 11px;
 	}
 	.nav-item .nav-menu li a {
 		padding: 16px 10px 15px;

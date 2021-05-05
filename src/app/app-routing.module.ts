@@ -20,6 +20,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'search', component: SearchResultsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
   { path: 'product-description/:id', component: ProductDescriptionComponent },

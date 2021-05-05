@@ -171,7 +171,15 @@ export class ProductDescriptionComponent implements OnInit {
           }
         } else {
           this.authService.addToCart(reqBody).subscribe(
-            () => {
+            (resp: any) => {
+              let tempAmount = 0;
+              resp.data.products.map(item => {
+                tempAmount = tempAmount + +item.orderPrice;
+              });
+              this.authService.totalPrice.next(tempAmount);
+              this.authService.productData.next(resp.data.products);
+              const productCount = resp.data.products.length.toString();
+              this.authService.productCount.next(productCount);
               this.loaderService.closeLoading();
               if (isFromBuy) {
                 this.router.navigateByUrl('/cart');

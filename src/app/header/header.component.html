@@ -29,21 +29,20 @@
           </a>
           
         </div>
-        <div class="search-display my-2 col-12 col-md-6">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="What do you need?"
-              (keyup)="getSearchValue($event)"
-            />
-            <button
-              type="button"
-              class="btn m-0 btn-sm shadow-none btn-warning"
-            >
-              Search <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
+        <div class="search-display my-2 col-12 col-md-6 form-horizontal">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+              </div>
+              <input type="text" class="form-control col-md-2 col-12" placeholder="Location">            
+              <input type="text" class="form-control" placeholder="What do you need?" (keyup)="getSearchValue($event)" />
+              <button type="button" class="btn m-0 btn-sm shadow-none btn-warning">
+                Search <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
+          
 
           <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
@@ -64,12 +63,14 @@
             </div>
           </div>
         </div>
+      
         <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
           <div class="inner-header mx-1 my-n1 p-0">
             <ul class="nav-right p-0">
               <li class="cart-icon" [class.cartDisplay]="productCount > 0">
                 <a>
-                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  <button class="btn btn-sm btn-dark my-0 mx-0">View Cart</button>
+                  <!-- <i class="fa fa-shopping-bag" aria-hidden="true"></i> -->
                   <span *ngIf="productCount">{{ productCount }}</span>
                 </a>
                 <div class="cart-hover rounded shadow">
@@ -131,41 +132,53 @@
   </div>
 
   <div class="nav-item">
-    <div class="container">
-      <div class="nav-depart my-2 my-md-0">
-        <div class="depart-btn">
-          <i class="fa fa-bars" aria-hidden="true"></i>
-          <span>Categories</span>
-          <ul class="depart-hover">
-            <li
-              *ngFor="let category of categories"
-              class="active"
-              routerLink="/product-category/{{ category._id }}"
-            >
-              <a>{{ category?.categoryName }}</a>
-            </li>
-
-            <li class="mobile-menu-list">
-              
-              <ul>
-                <li class="dropdown-header">Other Links</li>
-                <li class="active"><a href="./index">Home</a></li>
-                <li><a href="./about">About Us</a></li>
-                <li><a href="./contact">Contact Us</a></li>
-                <li><a href="./privacy-policy">Privacy Policy</a></li>
-              </ul>
-            </li>
-          </ul>
+    <div class="container-fluid m-0 p-0">
+      <div class="d-md-table mx-auto">
+        <div class="nav-depart my-2 my-md-0">
+          <div class="depart-btn">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span>Categories</span>
+            <ul class="depart-hover">
+              <li
+                *ngFor="let category of categories"
+                class="active"
+                routerLink="/product-category/{{ category._id }}"
+              >
+                <a>{{ category?.categoryName }}</a>
+              </li>
+  
+              <li class="mobile-menu-list">
+                
+                <ul>
+                  <li class="dropdown-header">Other Links</li>
+                  
+                  <li><a href="./electronics">Electronics</a></li>
+                  <li><a href="./electronics">Pantry</a></li>
+                  <li><a href="./electronics">Books</a></li>
+                  <li><a href="./electronics">Sports</a></li>
+                  <li><a href="./electronics">Power Tools</a></li>
+                  <li><a href="./electronics">Cloths</a></li>
+                  <li><a href="./electronics">Furniture</a></li>
+                  <li><a href="./contact">Contact</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+        <nav class="nav-menu mobile-menu">
+          <ul>
+            <li><a href="./electronics">Electronics</a></li>
+            <li><a href="./electronics">Pantry</a></li>
+            <li><a href="./electronics">Books</a></li>
+            <li><a href="./electronics">Sports</a></li>
+            <li><a href="./electronics">Power Tools</a></li>
+            <li><a href="./electronics">Cloths</a></li>
+            <li><a href="./electronics">Furniture</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav class="nav-menu mobile-menu">
-        <ul>
-          <li class="active"><a href="./index">Home</a></li>
-          <li><a href="./about">About Us</a></li>
-          <li><a href="./contact">Contact Us</a></li>
-          <li><a href="./privacy-policy">Privacy Policy</a></li>
-        </ul>
-      </nav>
+      
     </div>
   </div>
 

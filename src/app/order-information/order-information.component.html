@@ -4,9 +4,9 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            <div class="col row d-flex justify-content-between">
+            <div class="col row d-flex justify-content-between m-0">
                 <h4 class="font-weight-bold">Order History</h4>
-                <button class="btn btn-sm btn-dark my-n2" routerLink="/order-listing"> Back to my orders</button>
+                <button class="btn btn-sm btn-dark my-n2 mx-0 rounded" routerLink="/order-listing"> Back to my orders</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered my-3">
@@ -143,6 +143,67 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                  Rate your experience
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-outline mb-4">
+
+                            <label class="form-label">Item as described by the seller?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sellerItem"  value="option1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Yes
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sellerItem"  value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                  No
+                                </label>
+                              </div>
+                            </div>
+                      
+                        <!-- Start Rating -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Overall Ratings</label>
+                            <div id="full-stars-example-two">
+                                <div class="rating-group">
+                                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
+                                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+                                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+                                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+                                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+                                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Message input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Comments</label>
+                            <textarea class="form-control" placeholder="Comments" rows="4"></textarea>
+                        </div>
+                      
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-dark mx-0 btn-sm rounded">Submit Feedback</button>
+                      </form>
+                </div>
+              </div>
         </div>
     </div>
 </div>

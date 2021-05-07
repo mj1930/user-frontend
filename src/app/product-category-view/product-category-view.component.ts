@@ -21,7 +21,7 @@ export class ProductCategoryViewComponent implements OnInit {
   maxValue: number = 100000;
   options: Options = {
     floor: 0,
-    ceil: 1000,
+    ceil: 100000,
     translate: (value: number, label: LabelType): string => {
       this.onGetValue(this.minValue, this.maxValue);
       switch (label) {
@@ -74,11 +74,15 @@ export class ProductCategoryViewComponent implements OnInit {
     this.getCategories();
     this.categoryId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.categoryId) {
-      this.getProducts();
       this.getCategory();
     } else {
       this.router.navigate(['']);
     }
+    this.getProductByCity({
+      target: {
+        value: 'hisar'
+      }
+    });
   }
 
   // createProductPriceForm() {
@@ -120,20 +124,20 @@ export class ProductCategoryViewComponent implements OnInit {
     });
   }
 
-  getProducts() {
-    let obj = {
-      skip: 0,
-      limit: 20,
-      categoryId: this.categoryId
-    };
-    this.loaderService.showLoading();
-    this.authService.getProductsByCategory(obj).subscribe((res: any) => {
-      this.loaderService.closeLoading();
-      if (res.code === 200) {
-        this.productList = res.data;
-      }
-    });
-  }
+  // getProducts() {
+  //   let obj = {
+  //     skip: 0,
+  //     limit: 20,
+  //     categoryId: this.categoryId
+  //   };
+  //   this.loaderService.showLoading();
+  //   this.authService.getProductsByCategory(obj).subscribe((res: any) => {
+  //     this.loaderService.closeLoading();
+  //     if (res.code === 200) {
+  //       this.productList = res.data;
+  //     }
+  //   });
+  // }
 
   sortData(event) {
     let obj = {
@@ -178,10 +182,8 @@ export class ProductCategoryViewComponent implements OnInit {
       limit: 100,
       city: event.target.value
     };
-    this.loaderService.showLoading();
     this.authService.getProductsByCity(reqBody).subscribe(
       data => {
-        this.loaderService.closeLoading();
         this.productList = data['data'];
       },
       error => {
@@ -237,12 +239,24 @@ export class ProductCategoryViewComponent implements OnInit {
   getProductByPrice(payload) {
     this.authService.getProductByPrice(payload).subscribe(
       data => {
-        this.loaderService.closeLoading();
         this.productList  = data['data']
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  getDataByLocation(event) {
+    let payload = {
+      city: event.target.value,
+      skip: 0,
+      limit: 100,
+    };
+    this.authService.getProductByLocation(payload).subscribe((resp: any) => {
+      if (resp.code === 200) {
+        this.productList = resp['data'];
+      }
+    });
   }
 }

@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class OrderInformationComponent implements OnInit {
   orderId;
   order;
+  currentRate: any = 0;
  // paymentMethod="Paytm"; Implemented once order model have this
   address : any;
   constructor(private route: ActivatedRoute ,private httpClient:HttpClient) {

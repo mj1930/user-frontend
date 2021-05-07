@@ -207,8 +207,6 @@ export class ProductCategoryViewComponent implements OnInit {
       skip: 0,
       limit: 10
     };
-    if (colorArray.length)
-      this.getProductByColor(colorPayload);
 
     const payload = {
       categoryId: this.categoryId,
@@ -217,8 +215,12 @@ export class ProductCategoryViewComponent implements OnInit {
       lowerPrice: this.minValueChange,
       higherPrice: this.maxValueChange
     };
-
-    this.getProductByPrice(payload);
+    if (colorArray.length)
+      this.getProductByColor(colorPayload);
+    else if ((this.minValueChange > this.options.floor) || (this.maxValueChange < this.options.ceil) )
+      this.getProductByPrice(payload);
+    else
+      this.getProducts();
   }
 
   getProductByColor(payload) {

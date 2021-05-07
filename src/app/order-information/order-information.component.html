@@ -130,7 +130,10 @@
                         </tr>
 
                         <tr>
-                            <th scope="row" colspan="2"></th>
+                            <th scope="row" colspan="2"  style="text-align: center;">
+                                <ngb-rating class= "starRating" [(rate)]="currentRate" [max]="5"></ngb-rating>
+                                  <pre>Rate: <b>{{currentRate}}</b></pre>
+                            </th>
                             <td class="text-nowrap text-right">
                                 <p><b>Total:</b></p>
                             </td>

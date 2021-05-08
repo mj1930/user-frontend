@@ -1250,11 +1250,11 @@ ol {
 }
 
 .product-item .pi-pic ul li a {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
 	color: #252525;
 	display: block;
-	padding: 16px 18px 12px 19px;
+	padding: 12px 23px 12px 19px;
 }
 
 .product-item .pi-text {
@@ -1264,7 +1264,7 @@ ol {
 
 .product-item .pi-text .catagory-name {
 	font-size: 10px;
-	color: #b2b2b2;
+	color: rgb(88 80 80 / 87%);
 	font-weight: 700;
 	letter-spacing: 2px;
 	text-transform: uppercase;
@@ -1281,8 +1281,8 @@ ol {
 
 .product-item .pi-text .product-price {
 	color: #e7ab3c;
-	font-size: 20px;
-	font-weight: 700;
+	font-size: 16px;
+	/* font-weight: 700; */
 }
 
 .product-item .pi-text .product-price span {

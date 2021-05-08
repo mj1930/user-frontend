@@ -11,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class OrderInformationComponent implements OnInit {
   orderId;
   order;
+  rating: number = 0;
   currentRate: any = 0;
+  feedback: string;
  // paymentMethod="Paytm"; Implemented once order model have this
   address : any;
   constructor(private route: ActivatedRoute ,private httpClient:HttpClient) {
@@ -25,7 +27,7 @@ export class OrderInformationComponent implements OnInit {
     this.address = this.order.address;
   }
   
-  getOrderStatus(s){
+  getOrderStatus(s) {
     switch(s) {
       case 'P' :
         return "Pending";
@@ -42,5 +44,21 @@ export class OrderInformationComponent implements OnInit {
     }
   }
 
+  addRating(value) {
+    this.rating = value;
+  }
+
+  async submitFeedback() {
+    let productId = this.order?.products[0].productId;
+    let obj = {
+      rating: this.rating,
+      feedback: this.feedback,
+      productId
+    };
+    let data: any = await this.httpClient.post('orders/rate-product', obj).toPromise();
+    if (data.code === 200) {
+      
+    }
+  }
   
 }

@@ -24,6 +24,53 @@
           </div>
 
           <div class="list-group my-3">
+            <p class="mb-0 font-weight-bold">Avg. Rating</p>
+            <div class="row my-1">
+              <a class="col">
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <span> & up</span>
+              </a>
+            </div>
+
+            <div class="row my-1">
+              <a class="col">
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <span> & up</span>
+              </a>
+            </div>
+
+            <div class="row my-1">
+              <a class="col">
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <span> & up</span>
+              </a>
+            </div>
+
+            <div class="row my-1">
+              <a class="col">
+                <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <span> & up</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="list-group my-3">
             <p class="mb-2 font-weight-bold">Color</p>
 
             <!-- <div class="custom-control custom-checkbox">
@@ -31,13 +78,11 @@
                   <label class="custom-control-label" for="Red">Red</label>
                 </div> -->
             <div formArrayName="colors">
-              <div
-                [formGroupName]="i"
+              <div [formGroupName]="i"
                 *ngFor="
                   let item of colorForm.controls?.colors?.controls;
                   let i = index
-                "
-              >
+                ">
                 <input type="checkbox" formControlName="checked" />&nbsp;
                 <label>{{ colors[i].name }}</label>
               </div>
@@ -69,12 +114,12 @@
             </div>
           </div>
 
-          <button
+          <!-- <button
             class="btn btn-sm rounded btn-dark m-0"
             (click)="getProductsOnSubmit()"
           >
             Refine Search
-          </button>
+          </button> -->
         </div>
       </form>
       <div class="side-advert my-4">

@@ -80,8 +80,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     localStorage.removeItem('user');
-    sessionStorage.removeItem('token')
-    this.router.navigate(['/']);
+    sessionStorage.removeItem('token');
+    window.location.reload();
   }
 
   onSearchProduct(searchValue) {

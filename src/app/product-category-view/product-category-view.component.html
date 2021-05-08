@@ -26,7 +26,7 @@
           <div class="list-group my-3">
             <p class="mb-0 font-weight-bold">Avg. Rating</p>
             <div class="row my-1">
-              <a class="col">
+              <a class="col" (click)="getProductsOnSubmit(4)">
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="row my-1">
-              <a class="col">
+              <a class="col" (click)="getProductsOnSubmit(3)">
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="row my-1">
-              <a class="col">
+              <a class="col" (click)="getProductsOnSubmit(2)">
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row my-1">
-              <a class="col">
+              <a class="col" (click)="getProductsOnSubmit(1)">
                 <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                 <i class="fa fa-star-o" aria-hidden="true"></i>
                 <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -83,7 +83,7 @@
                   let item of colorForm.controls?.colors?.controls;
                   let i = index
                 ">
-                <input type="checkbox" formControlName="checked" />&nbsp;
+                <input type="checkbox" formControlName="checked" (change)="getProductsOnSubmit()"/>&nbsp;
                 <label>{{ colors[i].name }}</label>
               </div>
             </div>
@@ -97,29 +97,18 @@
                   [(value)]="minValue"
                   [(highValue)]="maxValue"
                   [options]="options"
+                  (mouseup)="getProductsOnSubmit()"
                 ></ngx-slider>
-              </div>
-              <div class="d-flex justify-content-between">
-                <input
-                  type="text"
-                  [(value)]="minValue"
-                  style="width: 40px; font-size: 11px;"
-                />
-                <input
-                  type="text"
-                  [(value)]="maxValue"
-                  style="width: 40px; font-size: 11px;"
-                />
               </div>
             </div>
           </div>
 
-          <!-- <button
+          <button
             class="btn btn-sm rounded btn-dark m-0"
-            (click)="getProductsOnSubmit()"
+            (click)="getProducts()"
           >
-            Refine Search
-          </button> -->
+            Reset Search
+          </button>
         </div>
       </form>
       <div class="side-advert my-4">

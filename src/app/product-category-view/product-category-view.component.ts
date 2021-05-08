@@ -78,11 +78,6 @@ export class ProductCategoryViewComponent implements OnInit {
     } else {
       this.router.navigate(['']);
     }
-    this.getProductByCity({
-      target: {
-        value: 'hisar'
-      }
-    });
   }
 
   // createProductPriceForm() {
@@ -118,26 +113,32 @@ export class ProductCategoryViewComponent implements OnInit {
       this.categoryName = res.data.categoryName;
       if (this.categoryName === 'Food and Beverages') {
         this.showLocationDropdown = true;
+        this.getProductByCity({
+          target: {
+            value: 'hisar'
+          }
+        });
       } else {
         this.showLocationDropdown = false;
+        this.getProducts();
       }
     });
   }
 
-  // getProducts() {
-  //   let obj = {
-  //     skip: 0,
-  //     limit: 20,
-  //     categoryId: this.categoryId
-  //   };
-  //   this.loaderService.showLoading();
-  //   this.authService.getProductsByCategory(obj).subscribe((res: any) => {
-  //     this.loaderService.closeLoading();
-  //     if (res.code === 200) {
-  //       this.productList = res.data;
-  //     }
-  //   });
-  // }
+  getProducts() {
+    let obj = {
+      skip: 0,
+      limit: 20,
+      categoryId: this.categoryId
+    };
+    this.loaderService.showLoading();
+    this.authService.getProductsByCategory(obj).subscribe((res: any) => {
+      this.loaderService.closeLoading();
+      if (res.code === 200) {
+        this.productList = res.data;
+      }
+    });
+  }
 
   sortData(event) {
     let obj = {
@@ -197,7 +198,7 @@ export class ProductCategoryViewComponent implements OnInit {
     this.maxValueChange = maxValue;
   }
 
-  getProductsOnSubmit() {
+  getProductsOnSubmit(rating?) {
     const selectedColor = this.colorForm.value.colors.filter(
       item => item.checked
     );
@@ -205,6 +206,7 @@ export class ProductCategoryViewComponent implements OnInit {
     const colorArray = selectedColor.map(item => item.name);
 
     const colorPayload = {
+      categoryId: this.categoryId,
       color: colorArray,
       skip: 0,
       limit: 10
@@ -217,16 +219,36 @@ export class ProductCategoryViewComponent implements OnInit {
       lowerPrice: this.minValueChange,
       higherPrice: this.maxValueChange
     };
+
+    const ratingPayload = {
+      categoryId: this.categoryId,
+      skip: 0,
+      limit: 10,
+      rating
+    }
     if (colorArray.length)
       this.getProductByColor(colorPayload);
     else if ((this.minValueChange > this.options.floor) || (this.maxValueChange < this.options.ceil) )
       this.getProductByPrice(payload);
+    else if (rating)
+      this.getProductByRating(ratingPayload);
     else
       this.getProducts();
   }
 
   getProductByColor(payload) {
     this.authService.getProductByColor(payload).subscribe(
+      resp => {
+        this.productList  = resp['data']
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getProductByRating(payload) {
+    this.authService.getProductByRating(payload).subscribe(
       resp => {
         this.productList  = resp['data']
       },

@@ -14,6 +14,7 @@ export class OrderInformationComponent implements OnInit {
   rating: number = 0;
   currentRate: any = 0;
   feedback: string;
+  isFeedBackGiven: false;
  // paymentMethod="Paytm"; Implemented once order model have this
   address : any;
   constructor(private route: ActivatedRoute ,private httpClient:HttpClient) {
@@ -24,6 +25,7 @@ export class OrderInformationComponent implements OnInit {
     this.orderId = this.route.snapshot.url[1].path;
     const order:any = await this.httpClient.get('orders/get-order/'+this.orderId).toPromise();
     this.order = order.data;
+    this.isFeedBackGiven = this.order.isFeedBackGiven;
     this.address = this.order.address;
   }
   
@@ -53,11 +55,12 @@ export class OrderInformationComponent implements OnInit {
     let obj = {
       rating: this.rating,
       feedback: this.feedback,
-      productId
+      productId,
+      orderId: this.orderId
     };
     let data: any = await this.httpClient.post('orders/rate-product', obj).toPromise();
     if (data.code === 200) {
-      
+      this.isFeedBackGiven = data['data'].isFeedBackGiven;
     }
   }
   

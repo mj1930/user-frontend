@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('password');
-    window.location.reload();
+    this.router.navigateByUrl('/');
   }
 
   onSearchProduct(searchValue) {

@@ -32,13 +32,14 @@
         <div class="search-display my-2 col-12 col-md-6 form-horizontal">
           <div class="form-group">
             <div class="input-group">
-              <div class="input-group-prepend">
+              <!-- <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
               </div>
-              <input type="text" class="form-control col-md-2 col-12" placeholder="Location">            
+              <input type="text" class="form-control col-md-2 col-12" placeholder="Location">             -->
               <input type="text" class="form-control" placeholder="What do you need?" (keyup)="getSearchValue($event)" />
-              <button type="button" class="btn m-0 btn-sm shadow-none btn-warning">
-                Search <i class="fa fa-search" aria-hidden="true"></i>
+              <button type="button" class="btn m-0 btn-sm shadow-none btn-warning" (click)="goToResults()">
+                Search 
+                <a><i class="fa fa-search" aria-hidden="true"></i></a>
               </button>
             </div>
           </div>
@@ -53,7 +54,7 @@
               >
                 <a
                   class="text-primary"
-                  href="/product-description/{{ product?._id }}"
+                  routerLink="/product-description/{{ product?._id }}"
                 >
                   <li class="list-group-item" style="cursor: pointer;">
                     {{ product?.itemName }}

@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   totalAmout: any = 0;
   name: string;
   hideLoader = false;
+  searchTerm: string = '';
   imgLink: string =
     'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg';
   constructor(
@@ -75,12 +76,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getSearchValue($event: any) {
     const value = $event.target.value;
+    this.searchTerm = value;
     this.searchSubject.next(value);
   }
 
   logout() {
     localStorage.removeItem('user');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('password');
     window.location.reload();
   }
 
@@ -97,6 +101,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  goToResults() {
+    if (this.searchTerm)
+      this.router.navigate([`/search-results/${this.searchTerm}`])
+  }
   getProductCount() {
     let obj = {
       skip: 0,

@@ -233,7 +233,8 @@ export class ProductCategoryViewComponent implements OnInit {
     else if (rating)
       this.getProductByRating(ratingPayload);
     else
-      this.getProducts();
+    console.log('hello');
+      // this.getProducts();
   }
 
   getProductByColor(payload) {

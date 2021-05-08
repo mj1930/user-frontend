@@ -222,7 +222,8 @@ export class ProductCategoryViewComponent implements OnInit {
     else if ((this.minValueChange > this.options.floor) || (this.maxValueChange < this.options.ceil) )
       this.getProductByPrice(payload);
     else
-      this.getProducts();
+    console.log('hello');
+      // this.getProducts();
   }
 
   getProductByColor(payload) {

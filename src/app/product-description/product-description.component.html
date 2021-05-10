@@ -33,10 +33,8 @@
         </div>
         <div class="col-md-5">
     
-        <h4 class="font-weight-bold">{{product?.itemName}}</h4>
-        <h4><p>{{product?.description}}</p></h4>
-
-        <!-- <div class="row">
+        <h4 class="font-weight-bold my-0">{{product?.itemName}}</h4>
+        <div class="row">
             <div class="col d-flex">
                 <p class="align-left">
                     <span class="fa fa-star checked-star"></span>
@@ -46,31 +44,50 @@
                     <span class="fa fa-star"></span>
                 </p>
                 <span class="small m-1">1 Reviews</span>
-                <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a>
+                <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
-        </div> -->
+        </div>
+        <h4>
+            <p>{{product?.description}}</p>
+            <ul class="col">
+                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
+                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
+                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
+                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
+            </ul>
+        </h4>
+
+        
 
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
                     <table class="table table-sm table-borderless mb-0">
                         <tbody>
-                        <tr>
-                            <th class="pl-0 w-25 text-muted" scope="row"><b>Brand</b></th>
-                            <td class="text-muted">{{product?.brand}}</td>
-                        </tr>
-                        <tr>
-                            <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
-                            <td class="text-muted">{{product?.barcode}}</td>
-                        </tr>
-                        <tr>
-                            <th class="pl-0 w-25 text-muted" scope="row"><b>Price INR</b></th>
-                            <td class="text-muted">{{product?.mrp}}</td>
-                        </tr>
-                        <!-- <tr>
-                            <th class="pl-0 w-25 text-muted" scope="row"><b>SKU</b></th>
-                            <td class="text-muted">NA</td>
-                        </tr> -->
+                            <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>Brand</b></th>
+                                <td class="text-muted">{{product?.brand}}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>MRP</b></th>
+                                <td class="text-muted mrp"><del> {{product?.mrp}} </del></td>
+                            </tr>
+                            <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>Our Price</b></th>
+                                <td class="text-muted mrp">{{product?.mrp}}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>Discount</b></th>
+                                <td class="text-muted mrp">{{product?.mrp}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
+                                <td class="text-muted">{{product?.barcode}}</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <th class="pl-0 w-25 text-muted" scope="row"><b>SKU</b></th>
+                                <td class="text-muted">NA</td>
+                            </tr> -->
                         </tbody>
                     </table>
                     </div>
@@ -98,7 +115,7 @@
             </div>
         </div> -->
         <div class="mt-2">
-            <p class="mb-0"><small class="font-weight-bold text-dark">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
+            <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
         </div>
 
         <div class="mt-2">
@@ -122,7 +139,7 @@
 
 
 <!-- Related Products -->
-<!-- <div class="container my-3">
+<div class="container my-3">
 
     <h4 class="my-5 font-weight-bold text-center">Related Products</h4>
     <section class="text-center">
@@ -232,7 +249,7 @@
             </div>
         </div>
     </section>
-</div> -->
+</div>
 
 <!-- Footer Section -->
 <app-footer></app-footer>

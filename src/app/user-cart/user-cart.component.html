@@ -62,7 +62,7 @@
                                         <img [src]="product?.productImg.length > 0 ? product?.productImg[0]: imgDefault">
                                     </th>
                                     <td class="align-middle">
-                                        <p class="m-0">{{product?.productName}}</p>
+                                        <a href=""><p class="m-0">{{product?.productName}}</p></a>
                                     </td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
@@ -73,10 +73,10 @@
                                     </td>
 
                                     <td class="text-nowrap align-middle">
-                                        <p>{{product?.orderPrice}}</p>
+                                        <p class="inr">{{product?.orderPrice}}</p>
                                     </td>
                                     <td class="text-nowrap align-middle">
-                                        <p>{{(product?.orderPrice * product?.quantity)}}</p>
+                                        <p class="inr">{{(product?.orderPrice * product?.quantity)}}</p>
                                     </td>
                                 </tr>
                         </ng-container>
@@ -91,21 +91,21 @@
                             <thead>
                             <tr>
                                 <th scope="col" class="text-right"><b>Sub-Total:</b></th>
-                                <td>INR {{subTotal}}</td>
+                                <td class="inr">{{subTotal}}</td>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <th scope="col" class="text-right"><b>Discount:</b></th>
-                                <td>NA</td>
+                                <td class="inr">NA</td>
                             </tr>
                             <tr>
                                 <th scope="col" class="text-right"><b>GST (18%)</b></th>
-                                <td>INR {{gstValue}}</td>
+                                <td class="inr">{{gstValue}}</td>
                             </tr>
                             <tr>
                                 <th scope="col" class="text-right"><b>Total</b></th>
-                                <td>INR {{total}}</td>
+                                <td class="inr">{{total}}</td>
                             </tr>
                             </tbody>
                         </table>

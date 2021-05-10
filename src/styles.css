@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-.mrp::before{
+.inr::before{
 	font-family: "FontAwesome";
-    content: "\f156";
+    content: "\f156" " ";
 }
   
-  .contact-display{
+.contact-display{
 	font-size: 16px;
     color: #252525;
 }

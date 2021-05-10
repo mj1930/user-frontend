@@ -70,15 +70,15 @@
                             </tr>
                             <tr>
                                 <th class="pl-0 w-25 text-muted" scope="row"><b>MRP</b></th>
-                                <td class="text-muted mrp"><del> {{product?.mrp}} </del></td>
+                                <td class="text-muted inr"><del> {{product?.mrp}} </del></td>
                             </tr>
                             <tr>
                                 <th class="pl-0 w-25 text-muted" scope="row"><b>Our Price</b></th>
-                                <td class="text-muted mrp">{{product?.mrp}}</td>
+                                <td class="text-muted inr">{{product?.mrp}}</td>
                             </tr>
                             <tr>
                                 <th class="pl-0 w-25 text-muted" scope="row"><b>Discount</b></th>
-                                <td class="text-muted mrp">{{product?.mrp}}</td>
+                                <td class="text-muted inr">{{product?.mrp}}</td>
                             </tr>
                             <!-- <tr>
                                 <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
@@ -137,7 +137,71 @@
     </div>
 </div>
 
+<div class="container my-3">
+    <div class="row">
+        <button class="btn btn-dark rounded">Description</button>
+        <button class="btn btn-light rounded ml-2">Reviews (1.2K)</button>
+    </div>
 
+    <!-- Description -->
+    <div class="row my-3">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+
+
+    <!-- Reviews -->
+    <div class="row my-3 border p-3">
+        <div class="col-12 p-0">
+            <h5><span>1</span> review for <span>Fantasy T-shirt</span></h5>
+            <div class="media mt-3 mb-4">
+            <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image">
+            <div class="media-body">
+                <div class="d-sm-flex justify-content-between">
+                <p class="mt-1 mb-2">
+                    <strong>Marthasteward </strong>
+                    <span>– </span><span>January 28, 2020</span>
+                </p>
+                <p class="align-left">
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                </div>
+                <p class="mb-0">Nice one, love it!</p>
+            </div>
+            </div>
+            <hr>
+            <h5 class="mt-4">Write a review</h5>
+            <p>Your email address will not be published.</p>
+            <div class="my-3">
+                <p class="align-left">
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star checked-star"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+            </div>
+            <div>
+            <!-- Your review -->
+            <div class="md-outline">
+                <label for="">Your review</label>
+                <textarea class="md-textarea form-control pr-6" rows="4" placeholder="Your review goes here..."></textarea>
+            </div>
+            <!-- Name -->
+            <div class="md-outline my-3">
+                <label for="">Name</label>
+                <input type="text" class="form-control pr-6" placeholder="Name">
+            </div>
+            <div class="text-right pb-2">
+                <button type="button" class="btn btn-primary">Add a review</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Related Products -->
 <div class="container my-3">
 

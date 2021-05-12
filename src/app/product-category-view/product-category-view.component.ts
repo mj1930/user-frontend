@@ -128,7 +128,7 @@ export class ProductCategoryViewComponent implements OnInit {
   getProducts() {
     let obj = {
       skip: 0,
-      limit: 20,
+      limit: 100,
       categoryId: this.categoryId
     };
     this.loaderService.showLoading();

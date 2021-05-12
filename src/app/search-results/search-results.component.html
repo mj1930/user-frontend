@@ -8,12 +8,16 @@
                 <p class="py-2 text-dark">Categories</p>
               </div>
               <div class="list-group">
-                <a class="list-group-item list-group-item-action text-dark">
-                  <!-- {{ category?.categoryName }} -->
-                </a>
+                <a
+                  class="list-group-item list-group-item-action text-dark"
+                  *ngFor="let category of categories"
+                  routerLink="/product-category/{{ category?._id }}"
+                >
+                  {{ category?.categoryName }}</a
+                >
               </div>
             </div>
-            <form>
+            <form [formGroup]="colorForm">
               <div class="refine-search my-4">
                 <div class="col grey lighten-2">
                   <p class="py-2 text-dark">Refine Search</p>
@@ -22,7 +26,7 @@
                 <div class="list-group my-3">
                   <p class="mb-0 font-weight-bold">Avg. Rating</p>
                   <div class="row my-1">
-                    <a class="col">
+                    <a class="col" (click)="getProductsOnSubmit(4)">
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
@@ -33,7 +37,7 @@
                   </div>
       
                   <div class="row my-1">
-                    <a class="col">
+                    <a class="col" (click)="getProductsOnSubmit(3)">
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
@@ -44,7 +48,7 @@
                   </div>
       
                   <div class="row my-1">
-                    <a class="col">
+                    <a class="col" (click)="getProductsOnSubmit(2)">
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -55,7 +59,7 @@
                   </div>
       
                   <div class="row my-1">
-                    <a class="col">
+                    <a class="col" (click)="getProductsOnSubmit(1)">
                       <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
                       <i class="fa fa-star-o" aria-hidden="true"></i>
                       <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -73,10 +77,14 @@
                         <input type="checkbox" class="custom-control-input" id="Red" />
                         <label class="custom-control-label" for="Red">Red</label>
                       </div> -->
-                  <div>
-                    <div>
-                      <input type="checkbox" formControlName="checked" />&nbsp;
-                      <label>Color Name</label>
+                  <div formArrayName="colors">
+                    <div [formGroupName]="i"
+                      *ngFor="
+                        let item of colorForm.controls?.colors?.controls;
+                        let i = index
+                      ">
+                      <input type="checkbox" formControlName="checked" (change)="getProductsOnSubmit()"/>&nbsp;
+                      <label>{{ colors[i].name }}</label>
                     </div>
                   </div>
                 </div>
@@ -85,21 +93,28 @@
                   <p class="mb-2 font-weight-bold">Price</p>
                   <div data-role="main" class="ui-content">
                     <div>
-                      <!-- <ngx-slider
+                      <ngx-slider
                         [(value)]="minValue"
                         [(highValue)]="maxValue"
                         [options]="options"
                         (mouseup)="getProductsOnSubmit()"
-                      ></ngx-slider> -->
+                      ></ngx-slider>
                     </div>
                   </div>
                 </div>
+      
+                <button
+                  class="btn btn-sm rounded btn-dark m-0"
+                  (click)="getProducts()"
+                >
+                  Reset Search
+                </button>
               </div>
             </form>
             <div class="side-advert my-4">
               <!-- <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/left-banner-266x400.jpg" alt="" class="img-thumbnail col-12"> -->
             </div>
-        </div>
+          </div>
         <div class="col-md-9 col-lg-10">
             <div class="col-12" *ngFor="let product of searchResults">
                 <a href="" class="row my-3">

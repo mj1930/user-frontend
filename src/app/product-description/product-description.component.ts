@@ -20,7 +20,9 @@ export class ProductDescriptionComponent implements OnInit {
     orderPrice: '',
     sellerId: ''
   };
-
+  getRelatedProduct: any = [];
+  ratings: any = [];
+  productId: any;
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
@@ -33,8 +35,10 @@ export class ProductDescriptionComponent implements OnInit {
     let id: string;
     this.activatedRoute.params.subscribe(item => {
       id = item['id'];
+      this.productId = id;
     });
     this.getProduct(id);
+    this.getRatings();
   }
 
   updateCart(isFromBuy= false) {
@@ -65,6 +69,10 @@ export class ProductDescriptionComponent implements OnInit {
   changeQuantity() {
     console.log('qqqq', this.quantity);
   }
+
+  calculateDiscount(price1, price2) {
+    return Math.round(100 - (price2/price1) * 100);
+  }
   
   getProduct(id) {
     let obj = {
@@ -77,6 +85,11 @@ export class ProductDescriptionComponent implements OnInit {
       data => {
         this.loaderService.closeLoading();
         this.product = data['data'];
+        this.authService.getRelatedProduct(this.product.itemName).subscribe((data: any) => {
+          if (data.code === 200) {
+            this.getRelatedProduct = data['data'];
+          }
+        })
         this.authService.productId.next(this.product._id);
       },
       error => {
@@ -266,5 +279,13 @@ export class ProductDescriptionComponent implements OnInit {
         console.log('ERROR', error);
       }
     );
+  }
+
+  getRatings() {
+    this.authService.getProductRating(this.productId).subscribe((data: any) => {
+      if (data.code === 200) {
+        this.ratings = data['data'];
+      }
+    })
   }
 }

@@ -101,4 +101,12 @@ export class AuthService {
   getProductByLocation(payload) {
     return this.http.post(`products/get-products-by-city`, payload)
   }
+
+  getProductRating(id) {
+    return this.http.get(`rating/get-product-rating/${id}`);
+  }
+
+  getRelatedProduct(name) {
+    return this.http.post(`products/get-related-products`, { name });
+  }
 }

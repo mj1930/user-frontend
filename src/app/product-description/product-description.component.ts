@@ -104,7 +104,7 @@ export class ProductDescriptionComponent implements OnInit {
 
   returnBulletPoints(bulletPoints) {
     if (bulletPoints) {
-      let bulletArray = bulletPoints.split(" ");
+      let bulletArray = bulletPoints.split("\n");
       return bulletArray;
     }
   }

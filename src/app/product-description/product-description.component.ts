@@ -98,6 +98,17 @@ export class ProductDescriptionComponent implements OnInit {
     );
   }
 
+  returnArray(val) {
+    return Array.from({length: val},(v,k) => k+1);
+  }
+
+  returnBulletPoints(bulletPoints) {
+    if (bulletPoints) {
+      let bulletArray = bulletPoints.split(" ");
+      return bulletArray;
+    }
+  }
+
   addToCart() {
     this.addDataToCart(true);
   }

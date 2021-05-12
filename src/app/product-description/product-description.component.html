@@ -37,21 +37,16 @@
         <div class="row">
             <div class="col d-flex">
                 <p class="align-left">
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star checked-star" *ngFor="let num of returnArray(product?.rating)"></span>
                 </p>
                 <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
         </div>
         <h4>
             <ul class="col">
-                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
-                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
-                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
-                <li><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </li>
+                <li *ngFor="let point of returnBulletPoints(product?.heading)">
+                    <p> {{ point }} </p>
+                </li>
             </ul>
         </h4>
 
@@ -160,11 +155,11 @@
                     <span>– </span><span>{{rating?.createdAt | date : 'mediumDate'}}</span>
                 </p>
                 <p class="align-left">
+                    <span class="fa fa-star checked-star" *ngFor="let num of returnArray(rating?.rating)"></span>
+                    <!-- <span class="fa fa-star checked-star"></span>
                     <span class="fa fa-star checked-star"></span>
                     <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span> -->
                 </p>
                 </div>
                 <p class="mb-0">{{ rating?.feedback}}</p>

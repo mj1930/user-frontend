@@ -15,6 +15,7 @@ export class UserCartComponent implements OnInit {
   imgDefault = 'http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/11-60x70.jpg';
   // quantity = null;
   subTotal = 0;
+  mrpTotal = 0;
   total = null;
   gstValue = null;
 
@@ -27,6 +28,10 @@ export class UserCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartList();
+  }
+
+  calculateDiscount(price1, price2) {
+    return Math.round(100 - (price2/price1) * 100);
   }
 
   getCartList() {
@@ -57,16 +62,18 @@ export class UserCartComponent implements OnInit {
     this.authService.updateCart(reqBody).subscribe(
       (resp: any)  => {
         let tempAmount = 0;
+        let tempMrpAmount = 0;
         resp.data.products.map(item => {
-          tempAmount = tempAmount + +item.orderPrice;
+          tempAmount = (tempAmount + item.orderPrice) * item.quantity;
+          tempMrpAmount = (tempMrpAmount + item.mrp) * item.quantity;
         });
         this.authService.totalPrice.next(tempAmount);
+        this.authService.totalMrp.next(tempMrpAmount);
         this.authService.productData.next(resp.data.products);
         const productCount = resp.data.products.length.toString();
         this.authService.productCount.next(productCount);
         this.loaderService.closeLoading();
         this.getCartList();
-        this.calculateTotal();
       },
       error => {
         console.log(error);
@@ -85,10 +92,13 @@ export class UserCartComponent implements OnInit {
     this.authService.removeCart(reqBody).subscribe(
       (resp: any) => {
         let tempAmount = 0;
+        let tempMrpAmount = 0;
         resp.data.products.map(item => {
-          tempAmount = tempAmount + +item.orderPrice;
+          tempAmount = (tempAmount + item.orderPrice) * item.quantity;
+          tempMrpAmount = (tempMrpAmount + item.mrp) * item.quantity;
         });
         this.authService.totalPrice.next(tempAmount);
+        this.authService.totalMrp.next(tempMrpAmount);
         this.authService.productData.next(resp.data.products);
         const productCount = resp.data.products.length.toString();
         this.authService.productCount.next(productCount);
@@ -104,18 +114,19 @@ export class UserCartComponent implements OnInit {
 
   calculateTotal() {
     this.subTotal = 0;
+    this.mrpTotal = 0;
     this.cartList.forEach(cart =>
       cart['products'].forEach(item => {
         this.subTotal += item.quantity * item.orderPrice;
+        this.mrpTotal += item.quantity * item.mrp;
       })
     );
-    this.gstValue = (this.subTotal * 18) / 100;
-    this.total = this.subTotal + this.gstValue;
+    this.total = this.subTotal;
   }
 
   async checkout() {
     this.authService.orderAmount.next(this.total);
-    let productArr=await this.cartList.map((cart)=>cart.products);
+    let productArr = await this.cartList.map((cart)=>cart.products);
 
     this.authService.order.next({
       "products":productArr,

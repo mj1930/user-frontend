@@ -124,7 +124,8 @@ export class ProductDescriptionComponent implements OnInit {
             productId: '',
             quantity: 1,
             orderPrice: '',
-            sellerId: ''
+            sellerId: '',
+            mrp: ''
           }
         ],
         totalAmnt: ''
@@ -135,7 +136,8 @@ export class ProductDescriptionComponent implements OnInit {
         productName: this.product.itemName,
         productId: this.product._id,
         quantity: this.quantity,
-        orderPrice: this.product.mrp,
+        orderPrice: this.product.productPrice,
+        mrp: this.product.mrp,
         sellerId: this.product.userId
       };
       reqBody.totalAmnt = String(this.quantity * this.product.mrp);
@@ -160,7 +162,8 @@ export class ProductDescriptionComponent implements OnInit {
               productName: this.product.itemName,
               productId: this.product._id,
               quantity: this.quantity,
-              orderPrice: this.product.mrp,
+              orderPrice: this.product.productPrice,
+              mrp: this.product.mrp,
               sellerId: this.product.userId
             }]
             let totalAmt: number = 0;
@@ -250,7 +253,8 @@ export class ProductDescriptionComponent implements OnInit {
               productName: this.product.itemName,
               productId: this.product._id,
               quantity: this.quantity,
-              orderPrice: this.product.mrp,
+              orderPrice: this.product.productPrice,
+              mrp: this.product.mrp,
               sellerId: this.product.userId
             }]
             let totalAmt: number = 0;

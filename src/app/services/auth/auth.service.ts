@@ -12,6 +12,7 @@ export class AuthService {
   order = new BehaviorSubject(null);
   productData = new BehaviorSubject([]);
   totalPrice = new BehaviorSubject(0);
+  totalMrp = new BehaviorSubject(0);
   constructor(private http: HttpClient) {}
 
   register(req) {

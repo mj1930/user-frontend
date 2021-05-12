@@ -46,29 +46,38 @@
                 <div class="table-responsive" *ngIf="cartList.length > 0">
                     <table class="col-12 table table-bordered my-3">
                         <thead class="grey lighten-2">
-                        <tr>
-                            <th scope="col" class="text-nowrap">Image</th>
-                            <th scope="col" class="text-nowrap">Product Name</th>
-                            <!-- <th scope="col" class="text-nowrap">Model</th> -->
-                            <th scope="col" class="text-nowrap">Quantity</th>
-                            <th scope="col" class="text-nowrap">Unit Price</th>
-                            <th scope="col" class="text-nowrap">Total</th>
-                        </tr>
+                            <tr>
+                                <th scope="col" class="text-nowrap">Image</th>
+                                <th scope="col" class="text-nowrap">Product Name</th>
+                                <!-- <th scope="col" class="text-nowrap">Model</th> -->
+                                <th scope="col" class="text-nowrap">Quantity</th>
+                                <th scope="col" class="text-nowrap">Unit Price</th>
+                                <th scope="col" class="text-nowrap">Total</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <ng-container *ngFor="let cart of cartList; let j=index;">
                                 <tr *ngFor="let product of cart.products; let i=index;">
                                     <th scope="row" class="text-center align-middle" style="max-width: 100px;">
-                                        <img [src]="product?.productImg.length > 0 ? product?.productImg[0]: imgDefault">
+                                        <img
+                                            [src]="product?.productImg.length > 0 ? product?.productImg[0]: imgDefault">
                                     </th>
                                     <td class="align-middle">
-                                        <a href=""><p class="m-0">{{product?.productName}}</p></a>
+                                        <a routerLink="/product-description/{{ product?.productId }}">
+                                            <p class="m-0">{{product?.productName}}</p>
+                                        </a>
                                     </td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <input type="text" name="quantity_{{i}}" [(ngModel)]="product.quantity" style="width: 40px; margin-top: 6px; height: 30px;" class="text-center" disabled>
-                                            <button class="btn btn-dark btn-sm mx-3 rounded" (click)="updateCart(product, i)"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                            <button class="btn btn-danger btn-sm rounded" (click)="removeCart(product, product.productId)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                            <input type="text" name="quantity_{{i}}" [(ngModel)]="product.quantity"
+                                                style="width: 40px; margin-top: 6px; height: 30px;" class="text-center"
+                                                disabled>
+                                            <button class="btn btn-dark btn-sm mx-3 rounded"
+                                                (click)="updateCart(product, i)"><i class="fa fa-plus"
+                                                    aria-hidden="true"></i></button>
+                                            <button class="btn btn-danger btn-sm rounded"
+                                                (click)="removeCart(product, product.productId)"><i class="fa fa-minus"
+                                                    aria-hidden="true"></i></button>
                                         </div>
                                     </td>
 
@@ -79,7 +88,7 @@
                                         <p class="inr">{{(product?.orderPrice * product?.quantity)}}</p>
                                     </td>
                                 </tr>
-                        </ng-container>
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
@@ -89,24 +98,28 @@
                     <div class="col d-flex justify-content-md-end">
                         <table class="table table-bordered col-md-4 align-right">
                             <thead>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Sub-Total:</b></th>
-                                <td class="inr">{{subTotal}}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col" class="text-right"><b>MRP Total:</b></th>
+                                    <td class="inr text-muted"><del>{{mrpTotal}}</del></td>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="text-right"><b>Sub-Total:</b></th>
+                                    <td class="inr">{{subTotal}}</td>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Discount:</b></th>
-                                <td class="inr">NA</td>
-                            </tr>
-                            <tr>
+                                <tr>
+                                    <th scope="col" class="text-right"><b>Discount:</b></th>
+                                    <td class="inr">{{ calculateDiscount(mrpTotal, subTotal)}} %</td>
+                                </tr>
+                                <!-- <tr>
                                 <th scope="col" class="text-right"><b>GST (18%)</b></th>
                                 <td class="inr">{{gstValue}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="text-right"><b>Total</b></th>
-                                <td class="inr">{{total}}</td>
-                            </tr>
+                            </tr> -->
+                                <tr>
+                                    <th scope="col" class="text-right"><b>Total</b></th>
+                                    <td class="inr">{{total}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -118,7 +131,8 @@
                 <div class="row">
                     <div class="my-3 col d-flex justify-content-between">
                         <a class="btn btn-dark m-0 rounded btn-sm" role="button" routerLink="/">Continue Shopping</a>
-                        <a (click)="checkout()" class="btn btn-dark m-0 rounded btn-sm" role="button" *ngIf="cartList.length > 0">Checkout</a>
+                        <a (click)="checkout()" class="btn btn-dark m-0 rounded btn-sm" role="button"
+                            *ngIf="cartList.length > 0">Checkout</a>
                     </div>
                 </div>
             </div>

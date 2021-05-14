@@ -12,6 +12,7 @@ import { LoaderService } from '../services/shared/loader.service';
 })
 export class AddressInformationComponent implements OnInit {
   userData: any;
+  cities: any = [];
   address={
     'name':'',
     'company':'',
@@ -42,6 +43,13 @@ export class AddressInformationComponent implements OnInit {
     this.address.state = this.userData.address.state?this.userData.address.state:'';
     this.address.postal_code = this.userData.address.postal_code?this.userData.address.postal_code:'';
 
+  }
+
+  getProducts() {
+    let productIds = localStorage.getItem('productIds');
+    this.authService.getProductsCity(productIds).subscribe((resp: any)=> {
+      this.cities = resp['data'];
+    })
   }
 
   async getUserDetails() {

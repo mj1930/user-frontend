@@ -107,6 +107,10 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addToCart() {
+    if (!this.quantity) {
+      this.toastService.openSnackbar("Min 1 quantity needed");
+      return
+    }
     if (this.quantity > this.product.availableUnits) {
       this.toastService.openSnackbar("Cannot buy quantity more than available quantity");
       return;
@@ -225,6 +229,10 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   onAddToCart() {
+    if (!this.quantity) {
+      this.toastService.openSnackbar("Min 1 quantity needed");
+      return
+    }
     if (this.quantity > this.product.availableUnits) {
       this.toastService.openSnackbar("Cannot buy quantity more than available quantity");
       return;

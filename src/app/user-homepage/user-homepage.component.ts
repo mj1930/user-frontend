@@ -19,6 +19,7 @@ export class UserHomepageComponent implements OnInit {
   categories = [];
   term : '';
   searchResult = [];
+  homeProducts = [];
   showSearchResultSection = false;
   constructor(
       private authService: AuthService,
@@ -34,6 +35,7 @@ export class UserHomepageComponent implements OnInit {
         interval: 10
       })
     });
+    this.getHomeProducts();
   }
 
   getProducts() {
@@ -48,6 +50,14 @@ export class UserHomepageComponent implements OnInit {
       this.products = data['data'];
     }, error => {
       console.log(error);
+    })
+  }
+
+  getHomeProducts() {
+    this.authService.getHomeProducts().subscribe((resp: any) => {
+      if (resp.code === 200) {
+        this.homeProducts = resp['data'];
+      }
     })
   }
 

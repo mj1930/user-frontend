@@ -36,8 +36,11 @@
         <h4 class="font-weight-bold my-0">{{product?.itemName}}</h4>
         <div class="row">
             <div class="col d-flex">
-                <p class="align-left">
+                <p class="align-left" *ngIf="product?.rating">
                     <span class="fa fa-star checked-star" *ngFor="let num of returnArray(product?.rating)"></span>
+                </p>
+                <p class="align-left" *ngIf="!product?.rating">
+                    <span>Not rated Yet</span>
                 </p>
                 <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
@@ -157,16 +160,16 @@
             </thead>
             <tbody>
               <tr>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>length</td>
+                <td>{{ product?.dimensions?.length}}</td>
               </tr>
               <tr>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>Width</td>
+                <td>{{ product?.dimensions?.width}}</td>
               </tr>
               <tr>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>Height</td>
+                <td>{{ product?.dimensions?.height}}</td>
               </tr>
             </tbody>
           </table>

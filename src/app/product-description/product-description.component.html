@@ -222,17 +222,16 @@
     <h4 class="my-5 font-weight-bold text-center">Related Products</h4>
     <section class="text-center">
         <div class="row">
-            <div class="col-md-6 col-lg-3 mb-5" *ngFor="let relatedProduct of getRelatedProduct">
-                <div class="product-item"  style="cursor: pointer;" routerLink="/product-description/{{ relatedProduct?._id }}">
-                    <div class="img-wrap">
-                        <img [src]="relatedProduct?.productImg.length > 0 ? relatedProduct?.productImg[0] : 'https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg'" alt="">
-                        <div class="icon">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <div class="col-lg-3 col-sm-6" *ngFor="let relatedProduct of getRelatedProduct">
+                <div class="product-item" style="cursor: pointer;" routerLink="/product-description/{{ relatedProduct?._id }}">
+                    <div class="pi-pic shadow-sm rounded">
+                        <div class="img-wrap">
+                            <img [src]="(product && product.productImg && product.productImg.length > 0) ? product?.productImg[0] : imgLink">
                         </div>
                         <ul>
-                            <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                            <li class="quick-view"><a href="#">View Product</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            <!-- <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li> -->
+                            <li class="quick-view" [routerLink]="['/product-description', product._id]"><a>View Product</a></li>
+                            <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                         </ul>
                     </div>
                     <div class="pi-text">
@@ -244,84 +243,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="col-md-6 col-lg-3 mb-5">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
-                        <div class="icon">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                            <li class="quick-view"><a href="#">View Product</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Coat</div>
-                        <a href="#">
-                            <h5>Microfiber Wool Scarf</h5>
-                        </a>
-                        <div class="product-price">
-                            INR 64.00
-                            <span>INR 35.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-5">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
-                        <div class="icon">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                            <li class="quick-view"><a href="#">View Product</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Coat</div>
-                        <a href="#">
-                            <h5>Microfiber Wool Scarf</h5>
-                        </a>
-                        <div class="product-price">
-                            INR 64.00
-                            <span>INR 35.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-5">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg" alt="">
-                        <div class="icon">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                            <li class="quick-view"><a href="#">View Product</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Coat</div>
-                        <a href="#">
-                            <h5>Microfiber Wool Scarf</h5>
-                        </a>
-                        <div class="product-price">
-                            INR 64.00
-                            <span>INR 35.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </section>
 </div>

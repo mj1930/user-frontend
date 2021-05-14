@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { LoaderService } from '../services/shared/loader.service';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-user-homepage',
   templateUrl: './user-homepage.component.html',
   styleUrls: ['./user-homepage.component.css']
 })
-export class UserHomepageComponent implements OnInit {
 
+export class UserHomepageComponent implements OnInit {
+  
   products;
   imgLink = "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg";
   catImg = "http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/catalog/Cat-1.jpg";
@@ -27,6 +30,11 @@ export class UserHomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
+    $(document).ready(function(){
+      $('.carousel').carousel({
+        interval: 10
+      })
+    });
     this.getHomeProducts();
   }
 

@@ -39,9 +39,6 @@
                 <p class="align-left" *ngIf="product?.rating">
                     <span class="fa fa-star checked-star" *ngFor="let num of returnArray(product?.rating)"></span>
                 </p>
-                <p class="align-left" *ngIf="!product?.rating">
-                    <span>Not rated Yet</span>
-                </p>
                 <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
         </div>
@@ -135,11 +132,7 @@
 
 
     <!-- About this product -->
-    <h2>Product Description</h2>
-    <!-- Description -->
-    <div class="row my-3 col">
-        <p>{{ product?.description}}</p>
-    </div>
+    
     <h2>
         About This Product
     </h2>
@@ -148,6 +141,11 @@
             <p> {{ point }} </p>
         </li>
     </ul>
+    <h2>Product Description</h2>
+    <!-- Description -->
+    <div class="row my-3 col">
+        <p>{{ product?.description}}</p>
+    </div>
     
 
     
@@ -169,23 +167,19 @@
               </tr>
               <tr>
                 <td>Manufacturer</td>
-                <td></td>
+                <td>{{ product?.brand }}</td>
               </tr>
               <tr>
                 <td>VIN</td>
-                <td></td>
+                <td>{{ product?._id }}</td>
               </tr>
               <tr>
                 <td>Model Number</td>
-                <td></td>
+                <td>{{ product?.model || 'NA' }}</td>
               </tr>
               <tr>
                 <td>Item Weight</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Best Seller Rank</td>
-                <td></td>
+                <td>{{ product?.weight }}</td>
               </tr>
             </tbody>
           </table>

@@ -43,6 +43,12 @@ export class OrderInformationComponent implements OnInit {
         case 'RT' :
         return "Returned";
         break;
+        case 'C' :
+        return "Cancelled";
+        break;
+        case 'DL' :
+        return "Delivered";
+        break;
     }
   }
 

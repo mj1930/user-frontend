@@ -6,14 +6,15 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item carouselItem active visible" style="background:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/owl1.jpg')">
-            <div class="carousel-caption text-white text-left">
-                <h1 class="text-left my-1">Furniture Collection</h1>
-                <p class="text-left">Amazing Deal on Vkreta</p>
-                <p><a class="btn btn-lg btn-warning text-dark rounded btn-sm mx-0" href="#" role="button">View Deal</a></p>
+        <ng-container *ngFor="let product of homeProducts; let i = index;">
+            <div class="carousel-item carouselItem" [class.active]="i == 0" style="background:url({{product?.productImg[0]}})">
+                <div class="carousel-caption text-white text-left">
+                    <h1 class="text-left my-1">{{ product?.itemName }}</h1>
+                    <p><a class="btn btn-lg btn-warning text-dark rounded btn-sm mx-0" routerLink="/product-description/{{product?._id}}" role="button">View Product</a></p>
+                </div>
             </div>
-        </div>
-        <div class="carousel-item carouselItem" style="background-image: url('https://images.pexels.com/photos/90317/pexels-photo-90317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+        </ng-container>
+        <!-- <div class="carousel-item carouselItem" style="background-image: url('https://images.pexels.com/photos/90317/pexels-photo-90317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
             <div class="carousel-caption text-white text-left">
                 <h1 class="text-left my-1">Furniture Collection</h1>
                 <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia animi ut nemo, vel quos vitae facilis laboriosam, laudantium aliquid excepturi voluptatum veritatis iste quibusdam esse tenetur neque aut rem. Sunt!</p>
@@ -26,7 +27,7 @@
                 <p class="text-left">Amazing Deal on Vkreta</p>
                 <p><a class="btn btn-lg btn-warning text-dark rounded btn-sm mx-0" href="#" role="button">View Deal</a></p>
             </div>
-        </div>
+        </div> -->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -128,30 +128,34 @@
 </div>
 
 <div class="container my-3">
-    <div class="row my-2">
+    <!-- <div class="row my-2">
         <button class="btn btn-dark rounded">Description</button>
         <button class="btn btn-light rounded ml-2">Reviews ({{ratings?.length}})</button>
-    </div>
+    </div> -->
 
 
     <!-- About this product -->
-    <h4>
-        About This Product
-        <ul class="col">
-            <li *ngFor="let point of returnBulletPoints(product?.heading)">
-                <p> {{ point }} </p>
-            </li>
-        </ul>
-    </h4>
-
+    <h2>Product Description</h2>
     <!-- Description -->
     <div class="row my-3 col">
         <p>{{ product?.description}}</p>
     </div>
+    <h2>
+        About This Product
+    </h2>
+    <ul class="col">
+        <li *ngFor="let point of returnBulletPoints(product?.heading)">
+            <p> {{ point }} </p>
+        </li>
+    </ul>
+    
+
+    
 
     <!-- Product Details -->
     <div class="row my-3 col">
-        <table class="table table-striped">
+        <h2>Product Details (Specifications)</h2>
+        <table class="table table-striped my-0">
             <thead>
               <tr>
                 <th scope="col">Specification</th>
@@ -160,16 +164,28 @@
             </thead>
             <tbody>
               <tr>
-                <td>length</td>
-                <td>{{ product?.dimensions?.length}}</td>
+                <td>Dimension</td>
+                <td>{{ product?.dimensions?.length}} x {{ product?.dimensions?.width}} x {{ product?.dimensions?.height}}</td>
               </tr>
               <tr>
-                <td>Width</td>
-                <td>{{ product?.dimensions?.width}}</td>
+                <td>Manufacturer</td>
+                <td></td>
               </tr>
               <tr>
-                <td>Height</td>
-                <td>{{ product?.dimensions?.height}}</td>
+                <td>VIN</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Model Number</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Item Weight</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Best Seller Rank</td>
+                <td></td>
               </tr>
             </tbody>
           </table>

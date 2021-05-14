@@ -84,7 +84,7 @@ export class ProductDescriptionComponent implements OnInit {
           if (data.code === 200) {
             this.getRelatedProduct = data['data'];
             let index = this.getRelatedProduct.findIndex(pr => pr._id = id);
-            // this.getRelatedProduct.splice(index, 1)
+            this.getRelatedProduct.splice(index, 1)
           }
         })
         this.authService.productId.next(this.product._id);

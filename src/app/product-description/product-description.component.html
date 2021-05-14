@@ -220,7 +220,7 @@
     <section class="text-center">
         <div class="row">
             <div class="col-md-6 col-lg-3 mb-5" *ngFor="let relatedProduct of getRelatedProduct">
-                <div class="product-item">
+                <div class="product-item"  style="cursor: pointer;" routerLink="/product-description/{{ relatedProduct?._id }}">
                     <div class="img-wrap">
                         <img [src]="relatedProduct?.productImg.length > 0 ? relatedProduct?.productImg[0] : 'https://preview.colorlib.com/theme/fashi/img/products/product-4.jpg'" alt="">
                         <div class="icon">

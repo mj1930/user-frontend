@@ -75,11 +75,6 @@ export class ProductDescriptionComponent implements OnInit {
   }
   
   getProduct(id) {
-    let obj = {
-      skip: 0,
-      limit: 10,
-      status: true
-    };
     this.loaderService.showLoading();
     this.authService.getProduct(id).subscribe(
       data => {
@@ -88,6 +83,8 @@ export class ProductDescriptionComponent implements OnInit {
         this.authService.getRelatedProduct(this.product.itemName).subscribe((data: any) => {
           if (data.code === 200) {
             this.getRelatedProduct = data['data'];
+            let index = this.getRelatedProduct.findIndex(pr => pr._id = id);
+            // this.getRelatedProduct.splice(index, 1)
           }
         })
         this.authService.productId.next(this.product._id);
@@ -110,6 +107,10 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   addToCart() {
+    if (this.quantity > this.product.availableUnits) {
+      this.toastService.openSnackbar("Cannot buy quantity more than available quantity");
+      return;
+    }
     this.addDataToCart(true);
   }
 
@@ -224,6 +225,10 @@ export class ProductDescriptionComponent implements OnInit {
   }
 
   onAddToCart() {
+    if (this.quantity > this.product.availableUnits) {
+      this.toastService.openSnackbar("Cannot buy quantity more than available quantity");
+      return;
+    }
     let obj = {
       skip: 0,
       limit: 10

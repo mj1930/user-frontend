@@ -47,15 +47,8 @@
 
           <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
-              <ul
-                class="list-group col position-absolute"
-                style="z-index: 1000;"
-                *ngFor="let product of searchResult"
-              >
-                <a
-                  class="text-primary"
-                  routerLink="/product-description/{{ product?._id }}"
-                >
+              <ul class="list-group col position-absolute px-0" style="z-index: 1000;">
+                <a class="text-primary" routerLink="/product-description/{{ product?._id }}" *ngFor="let product of searchResult">
                   <li class="list-group-item" style="cursor: pointer;">
                     {{ product?.itemName }}
                   </li>

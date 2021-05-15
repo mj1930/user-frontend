@@ -36,8 +36,21 @@
         <h4 class="font-weight-bold my-0">{{product?.itemName}}</h4>
         <div class="row">
             <div class="col d-flex">
+                <fieldset class="rate">
+                    <input type="radio" id="rating10" name="rating" value="10" disabled /><label for="rating10"></label>
+                    <input type="radio" id="rating9" name="rating" value="9" disabled /><label class="half" for="rating9"></label>
+                    <input type="radio" id="rating8" name="rating" value="8" disabled /><label for="rating8"></label>
+                    <input type="radio" id="rating7" name="rating" value="7" disabled /><label class="half" for="rating7"></label>
+                    <input type="radio" id="rating6" name="rating" value="6" disabled /><label for="rating6"></label>
+                    <input type="radio" id="rating5" name="rating" value="5" disabled /><label class="half" for="rating5"></label>
+                    <input type="radio" id="rating4" name="rating" value="4" disabled /><label for="rating4"></label>
+                    <input type="radio" id="rating3" name="rating" value="3" disabled /><label class="half" for="rating3"></label>
+                    <input type="radio" id="rating2" name="rating" value="2" disabled /><label for="rating2"></label>
+                    <input type="radio" id="rating1" name="rating" value="1" disabled /><label class="half" for="rating1"></label>
+                </fieldset>
                 <p class="align-left" *ngIf="product?.rating">
                     <span class="fa fa-star checked-star" *ngFor="let num of returnArray(product?.rating)"></span>
+                    <!-- calcultion = {3.5 star = (3*2) + 1 = 7, Now add checked attribute on value 7 that's it} -->
                 </p>
                 <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>

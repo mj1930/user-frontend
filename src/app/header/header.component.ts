@@ -76,8 +76,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getSearchValue($event: any) {
     const value = $event.target.value;
-    this.searchTerm = value;
-    this.searchSubject.next(value);
+    if (value) {
+      this.searchTerm = value;
+      this.searchSubject.next(value);
+    } else {
+      this.searchResult = [];
+    }
   }
 
   logout() {

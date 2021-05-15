@@ -32,8 +32,8 @@ export class UserHomepageComponent implements OnInit {
     this.getCategories();
     $(document).ready(function(){
       $('.carousel').carousel({
-        interval: 10
-      })
+        interval: 1000
+      });
     });
     this.getHomeProducts();
   }

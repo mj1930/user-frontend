@@ -47,7 +47,7 @@
 
           <div class="col" *ngIf="searchResult.length > 0">
             <div class="row">
-              <ul class="list-group col position-absolute px-0" style="z-index: 1000;">
+              <ul class="list-group col position-absolute px-0 scroll" style="z-index: 1000;max-height: 480px;overflow-y: scroll;">
                 <a class="text-primary" routerLink="/product-description/{{ product?._id }}" *ngFor="let product of searchResult">
                   <li class="list-group-item" style="cursor: pointer;">
                     {{ product?.itemName }}

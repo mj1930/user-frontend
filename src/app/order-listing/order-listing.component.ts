@@ -58,6 +58,12 @@ export class OrderListingComponent implements OnInit {
           case 'RT' :
           item['status'] = "Returned";
           break;
+          case 'C' :
+          item['status'] = "Cancelled";
+          break;
+          case 'DL' :
+          item['status'] = "Delivered";
+          break;
       }
       
     })

@@ -190,9 +190,9 @@
     <div class="row my-3 border p-3">
         <div class="col-12 p-0">
             <h5><span>{{ratings?.length}}</span> review for <span>{{product?.itemName}}</span></h5>
-            <div class="media mt-3 mb-4">
+            <div class="media mt-3 mb-4" *ngFor="let rating of ratings">
             <!-- <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image"> -->
-            <div class="media-body" *ngFor="let rating of ratings">
+            <div class="media-body">
                 <div class="d-sm-flex justify-content-between">
                 <p class="mt-1 mb-2">
                     <strong>{{rating?.name}} </strong>

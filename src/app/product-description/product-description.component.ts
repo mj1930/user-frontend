@@ -74,6 +74,9 @@ export class ProductDescriptionComponent implements OnInit {
     return Math.round(100 - (price2/price1) * 100);
   }
   
+  getRating(rating) {
+    return Math.ceil((rating * 2))
+  }
   getProduct(id) {
     this.loaderService.showLoading();
     this.authService.getProduct(id).subscribe(

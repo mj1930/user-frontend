@@ -37,21 +37,17 @@
         <div class="row">
             <div class="col d-flex">
                 <fieldset class="rate">
-                    <input type="radio" id="rating10" name="rating" value="10" disabled /><label for="rating10"></label>
-                    <input type="radio" id="rating9" name="rating" value="9" disabled /><label class="half" for="rating9"></label>
-                    <input type="radio" id="rating8" name="rating" value="8" disabled /><label for="rating8"></label>
-                    <input type="radio" id="rating7" name="rating" value="7" disabled /><label class="half" for="rating7"></label>
-                    <input type="radio" id="rating6" name="rating" value="6" disabled /><label for="rating6"></label>
-                    <input type="radio" id="rating5" name="rating" value="5" disabled /><label class="half" for="rating5"></label>
-                    <input type="radio" id="rating4" name="rating" value="4" disabled /><label for="rating4"></label>
-                    <input type="radio" id="rating3" name="rating" value="3" disabled /><label class="half" for="rating3"></label>
-                    <input type="radio" id="rating2" name="rating" value="2" disabled /><label for="rating2"></label>
-                    <input type="radio" id="rating1" name="rating" value="1" disabled /><label class="half" for="rating1"></label>
+                    <input type="radio" id="rating10" name="rating" value="10" [checked]= "getRating(product?.rating) == 10 ? true : false"  disabled /><label for="rating10"></label>
+                    <input type="radio" id="rating9" name="rating" value="9" [checked]= "getRating(product?.rating) == 9 ? true : false" disabled /><label class="half" for="rating9"></label>
+                    <input type="radio" id="rating8" name="rating" value="8" [checked]= "getRating(product?.rating) == 8 ? true : false" disabled /><label for="rating8"></label>
+                    <input type="radio" id="rating7" name="rating" value="7" [checked]= "getRating(product?.rating) == 7 ? true : false" disabled /><label class="half" for="rating7"></label>
+                    <input type="radio" id="rating6" name="rating" value="6" [checked]= "getRating(product?.rating) == 6 ? true : false" disabled /><label for="rating6"></label>
+                    <input type="radio" id="rating5" name="rating" value="5" [checked]= "getRating(product?.rating) == 5 ? true : false" disabled /><label class="half" for="rating5"></label>
+                    <input type="radio" id="rating4" name="rating" value="4" [checked]= "getRating(product?.rating) == 4 ? true : false" disabled /><label for="rating4"></label>
+                    <input type="radio" id="rating3" name="rating" value="3" [checked]= "getRating(product?.rating) == 3 ? true : false" disabled /><label class="half" for="rating3"></label>
+                    <input type="radio" id="rating2" name="rating" value="2" [checked]= "getRating(product?.rating) == 2 ? true : false" disabled /><label for="rating2"></label>
+                    <input type="radio" id="rating1" name="rating" value="1" [checked]= "getRating(product?.rating) == 1 ? true : false" disabled /><label class="half" for="rating1"></label>
                 </fieldset>
-                <p class="align-left" *ngIf="product?.rating">
-                    <span class="fa fa-star checked-star" *ngFor="let num of returnArray(product?.rating)"></span>
-                    <!-- calcultion = {3.5 star = (3*2) + 1 = 7, Now add checked attribute on value 7 that's it} -->
-                </p>
                 <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
         </div>
@@ -212,11 +208,11 @@
                     <span>– </span><span>{{rating?.createdAt | date : 'mediumDate'}}</span>
                 </p>
                 <p class="align-left">
-                    <span class="fa fa-star checked-star" *ngFor="let num of returnArray(rating?.rating)"></span>
-                    <!-- <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star checked-star"></span>
-                    <span class="fa fa-star"></span> -->
+                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 1"></span>
+                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 2"></span>
+                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 3"></span>
+                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 4"></span>
+                    <span class="fa fa-star check"  [class.text-warning]= "rating?.rating >= 5"></span>
                 </p>
                 </div>
                 <p class="mb-0">{{ rating?.feedback}}</p>

@@ -51,6 +51,7 @@
 /* Order correctly by floating highest to the right */
 .rate > label {
   float: right;
+  color: #636363;
 }
 /* The star of the show */
 .rate > label:before {
@@ -72,9 +73,9 @@
   padding-right: 0;
 }
 /* Click + hover color */
-input:checked ~ label { color: #eed600;  } /* color previous stars on hover */
+input:checked ~ label { color: #fb3 !important;  } /* color previous stars on hover */
 
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
 input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
-label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #eed600;  } 
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #fb3 !important;  } 

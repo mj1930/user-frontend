@@ -114,4 +114,8 @@ export class AuthService {
   getHomeProducts() {
     return this.http.get(`products/get-home-products`);
   }
+
+  getProductsCity(body) {
+    return this.http.post('products/get-products', body);
+  }
 }

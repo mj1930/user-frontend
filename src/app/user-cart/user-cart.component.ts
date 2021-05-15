@@ -52,7 +52,7 @@ export class UserCartComponent implements OnInit {
     );
   }
 
-  updateCart(product, index) {
+  updateCart(product) {
     let reqBody = {
       productId: product.productId,
       quantity: product.quantity,
@@ -127,7 +127,8 @@ export class UserCartComponent implements OnInit {
   async checkout() {
     this.authService.orderAmount.next(this.total);
     let productArr = await this.cartList.map((cart)=>cart.products);
-
+    let productIds = productArr.map((p) => { return p.productId });
+    localStorage.setItem('productIds', JSON.stringify(productIds));
     this.authService.order.next({
       "products":productArr,
       "totalAmnt":("" + this.total).toString(),

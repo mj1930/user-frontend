@@ -133,7 +133,8 @@ export class ProductDescriptionComponent implements OnInit {
             quantity: 1,
             orderPrice: '',
             sellerId: '',
-            mrp: ''
+            mrp: '',
+            city: ''
           }
         ],
         totalAmnt: ''
@@ -146,7 +147,8 @@ export class ProductDescriptionComponent implements OnInit {
         quantity: this.quantity,
         orderPrice: this.product.productPrice,
         mrp: this.product.mrp,
-        sellerId: this.product.userId
+        sellerId: this.product.userId,
+        city: this.product.city
       };
       reqBody.totalAmnt = String(this.quantity * this.product.mrp);
       this.loaderService.showLoading();
@@ -172,7 +174,8 @@ export class ProductDescriptionComponent implements OnInit {
               quantity: this.quantity,
               orderPrice: this.product.productPrice,
               mrp: this.product.mrp,
-              sellerId: this.product.userId
+              sellerId: this.product.userId,
+              city: this.product.city
             }]
             let totalAmt: number = 0;
             temp.map(item => {
@@ -271,7 +274,8 @@ export class ProductDescriptionComponent implements OnInit {
               quantity: this.quantity,
               orderPrice: this.product.productPrice,
               mrp: this.product.mrp,
-              sellerId: this.product.userId
+              sellerId: this.product.userId,
+              city: this.product.city
             }]
             let totalAmt: number = 0;
             temp.map(item => {

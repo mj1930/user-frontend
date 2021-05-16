@@ -31,6 +31,12 @@ export class PaymentComponent implements OnInit {
 
   async ngOnInit() {
     this.userData = await this.getUserDetails();
+    let address = JSON.parse(localStorage.getItem('address'));
+    if (address && Object.keys(address)?.length) {
+      address['mobile'] = this.userData.address.mobile;
+      this.userData.address = address;
+      this.address = address;
+    }
   }
 
   async getUserDetails() {
@@ -55,7 +61,6 @@ export class PaymentComponent implements OnInit {
     order.address = this.address;
     const tempProduct = order.products[0];
     order.products = tempProduct;
-
     const orderGot: any = await this.httpClient
       .post('orders/add-order', order)
       .toPromise();
@@ -87,6 +92,10 @@ export class PaymentComponent implements OnInit {
       .toPromise();
     console.log(orderGot);
     this.router.navigate([`/order-status/${orderGot.data._id}`]);
+  }
+
+  ngOnDestroy() {
+    localStorage.removeItem('address');
   }
 
   post(obj, url) {

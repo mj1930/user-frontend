@@ -65,12 +65,14 @@ export class AddressInformationComponent implements OnInit {
   }
 
   goToAddAddress() {
+
     this.router.navigateByUrl('/address-book');
   }
 
   async payNow() {
     if( !this.validateAddress())
       return;
+    localStorage.setItem('address', JSON.stringify(this.address));
     this.router.navigate(['/transaction']);
   }
 

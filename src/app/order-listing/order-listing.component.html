@@ -23,7 +23,7 @@
                       <a [href]="'/order-detail/'+order?._id" class="orderLink">#{{order?._id}}</a>
                     </th>
                     <td class="text-nowrap">
-                        <p>{{order?.customerName |  titlecase}}</p>
+                        <p>{{order?.address?.name |  titlecase}}</p>
                     </td>
                     <td>
                         {{order?.products.length}}

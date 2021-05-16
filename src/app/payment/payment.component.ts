@@ -85,8 +85,6 @@ export class PaymentComponent implements OnInit {
     order.address = this.userData.address;
     const tempProduct = order.products[0];
     order.products = tempProduct;
-    console.log('ORDER', order);
-
     const orderGot: any = await this.httpClient
       .post('orders/add-order', order)
       .toPromise();
@@ -99,7 +97,6 @@ export class PaymentComponent implements OnInit {
   }
 
   post(obj, url) {
-    console.log(obj, url);
     var mapForm = document.createElement('form');
     //mapForm.target = "_blank";
     mapForm.method = 'GET'; // or "post" if appropriate

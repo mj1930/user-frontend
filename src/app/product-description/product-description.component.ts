@@ -323,4 +323,8 @@ export class ProductDescriptionComponent implements OnInit {
       }
     })
   }
+
+  interChange(currentUrl, location) {
+    
+  }
 }

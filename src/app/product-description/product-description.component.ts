@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { LoaderService } from '../services/shared/loader.service';
 import { ToastService } from '../services/shared/toast.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-product-description',
@@ -30,7 +31,7 @@ export class ProductDescriptionComponent implements OnInit {
     private loaderService : LoaderService,
     private toastService: ToastService
   ) {}
-
+  
   ngOnInit(): void {
     let id: string;
     this.activatedRoute.params.subscribe(item => {

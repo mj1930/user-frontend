@@ -30,11 +30,6 @@ export class UserHomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
-    $(document).ready(function(){
-      $('.carousel').carousel({
-        interval: 1000
-      });
-    });
     this.getHomeProducts();
   }
 

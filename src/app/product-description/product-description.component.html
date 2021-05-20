@@ -130,33 +130,15 @@
         <div class="col-lg-3 my-3">
             <div class="card" style="max-height: 500px; overflow-y: auto;">
                 <div class="card-header">
-                  Other Seller
+                  Other Seller on Vkreta
                 </div>
-                <div class="card-body">
+                <div class="card-body" *ngFor="let product of vinProducts">
                     <div class="d-flex justify-content-between">
-                        <h1 class="card-title inr my-2">1200 </h1>
-                        <button class="btn btn-sm btn-dark rounded px-2 mx-0">Add to cart</button>
+                        <h1 class="card-title inr my-2"> {{product?.productPrice}} </h1>
+                        <button class="btn btn-sm btn-dark rounded px-2 mx-0" (click)="onAddToCart(product)">Add to cart</button>
                     </div>
-                    
-                    <p class="card-text text-dark">Sold By: <a href="" target="_blank" class="text-primary"> Seller Name</a> </p>
-                </div>
-                <hr>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h1 class="card-title inr my-2">1200 </h1>
-                        <button class="btn btn-sm btn-dark rounded px-2 mx-0">Add to cart</button>
-                    </div>
-                    
-                    <p class="card-text text-dark">Sold By: <a href="" target="_blank" class="text-primary"> Seller Name</a> </p>
-                </div>
-                <hr>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h1 class="card-title inr my-2">1200 </h1>
-                        <button class="btn btn-sm btn-dark rounded px-2 mx-0">Add to cart</button>
-                    </div>
-                    
-                    <p class="card-text text-dark">Sold By: <a href="" target="_blank" class="text-primary"> Seller Name</a> </p>
+                    <p class="card-text text-dark">Sold By: <a class="text-primary"> {{product?.sellerName || 'NA'}}</a> </p>
+                    <hr>
                 </div>
             </div>
         </div>

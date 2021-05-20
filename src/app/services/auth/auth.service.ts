@@ -110,6 +110,10 @@ export class AuthService {
   getRelatedProduct(name) {
     return this.http.post(`products/get-related-products`, { name });
   }
+
+  getVinProducts(vin) {
+    return this.http.post(`products/get-vin-products`, { vin });
+  }
   
   getHomeProducts() {
     return this.http.get(`products/get-home-products`);

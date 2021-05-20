@@ -23,6 +23,7 @@ export class ProductDescriptionComponent implements OnInit {
   };
   getRelatedProduct: any = [];
   ratings: any = [];
+  vinProducts: any = [];
   productId: any;
   constructor(
     private authService: AuthService,
@@ -40,6 +41,15 @@ export class ProductDescriptionComponent implements OnInit {
     });
     this.getProduct(id);
     this.getRatings();
+  }
+
+  getVinProducts() {
+    let vin = this.product.vin ? this.product.vin : '';
+    this.authService.getVinProducts(vin).subscribe((resp: any) => {
+      if (resp.code === 200) {
+        this.vinProducts = resp['data'];
+      }
+    })
   }
 
   updateCart(isFromBuy= false) {
@@ -87,6 +97,7 @@ export class ProductDescriptionComponent implements OnInit {
         this.authService.getRelatedProduct(this.product.itemName).subscribe((data: any) => {
           if (data.code === 200) {
             this.getRelatedProduct = data['data'];
+            this.getVinProducts();
             let index = this.getRelatedProduct.findIndex(pr => pr._id = id);
             this.getRelatedProduct.splice(index, 1)
           }
@@ -231,11 +242,18 @@ export class ProductDescriptionComponent implements OnInit {
         }
       })
     } else {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
   }
 
-  onAddToCart() {
+  onAddToCart(product: any = {}) {
+    let token = sessionStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+    }
+    if (Object.keys(product)?.length) {
+      this.product = product;
+    }
     if (!this.quantity) {
       this.toastService.openSnackbar("Min 1 quantity needed");
       return

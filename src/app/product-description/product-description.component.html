@@ -127,7 +127,7 @@
         
         
         </div>
-        <div class="col-lg-3 my-3">
+        <div class="col-lg-3 my-3" *ngIf="vinProducts.length > 0">
             <div class="card" style="max-height: 500px; overflow-y: auto;">
                 <div class="card-header">
                   Other Seller on Vkreta
@@ -137,7 +137,7 @@
                         <h1 class="card-title inr my-2"> {{product?.productPrice}} </h1>
                         <button class="btn btn-sm btn-dark rounded px-2 mx-0" (click)="onAddToCart(product)">Add to cart</button>
                     </div>
-                    <p class="card-text text-dark">Sold By: <a class="text-primary"> {{product?.sellerName || 'NA'}}</a> </p>
+                    <p class="card-text text-dark">Sold By: <a> {{product?.sellerName || 'NA'}}</a> </p>
                     <hr>
                 </div>
             </div>

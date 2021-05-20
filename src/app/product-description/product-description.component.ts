@@ -48,6 +48,8 @@ export class ProductDescriptionComponent implements OnInit {
     this.authService.getVinProducts(vin).subscribe((resp: any) => {
       if (resp.code === 200) {
         this.vinProducts = resp['data'];
+        let index = this.getRelatedProduct.findIndex(pr => pr._id = this.productId);
+        this.getRelatedProduct.splice(index, 1)
       }
     })
   }
@@ -88,6 +90,7 @@ export class ProductDescriptionComponent implements OnInit {
   getRating(rating) {
     return Math.ceil((rating * 2))
   }
+
   getProduct(id) {
     this.loaderService.showLoading();
     this.authService.getProduct(id).subscribe(

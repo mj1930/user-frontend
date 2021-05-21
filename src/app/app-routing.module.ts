@@ -21,6 +21,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
 
 
 
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
   { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
   { path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
+  { path:'print-invoice',component: PrintInvoiceComponent},
   { path: '**', component: UserHomepageComponent }
 ];
 

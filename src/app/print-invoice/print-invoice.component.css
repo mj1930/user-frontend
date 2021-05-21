@@ -1,0 +1,8 @@
+.detailTable {
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+}
+
+.th-no-wrap{
+    white-space: nowrap;
+}

@@ -34,6 +34,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ContactUsComponent,
     AboutUsComponent,
     PrivacyPolicyComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    PrintInvoiceComponent
   ],
   imports: [
     BrowserModule,

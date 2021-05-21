@@ -18,9 +18,9 @@
                 <div class="col-12">
                   <div class="row">
                     <div class="col-3" *ngFor="let img of product?.productImg; let i = index">
-                      <div class="view overlay rounded gallery-item">
+                      <div class="view overlay rounded gallery-item" (click)="interChange(i)">
                         <div class="product-icon">
-                            <img [src]="img" [id]="i" (click)="interChange('img', i)">
+                            <img [src]="img" [id]="i" >
                         </div>
                         
                         <div class="mask rgba-white-slight"></div>

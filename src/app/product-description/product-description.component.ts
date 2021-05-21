@@ -346,7 +346,9 @@ export class ProductDescriptionComponent implements OnInit {
     })
   }
 
-  interChange(currentUrl, location) {
-    
+  interChange(location) {
+    let b = this.product.productImg[0];
+    this.product.productImg[0] = this.product.productImg[location];
+    this.product.productImg[location] = b;
   }
 }

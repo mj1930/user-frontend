@@ -6,3 +6,9 @@
 .th-no-wrap{
     white-space: nowrap;
 }
+
+@media print {
+    .downloadPDF {
+      display: none;
+    }
+  }

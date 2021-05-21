@@ -4,10 +4,13 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            <div class="col row d-flex justify-content-between m-0">
-                <h4 class="font-weight-bold">Order Information</h4>
-                <button class="btn btn-sm btn-dark my-n2 mx-0 rounded" routerLink="/order-listing"> Back to my
-                    orders</button>
+            <div class="row d-flex justify-content-between m-0">
+                <h4 class="font-weight-bold my-2">Order Information</h4>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-sm btn-dark rounded mx-1" routerLink="/order-listing"> Back to my orders</button>
+                    <button class="btn btn-sm btn-primary rounded mx-1" routerLink="/print-invoice/{{order?._id}}" target="_blank">Invoice</button>
+                </div>
+                
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered my-3">
@@ -112,7 +115,7 @@
                             </tr>
                         </ng-container>
                         <tr>
-                            <th scope="row" colspan="2"></th>
+                            <th scope="row" colspan="3"></th>
                             <td class="text-nowrap text-right">
                                 <p><b>Sub-Total:</b></p>
                             </td>
@@ -123,7 +126,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row" colspan="2"></th>
+                            <th scope="row" colspan="3"></th>
                             <td class="text-nowrap text-right">
                                 <p><b>Flat Shipping Rate:</b></p>
                             </td>
@@ -134,7 +137,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row" colspan="2" style="text-align: center;">
+                            <th scope="row" colspan="3" style="text-align: center;">
                             </th>
                             <td class="text-nowrap text-right">
                                 <p><b>Total:</b></p>

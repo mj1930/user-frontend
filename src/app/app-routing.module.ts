@@ -56,7 +56,7 @@ const routes: Routes = [
   { path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
   { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
   { path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
-  { path:'print-invoice',component: PrintInvoiceComponent},
+  { path:'print-invoice/:orderID',component: PrintInvoiceComponent},
   { path: '**', component: UserHomepageComponent }
 ];
 

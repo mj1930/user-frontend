@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import {jsPDF} from 'jspdf';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-print-invoice',
@@ -9,9 +11,16 @@ import {jsPDF} from 'jspdf';
 })
 export class PrintInvoiceComponent implements OnInit {
 
-  constructor() { }
+  orderId: string;
+  invoiceDetails: any = {};
+  constructor(
+    private router: ActivatedRoute,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.orderId = this.router.snapshot.url[1].path;
+    this.getInvoiceDetails();
     $(document).ready(function(){
       var doc = new jsPDF();
       var specialElementHandlers = {
@@ -30,4 +39,15 @@ export class PrintInvoiceComponent implements OnInit {
     });
   }
 
+  getInvoiceDetails() {
+    this.authService.getInvoiceDetails(this.orderId).subscribe((resp: any) => {
+      if (resp.code === 200) {
+        this.invoiceDetails = resp['data'];
+      }
+    })
+  }
+
+  totalCalculate(quantity, orderPrice) {
+    return quantity * orderPrice;
+  }
 }

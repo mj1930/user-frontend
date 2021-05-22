@@ -12,23 +12,23 @@
             </tr>
     
             <tr>
-                <td class="text-left text-dark">
+                <td class="text-left text-dark" *ngFor="let seller of invoiceDetails?.sellerDetails">
                     <h3 class="my-0 font-weight-bold">Sold By:</h3>
-                    <p class="my-0 text-dark">Krishiv International</p>
+                    <p class="my-0 text-dark">{{ seller.name }}</p>
                     <p class="my-0 text-dark">
-                        B-6, 890, Tanda Road, Shah Sikander Road, <br>
-                        Opp.Devitalab Mandir Hospital <br>
-                        JALANDHAR, PUNJAB, 144004 <br>
+                       {{ seller.address?.address1 }}, <br>
+                       {{ seller.address?.address2 }} <br>
+                       {{ seller.address?.city }}, {{ seller.address?.state }}, {{ seller.address?.pincode }} <br>
                         IN
                     </p>
                 </td>
     
                 <td class="text-right text-dark">
                     <h3 class="my-0 font-weight-bold">Billing Address:</h3>
-                    <p class="my-0 text-dark">Chandan Kanyal</p>
+                    <p class="my-0 text-dark">{{ invoiceDetails?.userDetails?.address.name }}</p>
                     <p class="my-0 text-dark">
-                        PO Manpur West, Dewalchaur Kham, <br>
-                        Haldwani, UTTARAKHAND, 263139 <br>
+                        {{ invoiceDetails?.userDetails?.address.address1 }}, <br>
+                        {{ invoiceDetails?.userDetails?.address.city }}, {{ invoiceDetails?.userDetails?.address.state }}, {{ invoiceDetails?.userDetails?.address.postal_code }} <br>
                         IN
                     </p>
                 </td>
@@ -37,17 +37,18 @@
             
     
             <tr>
-                <td class="text-left text-dark">
-                    <h3 class="my-0 font-weight-bold">PAN No: <span class="font-weight-normal">BELPS4856Q</span></h3>
-                    <h3 class="my-0 font-weight-bold">GST Registration No: <span class="font-weight-normal"> 03BELPS4856Q1ZM</span></h3>
+                <td class="text-left text-dark" *ngFor="let seller of invoiceDetails?.sellerDetails">
+                    <h3 class="my-0 font-weight-bold">Seller Name <span class="font-weight-normal">{{ seller?.name}}</span></h3>
+                    <h3 class="my-0 font-weight-bold">PAN No: <span class="font-weight-normal">{{ seller?.pan}}</span></h3>
+                    <h3 class="my-0 font-weight-bold">GST Registration No: <span class="font-weight-normal"> {{ seller?.gstin}}</span></h3>
                 </td>
     
                 <td class="text-right text-dark">
                     <h3 class="my-0 font-weight-bold">Shipping Address:</h3>
-                    <p class="my-0 text-dark">Chandan Kanyal</p>
+                    <p class="my-0 text-dark">{{ invoiceDetails?.userDetails?.address.name }}</p>
                     <p class="my-0 text-dark">
-                        PO Manpur West, Dewalchaur Kham, <br>
-                        Haldwani, UTTARAKHAND, 263139 <br>
+                        {{ invoiceDetails?.userDetails?.address.address1 }}, <br>
+                        {{ invoiceDetails?.userDetails?.address.city }}, {{ invoiceDetails?.userDetails?.address.state }}, {{ invoiceDetails?.userDetails?.address.postal_code }} <br>
                         IN
                     </p>
                 </td>
@@ -57,14 +58,12 @@
     
             <tr>
                 <td class="text-left text-dark">
-                    <h3 class="my-0 font-weight-bold">Order Number: <span class="font-weight-normal">406-7854764-9629964</span></h3>
-                    <h3 class="my-0 font-weight-bold">Order Date: <span class="font-weight-normal">16.05.2021</span></h3>
+                    <h3 class="my-0 font-weight-bold">Order Number: <span class="font-weight-normal">{{ invoiceDetails?._id}}</span></h3>
+                    <h3 class="my-0 font-weight-bold">Order Date: <span class="font-weight-normal">{{ invoiceDetails?.createdAt | date: 'dd/MM/yyyy'}}</span></h3>
                 </td>
     
                 <td class="text-right text-dark">
-                    <h3 class="my-0 font-weight-bold">Invoice Number: <span class="font-weight-normal">IN-954</span></h3>
-                    <h3 class="my-0 font-weight-bold">Invoice Details: <span class="font-weight-normal">PB-428124095-2122</span></h3>
-                    <h3 class="my-0 font-weight-bold">Invoice Date: <span class="font-weight-normal">16.05.2021</span></h3>
+                    <h3 class="my-0 font-weight-bold">Invoice Date: <span class="font-weight-normal">{{ invoiceDetails?.createdAt | date: 'dd/MM/yyyy'}}</span></h3>
                 </td>
             </tr>
         </table>
@@ -82,35 +81,26 @@
             </thead>
             
     
-            <tr>
-                <td>01</td>
+            <tr *ngFor="let product of invoiceDetails?.products; let i=index;">
+                <td>{{ i+1 }}</td>
                 <td>
                     <p class="my-0">
-                        SINKIN Badminton Set of Two for All Family Men, Women, Boys & Girls , Strung Badminton Racket (Pack of: 2, 250 g; Red-Blue) | B08RNNGQR4 ( SINKIN-BADMIN-REDBLUE-02 )
+                        {{ product?.productName }}
                     </p>
                 </td>
-                <td><p class="inr">194.64</p></td>
-                <td>1</td>
-                <td><p class="inr">194.64</p></td>
-                <td><p class="inr">194.64</p></td>
+                <td><p class="inr"> {{ product?.orderPrice }}</p></td>
+                <td>{{ product?.quantity }}</td>
+                <td><p class="inr"> {{ totalCalculate(product?.quantity, product?.orderPrice) }}</p></td>
+                <td><p class="inr">{{ totalCalculate(product?.quantity, product?.orderPrice) }}</p></td>
             </tr>
 
             <tr>
                 <td colspan="5"><p class="font-weight-bold">Total:</p></td>
-                <td style="background-color: #e9ecef;"><p class="inr">218</p></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4" class="text-right">
-                    <p class="font-weight-bold text-dark">For Krishiv International:</p>
-                    <img src="https://www.pngitem.com/pimgs/m/41-419983_transparent-signature-clipart-transparent-background-signature-png-png.png" width="200px">
-                    <p class="font-weight-bold text-dark my-0">Authorized Signatory</p>
-                </td>
+                <td style="background-color: #e9ecef;"><p class="inr">{{ invoiceDetails?.totalAmnt }}</p></td>
             </tr>
             
         </table>
     </div>
-    <div id="editor"></div>
     <div class="d-flex justify-content-center">
         <button class="btn btn-lg btn-dark rounded mx-0 my-3 downloadPDF" onclick="window.print()">Print</button>
     </div>

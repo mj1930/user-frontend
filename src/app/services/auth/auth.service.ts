@@ -122,4 +122,8 @@ export class AuthService {
   getProductsCity(body) {
     return this.http.post('products/get-products', body);
   }
+
+  getInvoiceDetails(id) {
+    return this.http.get(`orders/print-invoice/${id}`);
+  }
 }

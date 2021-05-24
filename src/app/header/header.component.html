@@ -15,12 +15,15 @@
       </div>
       
       <!-- Spinner Description Text [For Demo Purpose]-->
-      <h4 class="text-uppercase font-weight-bold">Loading</h4>
-      <p class="font-italic text-muted"><strong class="countdown text-dark font-weight-bold">vkreta</strong> is loading, Please wait.</p>
+      <div class="d-flex justify-content-center">
+        <h4 class="text-uppercase font-weight-bold font-new letter-spacing-3 text-blue load-underline position-relative d-inline-block">Loading</h4>
+      </div>
+      
+      <p class="text-muted font-new"><strong class="countdown text-dark font-weight-bold font-new letter-spacing-2 text-blue">vkreta</strong> is loading, Please wait.</p>
   </div>
 </div>
 <header class="header-section">
-  <div class="header-top">
+  <div class="header-top bg-white">
     <div class="container">
       <div class="row py-2">
         <div class="contact-display col-12 my-md-1 text-md-left text-center my-3 col-md-3">
@@ -37,7 +40,7 @@
               </div>
               <input type="text" class="form-control col-md-2 col-12" placeholder="Location">             -->
               <input type="text" class="form-control" placeholder="What do you need?" (keyup)="getSearchValue($event)" />
-              <button type="button" class="btn m-0 btn-sm shadow-none btn-warning" (click)="goToResults()">
+              <button type="button" class="btn m-0 btn-sm shadow-none btn-blue" (click)="goToResults()">
                 Search 
                 <a><i class="fa fa-search" aria-hidden="true"></i></a>
               </button>
@@ -60,7 +63,7 @@
       
         <div class="account-display my-3 col-12 col-md-3 text-center text-md-right p-0 d-flex justify-content-center justify-content-md-end">
           
-          <a href="login" class="text-dark mx-2" *ngIf="!isAuthenticated">
+          <a href="login" class="text-dark mx-2" *ngIf="!isAuthenticated" style="margin-top: 2px">
             <i class="fa fa-user" aria-hidden="true"></i> Account Login</a>
 
           <div class="dropdown my-n1" *ngIf="isAuthenticated">
@@ -77,40 +80,10 @@
             <ul class="nav-right p-0">
               <li class="cart-icon" [class.cartDisplay]="productCount > 0">
                 <a routerLink="/cart">
-                  <button class="btn btn-sm btn-dark my-0 mx-0 rounded">View Cart</button>
+                  <button class="btn btn-sm btn-blue my-0 mx-0 rounded">View Cart</button>
                   <!-- <i class="fa fa-shopping-bag" aria-hidden="true"></i> -->
                   <span *ngIf="productCount">{{ productCount }}</span>
                 </a>
-                <!-- <div class="cart-hover rounded shadow">
-                  <div class="select-items" *ngFor="let item of dataResponse">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td class="si-pic" style="width: 120px;">
-                            <img [src]="item.productImg.length > 0 ? item.productImg[0] : imgLink" width="100px" />
-                          </td>
-                          <td class="si-text align-bottom px-0">
-                            <div class="product-selected">
-                              <h4 class="">{{ item.productName }}</h4>
-                            </div>
-                          </td>
-                          <td class="si-close align-bottom text-right">
-                            <h5 class="my-3">{{ item.quantity }} * {{ item.orderPrice }}</h5>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="select-total">
-                    <span class="font-weight-bold">Total:</span>
-                    <h5 class="font-weight-bold">{{ totalAmout }}</h5>
-                  </div>
-                  <div class="select-button">
-                    <a routerLink="/cart" class="primary-btn checkout-btn"
-                      >CHECK OUT</a
-                    >
-                  </div>
-                </div> -->
               </li>
             </ul>
           </div>
@@ -129,7 +102,7 @@
             <ul class="depart-hover">
               <li
                 *ngFor="let category of categories"
-                class="active"
+                class="active text-capitalize"
                 routerLink="/product-category/{{ category._id }}"
               >
                 <a>{{ category?.categoryName }}</a>

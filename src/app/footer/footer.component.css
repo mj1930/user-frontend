@@ -1,0 +1,29 @@
+.font-left-underline:after{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid #fff;
+}
+
+.heartbeat{
+    animation: beat .25s infinite alternate;
+}
+
+@keyframes beat{
+	to { transform: scale(1.1); }
+}
+
+@media only screen and (max-width: 1200px){
+	.copyright-reserved .copyright-text {
+		float: none;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.copyright-reserved .payment-pic {
+		float: none;
+		text-align: center;
+	}
+}

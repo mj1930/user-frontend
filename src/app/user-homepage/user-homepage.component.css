@@ -77,3 +77,34 @@
       /* border-radius: 10px; */
     }
   }
+
+  .product-item:hover{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transform: scale(1.02);
+    transition: all ease-in 0.1s;
+  }
+
+  .font-h2{
+    font-size: 16px !important;
+    /* font-weight: 600 !important; */
+    letter-spacing: 2px !important;
+  }
+
+  .category-list-item:hover .card-body{
+    background-color: #027fc2;
+    transition: ease-in all 0.1s;
+  }
+
+  .category-list-item h4{
+    text-transform: capitalize !important;
+  }
+
+  .h2-underline:after{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 25%;
+    border-bottom: 2px solid #fff;
+}

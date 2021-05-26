@@ -48,8 +48,8 @@ export class ProductDescriptionComponent implements OnInit {
     this.authService.getVinProducts(vin).subscribe((resp: any) => {
       if (resp.code === 200) {
         this.vinProducts = resp['data'];
-        let index = this.getRelatedProduct.findIndex(pr => pr._id = this.productId);
-        this.getRelatedProduct.splice(index, 1)
+        let index = this.vinProducts.findIndex(pr => pr._id = this.productId);
+        this.vinProducts.splice(index, 1)
       }
     })
   }

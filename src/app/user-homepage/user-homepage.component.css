@@ -90,9 +90,18 @@
     letter-spacing: 2px !important;
   }
 
-  .category-list-item:hover .card-body{
-    background-color: #027fc2;
+  .category-list-item:hover .card-body h4{
+    color: #043D5D !important;
     transition: ease-in all 0.1s;
+  }
+
+  .category-list-item:hover .card-body{
+    background-color: #fff !important;
+    transition: ease-in all 0.1s;
+  }
+
+  .category-list-item .card-body h4{
+    color: #fff;
   }
 
   .category-list-item h4{

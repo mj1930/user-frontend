@@ -10,7 +10,7 @@
             <div class="carousel-item carouselItem" [class.active]="i == 0" style="background:url({{product?.productImg[0]}})">
                 <div class="carousel-caption text-white text-left">
                     <h1 class="text-left my-1">{{ product?.itemName }}</h1>
-                    <p><a class="btn btn-lg btn-blue rounded btn-sm mx-0" routerLink="/product-description/{{product?._id}}" role="button">View Product</a></p>
+                    <p><a class="btn btn-lg btn-new-inverse rounded btn-sm mx-0" routerLink="/product-description/{{product?._id}}" role="button">View Product</a></p>
                 </div>
             </div>
         </ng-container>
@@ -31,12 +31,12 @@
 <section class="product-shop">
     <div class="container">
         <div class="row my-1">
-            <div class="col-md-12 bg-blue">
+            <div class="col-md-12 bg-new rounded-top">
                 <h2 class="py-3 font-new my-0 text-uppercase font-h2 text-white">Latest Products</h2>
             </div>
         </div>
         <div class="row my-1">
-            <div class="col pt-4 px-4 bg-white shadow-sm">
+            <div class="col pt-4 px-4 bg-white shadow-sm rounded-bottom">
                 <div class="product-list">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-3 col-sm-6" *ngFor="let product of products; let i=index">
@@ -64,7 +64,7 @@
 </section>
 
 <!-- Shob By Category -->
-<div class="jumbotron jumbotron-fluid shadow-none" style="background-image: url('http://opencart.templatemela.com/OPC10/OPC100240/OPC2/catalog/view/theme/OPC100240_3/image/megnor/Parralax.jpg');">
+<div class="jumbotron jumbotron-fluid shadow-none bg-new">
     <div class="container">
         <div class="justify-content-center d-flex">
             <h2 class="text-center text-white mb-5 font-new text-uppercase font-h2 h2-underline position-relative d-inline-block">Shop By Category</h2>
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="card-body my-0 pt-3 pb-0">
-                          <h4 class="card-title text-center text-white font-new">{{category?.categoryName}}</h4>
+                          <h4 class="card-title text-center font-new">{{category?.categoryName}}</h4>
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
               </div>
               <input type="text" class="form-control col-md-2 col-12" placeholder="Location">             -->
-              <input type="text" class="form-control rounded-0" placeholder="What do you need?" (keyup)="getSearchValue($event)" />
+              <input type="text" class="form-control rounded-0 border-right" placeholder="What do you need?" (keyup)="getSearchValue($event)" />
               <button type="button" class="btn rounded-0 m-0 btn-sm bg-white text-color-new" (click)="goToResults()">
                 Search 
                 <a><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -68,11 +68,11 @@
           <a href="login" class="mx-2 text-white" *ngIf="!isAuthenticated" style="margin-top: 2px">
             <i class="fa fa-user" aria-hidden="true"></i> Account Login</a>
 
-          <div class="dropdown my-n1" *ngIf="isAuthenticated">
-            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n3" type="button">
+          <div class="dropdown" *ngIf="isAuthenticated">
+            <button class="dropdown-toggle mya-dropdown btn rounded shadow-none px-2 my-n2 text-white" type="button">
               {{ name ? name : "Account Login" }}
             </button>
-            <div class="dropdown-menu mya-dropdown-menu p-0" style="margin-left: -20px; margin-top: -15px;">
+            <div class="dropdown-menu mya-dropdown-menu p-0">
               <a href="my-account" class="dropdown-item">My Account</a>
               <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
@@ -103,7 +103,7 @@
           <div class="depart-btn bg-new">
             <i class="fa fa-bars" aria-hidden="true"></i>
             <span>Categories</span>
-            <ul class="depart-hover list-group py-0">
+            <ul class="depart-hover list-group py-2">
               <li class="mobile-menu-list">
                 <ul>
                   <li class="list-group-item p-0"><a href="./electronics" class="text-color-new py-2">Electronics</a></li>

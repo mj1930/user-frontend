@@ -66,7 +66,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #027fc2;
+    background: #043D5D;
     margin: -3px 0 0 -3px;
 }
 .lds-roller div:nth-child(1) {
@@ -146,7 +146,7 @@
 }
 
 .btn-blue{
-    background-color: #027fc2;
+    background-color: #043D5D;
     color: #fff;
 }
 
@@ -157,5 +157,10 @@
     height: 3px;
     bottom: 0;
     left: 25%;
-    border-bottom: 2px solid #027fc2;
+    border-bottom: 2px solid #043D5D;
+}
+
+.nav-hr{
+    margin: 0 !important;
+    border-top: 1px solid #fff !important;
 }

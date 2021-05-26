@@ -107,8 +107,8 @@ export class AuthService {
     return this.http.get(`rating/get-product-rating/${id}`);
   }
 
-  getRelatedProduct(name) {
-    return this.http.post(`products/get-related-products`, { name });
+  getRelatedProduct(obj) {
+    return this.http.post(`products/get-related-products`, obj);
   }
 
   getVinProducts(vin) {

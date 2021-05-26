@@ -48,8 +48,8 @@ export class ProductDescriptionComponent implements OnInit {
     this.authService.getVinProducts(vin).subscribe((resp: any) => {
       if (resp.code === 200) {
         this.vinProducts = resp['data'];
-        let index = this.getRelatedProduct.findIndex(pr => pr._id = this.productId);
-        this.getRelatedProduct.splice(index, 1)
+        let index = this.vinProducts.findIndex(pr => pr._id = this.productId);
+        this.vinProducts.splice(index, 1)
       }
     })
   }
@@ -97,7 +97,11 @@ export class ProductDescriptionComponent implements OnInit {
       data => {
         this.loaderService.closeLoading();
         this.product = data['data'];
-        this.authService.getRelatedProduct(this.product.itemName).subscribe((data: any) => {
+        let obj = {
+          categoryId: this.product.categoryId,
+          itemName: this.product.itemName
+        }
+        this.authService.getRelatedProduct(obj).subscribe((data: any) => {
           if (data.code === 200) {
             this.getRelatedProduct = data['data'];
             this.getVinProducts();
@@ -350,5 +354,15 @@ export class ProductDescriptionComponent implements OnInit {
     let b = this.product.productImg[0];
     this.product.productImg[0] = this.product.productImg[location];
     this.product.productImg[location] = b;
+  }
+
+  getLowest(array) {
+    let smallest = this.vinProducts[0].productPrice;
+    array.forEach(item => {
+      if (item.productPrice < smallest) {
+        smallest = item.productPrice;
+      }
+    });
+    return smallest;
   }
 }

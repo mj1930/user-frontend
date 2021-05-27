@@ -1,13 +1,13 @@
 <app-header></app-header>
 
-<div class="container my-5">
+<div class="container py-5 bg-white">
     <div class="row">
         <div class="col-lg-4 mb-4 mb-md-0 my-3">
             <div id="mdb-lightbox-ui"></div>
             <div class="mdb-lightbox">
               <div class="row product-gallery">
                 <div class="col-12 mb-0">
-                  <figure class="view overlay rounded main-img">
+                  <figure class="view overlay rounded main-img border p-2">
                     <a [href]="product?.productImg[0]" data-size="710x823" target="_blank">
                         <div class="img-wrap">
                             <img [src]="product?.productImg[0]" id="_0" class="img-fluid">
@@ -19,7 +19,7 @@
                   <div class="row">
                     <div class="col-3" *ngFor="let img of product?.productImg; let i = index">
                       <div class="view overlay rounded gallery-item" (click)="interChange(i)">
-                        <div class="product-icon">
+                        <div class="product-icon border">
                             <img [src]="img" [id]="i" >
                         </div>
                         
@@ -48,7 +48,7 @@
                     <input type="radio" id="rating2" name="rating" value="2" [checked]= "getRating(product?.rating) == 2 ? true : false" disabled /><label for="rating2"></label>
                     <input type="radio" id="rating1" name="rating" value="1" [checked]= "getRating(product?.rating) == 1 ? true : false" disabled /><label class="half" for="rating1"></label>
                 </fieldset>
-                <!-- <a href="#writeReview" class="mx-3 text-muted font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
+                <!-- <a href="#writeReview" class="mx-3 text-black-50 font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
             </div>
         </div>
         
@@ -60,30 +60,18 @@
                 <div class="table-responsive">
                     <table class="table table-sm table-borderless mb-0">
                         <tbody>
-                            <!-- <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>Brand</b></th>
-                                <td class="text-muted">{{product?.brand}}</td>
-                            </tr> -->
                             <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>MRP</b></th>
-                                <td class="text-muted inr"><del> {{product?.mrp}} </del></td>
+                                <th class="pl-0 w-25 text-black-50" scope="row"><b>MRP</b></th>
+                                <td class="text-black-50 inr"><del> {{product?.mrp}} </del></td>
                             </tr>
                             <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>Our Price</b></th>
-                                <td class="text-muted inr">{{product?.productPrice}}</td>
+                                <th class="pl-0 w-25 text-black-50" scope="row"><b>Our Price</b></th>
+                                <td class="text-black-50 inr">{{product?.productPrice}}</td>
                             </tr>
                             <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>Discount</b></th>
-                                <td class="text-muted">{{calculateDiscount(product?.mrp, product?.productPrice)}} %</td>
+                                <th class="pl-0 w-25 text-black-50" scope="row"><b>Discount</b></th>
+                                <td class="text-black-50">{{calculateDiscount(product?.mrp, product?.productPrice)}} %</td>
                             </tr>
-                            <!-- <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>Product Code</b></th>
-                                <td class="text-muted">{{product?.barcode}}</td>
-                            </tr> -->
-                            <!-- <tr>
-                                <th class="pl-0 w-25 text-muted" scope="row"><b>SKU</b></th>
-                                <td class="text-muted">NA</td>
-                            </tr> -->
                         </tbody>
                     </table>
                     </div>
@@ -110,19 +98,19 @@
                 for="large">L</label>
             </div>
         </div> -->
-        <div class="mt-2">
-            <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
+        <div class="mb-5 mt-2">
+            <p class="mb-0"><small class="font-weight-bold text-black-50">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
         </div>
 
         <div class="mt-2">
-            <button type="button"  (click)="onAddToCart()" class="btn btn-dark rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-            <button type="button" (click)="addToCart()" class="btn btn-dark rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button>
+            <button type="button" (click)="onAddToCart()" class="btn btn-new-inverse rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+            <button type="button" (click)="addToCart()" class="btn btn-new rounded btn-block btn-md mr-1 mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button>
 
         </div>
         
         <!-- <div class="mt-2 d-flex justify-content-between">
-            <a><small class="text-muted font-weight-light"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wish List</small></a>
-            <a><small class="text-muted font-weight-light"> <i class="fa fa-clone" aria-hidden="true"></i> Add To Compare</small></a>
+            <a><small class="text-black-50 font-weight-light"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wish List</small></a>
+            <a><small class="text-black-50 font-weight-light"> <i class="fa fa-clone" aria-hidden="true"></i> Add To Compare</small></a>
         </div> -->
         
         
@@ -143,7 +131,7 @@
                 <div class="card-body" *ngFor="let product of vinProducts">
                     <div class="d-flex justify-content-between">
                         <h1 class="card-title inr my-2"> {{product?.productPrice}} </h1>
-                        <button class="btn btn-sm btn-dark rounded px-2 mx-0" (click)="onAddToCart(product)">Add to cart</button>
+                        <button class="btn btn-sm rounded px-2 mx-0" (click)="onAddToCart(product)">Add to cart</button>
                     </div>
                     <p class="card-text text-dark">Sold By: <a> {{product?.sellerName || 'NA'}}</a> </p>
                     <hr>
@@ -154,108 +142,147 @@
     </div>
 </div>
 
-<div class="container my-3">
-    <!-- <div class="row my-2">
-        <button class="btn btn-dark rounded">Description</button>
-        <button class="btn btn-light rounded ml-2">Reviews ({{ratings?.length}})</button>
-    </div> -->
+<div class="container bg-white px-0 py-4">
+    <hr class="description-hr">
+</div>
 
+<div class="container bg-white">
 
     <!-- About this product -->
-    
-    <h2>
-        About This Product
-    </h2>
-    <ul class="col">
-        <li *ngFor="let point of returnBulletPoints(product?.heading)">
-            <p> {{ point }} </p>
-        </li>
-    </ul>
-    <h2>Product Description</h2>
-    <!-- Description -->
-    <div class="row my-3 col">
-        <p>{{ product?.description}}</p>
+    <div class="mb-5">
+        <h3 class="font-new letter-spacing-2 font-weight-bold text-uppercase my-0"> About This Product </h3>
+        <ul class="col">
+            <li *ngFor="let point of returnBulletPoints(product?.heading)">
+                <p class="font-new text-capitalize text-black-50"> {{ point }} </p>
+            </li>
+        </ul>
     </div>
-    
 
-    
+    <!-- Product Description -->
+    <div class="my-4">
+        <h3 class="font-new letter-spacing-2 font-weight-bold text-uppercase my-0">Product Description</h3>
+        <p class="font-new text-capitalize text-black-50">{{ product?.description}}</p>
+    </div>
 
     <!-- Product Details -->
-    <div class="row my-3 col">
-        <h2>Product Details (Specifications)</h2>
-        <table class="table table-striped my-0">
-            <thead>
-              <tr>
-                <th scope="col">Specification</th>
-                <th scope="col">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Dimension</td>
-                <td>{{ product?.dimensions?.length}} x {{ product?.dimensions?.width}} x {{ product?.dimensions?.height}}</td>
-              </tr>
-              <tr>
-                <td>Manufacturer</td>
-                <td>{{ product?.brand }}</td>
-              </tr>
-              <tr>
-                <td>VIN</td>
-                <td>{{ product?.vin }}</td>
-              </tr>
-              <tr>
-                <td>Model Number</td>
-                <td>{{ product?.model || 'NA' }}</td>
-              </tr>
-              <tr>
-                <td>Item Weight</td>
-                <td>{{ product?.weight }}</td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="row my-5">
+        <div class="col">
+            <h3 class="font-new letter-spacing-2 font-weight-bold text-uppercase my-0">Product Details (Specifications)</h3>
+            <table class="table table-striped border">
+                <thead>
+                <tr>
+                    <th scope="col">Specification</th>
+                    <th scope="col">Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Dimension</td>
+                    <td>{{ product?.dimensions?.length}} x {{ product?.dimensions?.width}} x {{ product?.dimensions?.height}}</td>
+                </tr>
+                <tr>
+                    <td>Manufacturer</td>
+                    <td>{{ product?.brand }}</td>
+                </tr>
+                <tr>
+                    <td>VIN</td>
+                    <td>{{ product?.vin }}</td>
+                </tr>
+                <tr>
+                    <td>Model Number</td>
+                    <td>{{ product?.model || 'NA' }}</td>
+                </tr>
+                <tr>
+                    <td>Item Weight</td>
+                    <td>{{ product?.weight }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
     <!-- Reviews -->
-    <div class="row my-3 border p-3">
-        <div class="col-12 p-0">
-            <h5><span>{{ratings?.length}}</span> review for <span>{{product?.itemName}}</span></h5>
-            <div class="media mt-3 mb-4" *ngFor="let rating of ratings">
-            <!-- <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image"> -->
-            <div class="media-body">
-                <div class="d-sm-flex justify-content-between">
-                <p class="mt-1 mb-2">
-                    <strong>{{rating?.name}} </strong>
-                    <span>– </span><span>{{rating?.createdAt | date : 'mediumDate'}}</span>
-                </p>
-                <p class="align-left">
-                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 1"></span>
-                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 2"></span>
-                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 3"></span>
-                    <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 4"></span>
-                    <span class="fa fa-star check"  [class.text-warning]= "rating?.rating >= 5"></span>
-                </p>
+    <div class="py-4">
+        <h3 class="font-new letter-spacing-2 font-weight-bold text-uppercase my-0"><span>({{ratings?.length}})</span> review for <span class="text-color-new">{{product?.itemName}}</span></h3>
+        <div class="col-12 border rounded px-0">
+            <div class="media mb-2 p-2 bg-danger" *ngFor="let rating of ratings">
+                <!-- <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image"> -->
+                <div class="media-body">
+                    <div class="d-sm-flex justify-content-between">
+                    <p class="m-0">
+                        <strong class="text-capitalize text-color-new">{{rating?.name}} <span class="text-color-new">– </span> </strong>
+                        <span>{{rating?.createdAt | date : 'mediumDate'}}</span>
+                    </p>
+                    <p class="align-left mb-0">
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 1"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 2"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 3"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 4"></span>
+                        <span class="fa fa-star check"  [class.text-warning]= "rating?.rating >= 5"></span>
+                    </p>
+                    </div>
+                    <p class="m-0 text-capitalize font-new text-black-50">{{ rating?.feedback}}</p>
                 </div>
-                <p class="mb-0">{{ rating?.feedback}}</p>
             </div>
+
+            <div class="media mt-3 mb-4" *ngFor="let rating of ratings">
+                <!-- <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image"> -->
+                <div class="media-body">
+                    <div class="d-sm-flex justify-content-between">
+                    <p class="mt-1 mb-2">
+                        <strong>{{rating?.name}} </strong>
+                        <span>– </span><span>{{rating?.createdAt | date : 'mediumDate'}}</span>
+                    </p>
+                    <p class="align-left">
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 1"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 2"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 3"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 4"></span>
+                        <span class="fa fa-star check"  [class.text-warning]= "rating?.rating >= 5"></span>
+                    </p>
+                    </div>
+                    <p class="mb-0">{{ rating?.feedback}}</p>
+                </div>
             </div>
-            <div>
-            <!-- Your review -->
-            <!-- <div class="md-outline">
-                <label for="">Your review</label>
-                <textarea class="md-textarea form-control pr-6" rows="4" placeholder="Your review goes here..."></textarea>
+
+            <div class="media mt-3 mb-4" *ngFor="let rating of ratings">
+                <!-- <img class="d-flex mr-3 z-depth-1" src="https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg" width="62" alt="Generic placeholder image"> -->
+                <div class="media-body">
+                    <div class="d-sm-flex justify-content-between">
+                    <p class="mt-1 mb-2">
+                        <strong>{{rating?.name}} </strong>
+                        <span>– </span><span>{{rating?.createdAt | date : 'mediumDate'}}</span>
+                    </p>
+                    <p class="align-left">
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 1"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 2"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 3"></span>
+                        <span class="fa fa-star checked-star" [class.text-warning]= "rating?.rating >= 4"></span>
+                        <span class="fa fa-star check"  [class.text-warning]= "rating?.rating >= 5"></span>
+                    </p>
+                    </div>
+                    <p class="mb-0">{{ rating?.feedback}}</p>
+                </div>
             </div>
-            <div class="md-outline my-3">
-                <label for="">Name</label>
-                <input type="text" class="form-control pr-6" placeholder="Name">
-            </div>
-            <div class="text-right pb-2">
-                <button type="button" class="btn btn-primary">Add a review</button>
+            <!-- <div>
+                <div class="md-outline">
+                    <label for="">Your review</label>
+                    <textarea class="md-textarea form-control pr-6" rows="4" placeholder="Your review goes here..."></textarea>
+                </div>
+                <div class="md-outline my-3">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control pr-6" placeholder="Name">
+                </div>
+                <div class="text-right pb-2">
+                    <button type="button" class="btn btn-primary">Add a review</button>
+                </div>
             </div> -->
-            </div>
         </div>
     </div>
 </div>
+
+
 <!-- Related Products -->
 <div class="container my-3" *ngIf="getRelatedProduct.length > 0">
 

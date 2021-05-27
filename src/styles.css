@@ -1633,22 +1633,7 @@ ol {
 	opacity: 1;
 }
 
-.footer-left .footer-social a:before {
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	background: #043D5D;
-	content: "";
-	border-radius: 50%;
-	opacity: 0;
-	-webkit-transition: all 0.3s;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-	transition: 0.3s;
-	z-index: -1;
-}
+
 
 .footer-widget {
 	margin-bottom: 30px;

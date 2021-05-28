@@ -83,3 +83,35 @@ label:hover ~ input:checked ~ label /* highlight previous selected stars */ { co
 .description-hr{
   margin: 0 !important;
 }
+
+
+/* Review Box */
+.review-box{
+  cursor: context-menu !important;
+}
+.review-box:hover{
+  background-color: #eee;
+  padding-left: 1.3rem !important;
+  transition: ease-in-out all 0.1s;
+}
+
+.heading-line, .heading-center{
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.heading-line:after, .heading-center:after{
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  bottom: 0;
+  border-bottom: 2px solid #111111;
+}
+
+.heading-center:after{
+  left: 25%;
+}
+.heading-line:after{
+  left: 0;
+}

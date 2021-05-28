@@ -21,6 +21,10 @@ body{
     background-color: #043D5D !important;
     color: #fff;
 }
+.btn-new:hover{
+    background-color: #043D5D !important;
+    color: #fff !important;
+}
 .bg-new{
 	background-color: #043D5D !important;
 	color: #fff !important;

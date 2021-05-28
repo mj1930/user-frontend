@@ -102,6 +102,13 @@
             <div class="mb-5 mt-2">
                 <p class="mb-0"><small class="font-weight-bold text-black-50">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
             </div>
+<<<<<<< HEAD
+=======
+        </div> -->
+        <div class="mt-2">
+            <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> <input name="quantity" type="text" (keyup)="changeQuantity()" class="mx-2" style="width: 50px;" min="1" max="10" [(ngModel)]="quantity" oninput="this.value = this.value.replace(/[^1-9.]/g, '').replace(/(\..*)\./g, '$1');"></p>
+        </div>
+>>>>>>> 444183b026cad60cf481060d570d08a0c61aa67c
 
             <div class="mt-2 mx-0 btn-group d-flex">
                 <button type="button" (click)="onAddToCart()" class="btn btn-new-inverse rounded-left shadow px-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>

@@ -115,3 +115,14 @@ label:hover ~ input:checked ~ label /* highlight previous selected stars */ { co
 .heading-line:after{
   left: 0;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

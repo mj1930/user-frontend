@@ -4,118 +4,114 @@
 <!-- Product Info -->
 <div class="container py-5 bg-white">
     <div class="row">
-        <!-- Image Box -->
-        <div class="col-lg-4 mb-4 mb-md-0 my-3">
-            <div id="mdb-lightbox-ui"></div>
-            <div class="mdb-lightbox">
-              <div class="row product-gallery">
-                <div class="col-12 mb-0">
-                  <figure class="view overlay rounded main-img border p-2">
-                    <a [href]="product?.productImg[0]" data-size="710x823" target="_blank">
-                        <div class="img-wrap">
-                            <img [src]="product?.productImg[0]" id="_0" class="img-fluid">
-                        </div>
-                    </a>
-                  </figure>
-                </div>
-                <div class="col-12">
-                  <div class="row">
-                    <div class="col-3" *ngFor="let img of product?.productImg; let i = index">
-                      <div class="view overlay rounded gallery-item" (click)="interChange(i)">
-                        <div class="product-icon border">
-                            <img [src]="img" [id]="i" >
-                        </div>
-                        
-                        <div class="mask rgba-white-slight"></div>
-                      </div>
+            <!-- Image Box -->
+            <div class="col-lg-4 mb-4 mb-md-0 my-3">
+                <div id="mdb-lightbox-ui"></div>
+                <div class="mdb-lightbox">
+                <div class="row product-gallery">
+                    <div class="col-12 mb-0">
+                    <figure class="view overlay rounded main-img border p-2">
+                        <a [href]="product?.productImg[0]" data-size="710x823" target="_blank">
+                            <div class="img-wrap">
+                                <img [src]="product?.productImg[0]" id="_0" class="img-fluid">
+                            </div>
+                        </a>
+                    </figure>
                     </div>
-                  </div>
+                    <div class="col-12">
+                    <div class="row">
+                        <div class="col-3" *ngFor="let img of product?.productImg; let i = index">
+                        <div class="view overlay rounded gallery-item" (click)="interChange(i)">
+                            <div class="product-icon border">
+                                <img [src]="img" [id]="i" >
+                            </div>
+                            
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Info Box -->
-        <div class="col-lg-5 my-3">
-            <h2 class="font-weight-bold my-0 font-new text-color-new">{{product?.itemName}}</h2>
-            <div class="row">
-                <div class="col d-flex">
-                    <fieldset class="rate">
-                        <input type="radio" id="rating10" name="rating" value="10" [checked]= "getRating(product?.rating) == 10 ? true : false"  disabled /><label for="rating10"></label>
-                        <input type="radio" id="rating9" name="rating" value="9" [checked]= "getRating(product?.rating) == 9 ? true : false" disabled /><label class="half" for="rating9"></label>
-                        <input type="radio" id="rating8" name="rating" value="8" [checked]= "getRating(product?.rating) == 8 ? true : false" disabled /><label for="rating8"></label>
-                        <input type="radio" id="rating7" name="rating" value="7" [checked]= "getRating(product?.rating) == 7 ? true : false" disabled /><label class="half" for="rating7"></label>
-                        <input type="radio" id="rating6" name="rating" value="6" [checked]= "getRating(product?.rating) == 6 ? true : false" disabled /><label for="rating6"></label>
-                        <input type="radio" id="rating5" name="rating" value="5" [checked]= "getRating(product?.rating) == 5 ? true : false" disabled /><label class="half" for="rating5"></label>
-                        <input type="radio" id="rating4" name="rating" value="4" [checked]= "getRating(product?.rating) == 4 ? true : false" disabled /><label for="rating4"></label>
-                        <input type="radio" id="rating3" name="rating" value="3" [checked]= "getRating(product?.rating) == 3 ? true : false" disabled /><label class="half" for="rating3"></label>
-                        <input type="radio" id="rating2" name="rating" value="2" [checked]= "getRating(product?.rating) == 2 ? true : false" disabled /><label for="rating2"></label>
-                        <input type="radio" id="rating1" name="rating" value="1" [checked]= "getRating(product?.rating) == 1 ? true : false" disabled /><label class="half" for="rating1"></label>
-                    </fieldset>
-                    <!-- <a href="#writeReview" class="mx-3 text-black-50 font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
+            <!-- Info Box -->
+            <div class="col-lg-5 my-3">
+                <h2 class="font-weight-bold my-0 font-new text-color-new">{{product?.itemName}}</h2>
+                <div class="row">
+                    <div class="col d-flex">
+                        <fieldset class="rate">
+                            <input type="radio" id="rating10" name="rating" value="10" [checked]= "getRating(product?.rating) == 10 ? true : false"  disabled /><label for="rating10"></label>
+                            <input type="radio" id="rating9" name="rating" value="9" [checked]= "getRating(product?.rating) == 9 ? true : false" disabled /><label class="half" for="rating9"></label>
+                            <input type="radio" id="rating8" name="rating" value="8" [checked]= "getRating(product?.rating) == 8 ? true : false" disabled /><label for="rating8"></label>
+                            <input type="radio" id="rating7" name="rating" value="7" [checked]= "getRating(product?.rating) == 7 ? true : false" disabled /><label class="half" for="rating7"></label>
+                            <input type="radio" id="rating6" name="rating" value="6" [checked]= "getRating(product?.rating) == 6 ? true : false" disabled /><label for="rating6"></label>
+                            <input type="radio" id="rating5" name="rating" value="5" [checked]= "getRating(product?.rating) == 5 ? true : false" disabled /><label class="half" for="rating5"></label>
+                            <input type="radio" id="rating4" name="rating" value="4" [checked]= "getRating(product?.rating) == 4 ? true : false" disabled /><label for="rating4"></label>
+                            <input type="radio" id="rating3" name="rating" value="3" [checked]= "getRating(product?.rating) == 3 ? true : false" disabled /><label class="half" for="rating3"></label>
+                            <input type="radio" id="rating2" name="rating" value="2" [checked]= "getRating(product?.rating) == 2 ? true : false" disabled /><label for="rating2"></label>
+                            <input type="radio" id="rating1" name="rating" value="1" [checked]= "getRating(product?.rating) == 1 ? true : false" disabled /><label class="half" for="rating1"></label>
+                        </fieldset>
+                        <!-- <a href="#writeReview" class="mx-3 text-black-50 font-weight-bold small my-1"><i class="fa fa-pencil" aria-hidden="true"></i> Write a Review</a> -->
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-borderless mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th class="pl-0 w-25 text-black-50" scope="row"><b>MRP</b></th>
+                                        <td class="text-black-50 inr"><del> {{product?.mrp}} </del></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="pl-0 w-25 text-black-50" scope="row"><b>Our Price</b></th>
+                                        <td class="text-black-50 inr">{{product?.productPrice}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="pl-0 w-25 text-black-50" scope="row"><b>Discount</b></th>
+                                        <td class="text-black-50">{{calculateDiscount(product?.mrp, product?.productPrice)}} %</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                            <!-- <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p> -->
+                    </div>
+                </div>
+
+                <!-- <div class="mt-1">
+                    <p class="m-0"><small class="font-weight-bold text-dark">Select Size</small></p>
+                    <div class="form-check form-check-inline pl-0">
+                        <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
+                        checked>
+                        <label class="form-check-label small text-uppercase card-link-secondary"
+                        for="small">S</label>
+                    </div>
+                    <div class="form-check form-check-inline pl-0">
+                        <input type="radio" class="form-check-input" id="medium" name="materialExampleRadios">
+                        <label class="form-check-label small text-uppercase card-link-secondary"
+                        for="medium">M</label>
+                    </div>
+                    <div class="form-check form-check-inline pl-0">
+                        <input type="radio" class="form-check-input" id="large" name="materialExampleRadios">
+                        <label class="form-check-label small text-uppercase card-link-secondary"
+                        for="large">L</label>
+                    </div>
+                </div> -->
+                <div class="mt-2">
+                    <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> 
+                        <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" style="width: 50px;" min="1" [(ngModel)]="quantity" oninput="this.value = this.value.replace(/^[0]|[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </p>
+                </div>
+                <div class="mt-5 mx-0 btn-group d-flex">
+                    <button type="button" (click)="onAddToCart()" class="btn btn-new-inverse rounded-left shadow px-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                    <button type="button" (click)="addToCart()" class="btn btn-new rounded-right shadow px-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <table class="table table-sm table-borderless mb-0">
-                            <tbody>
-                                <tr>
-                                    <th class="pl-0 w-25 text-black-50" scope="row"><b>MRP</b></th>
-                                    <td class="text-black-50 inr"><del> {{product?.mrp}} </del></td>
-                                </tr>
-                                <tr>
-                                    <th class="pl-0 w-25 text-black-50" scope="row"><b>Our Price</b></th>
-                                    <td class="text-black-50 inr">{{product?.productPrice}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="pl-0 w-25 text-black-50" scope="row"><b>Discount</b></th>
-                                    <td class="text-black-50">{{calculateDiscount(product?.mrp, product?.productPrice)}} %</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                        <!-- <p class="text-success">Product Available In Stock : {{product?.availableUnits}}</p> -->
-                </div>
-            </div>
 
-            <!-- <div class="mt-1">
-                <p class="m-0"><small class="font-weight-bold text-dark">Select Size</small></p>
-                <div class="form-check form-check-inline pl-0">
-                    <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
-                    checked>
-                    <label class="form-check-label small text-uppercase card-link-secondary"
-                    for="small">S</label>
-                </div>
-                <div class="form-check form-check-inline pl-0">
-                    <input type="radio" class="form-check-input" id="medium" name="materialExampleRadios">
-                    <label class="form-check-label small text-uppercase card-link-secondary"
-                    for="medium">M</label>
-                </div>
-                <div class="form-check form-check-inline pl-0">
-                    <input type="radio" class="form-check-input" id="large" name="materialExampleRadios">
-                    <label class="form-check-label small text-uppercase card-link-secondary"
-                    for="large">L</label>
-                </div>
-            </div> -->
-            <div class="mb-5 mt-2">
-                <p class="mb-0"><small class="font-weight-bold text-black-50">Quantity</small> <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" min="1" max="10" [(ngModel)]="quantity"></p>
-            </div>
-<<<<<<< HEAD
-=======
-        </div> -->
-        <div class="mt-2">
-            <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> <input name="quantity" type="text" (keyup)="changeQuantity()" class="mx-2" style="width: 50px;" min="1" max="10" [(ngModel)]="quantity" oninput="this.value = this.value.replace(/[^1-9.]/g, '').replace(/(\..*)\./g, '$1');"></p>
-        </div>
->>>>>>> 444183b026cad60cf481060d570d08a0c61aa67c
-
-            <div class="mt-2 mx-0 btn-group d-flex">
-                <button type="button" (click)="onAddToCart()" class="btn btn-new-inverse rounded-left shadow px-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                <button type="button" (click)="addToCart()" class="btn btn-new rounded-right shadow px-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button>
-
-            </div>
-        </div>
+            
 
         <!-- Different Seller Box -->
         <div class="col-lg-3 my-3" *ngIf="vinProducts.length > 0">

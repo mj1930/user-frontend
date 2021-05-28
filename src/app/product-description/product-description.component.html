@@ -101,7 +101,7 @@
                 </div> -->
                 <div class="mt-2">
                     <p class="mb-0"><small class="font-weight-bold text-muted">Quantity</small> 
-                        <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" style="width: 50px;" min="1" [(ngModel)]="quantity" oninput="this.value = this.value.replace(/^[0]|[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <input name="quantity" type="number" (keyup)="changeQuantity()" class="mx-2" style="width: 50px;" min="1" [(ngModel)]="quantity" oninput="this.value = this.value.replace(/^[0]|[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1">
                     </p>
                 </div>
                 <div class="mt-5 mx-0 btn-group d-flex">

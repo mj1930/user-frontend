@@ -1,140 +1,122 @@
 <app-header></app-header>
 
-<div class="container my-5">
-    <div class="row">
-        <div class="col-md-3 col-lg-2">
-            <div class="category-show">
-              <div class="col grey lighten-2">
-                <p class="py-2 text-dark">Categories</p>
-              </div>
-              <div class="list-group">
-                <a
-                  class="list-group-item list-group-item-action text-dark"
-                  *ngFor="let category of categories"
-                  routerLink="/product-category/{{ category?._id }}"
-                >
-                  {{ category?.categoryName }}</a
-                >
-              </div>
-            </div>
-            <form [formGroup]="colorForm">
-              <div class="refine-search my-4">
-                <div class="col grey lighten-2">
-                  <p class="py-2 text-dark">Refine Search</p>
-                </div>
-      
-                <div class="list-group my-3">
-                  <p class="mb-0 font-weight-bold">Avg. Rating</p>
-                  <div class="row my-1">
-                    <a class="col" (click)="getProductsOnSubmit(4)">
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <span> & up</span>
-                    </a>
-                  </div>
-      
-                  <div class="row my-1">
-                    <a class="col" (click)="getProductsOnSubmit(3)">
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <span> & up</span>
-                    </a>
-                  </div>
-      
-                  <div class="row my-1">
-                    <a class="col" (click)="getProductsOnSubmit(2)">
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <span> & up</span>
-                    </a>
-                  </div>
-      
-                  <div class="row my-1">
-                    <a class="col" (click)="getProductsOnSubmit(1)">
-                      <i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                      <span> & up</span>
-                    </a>
-                  </div>
-                </div>
-      
-                <div class="list-group my-3">
-                  <p class="mb-2 font-weight-bold">Color</p>
-      
-                  <!-- <div class="custom-control custom-checkbox">
+<div class="container-fluid my-5 px-5">
+	<div class="row">
+		<div class="col-md-3 col-lg-2 bg-white py-3">
+			<div class="category-show">
+				<div class="col bg-new rounded">
+					<p class="py-2 text-white font-new">Categories</p>
+				</div>
+				<div class="list-group">
+					<a class="list-group-item list-group-item-action text-dark" *ngFor="let category of categories"
+						routerLink="/product-category/{{ category?._id }}">
+						{{ category?.categoryName }}</a>
+				</div>
+			</div>
+			<form [formGroup]="colorForm">
+				<div class="refine-search mt-5 mb-3">
+					<div class="col bg-new rounded">
+						<p class="py-2 text-white font-new">Refine Search</p>
+					</div>
+
+					<div class="list-group my-3">
+						<h3 class="font-weight-bold font-new heading-underline">Avg. Rating</h3>
+						<div class="row py-2 hover-padding">
+							<a class="col" (click)="getProductsOnSubmit(4)">
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<span> & up</span>
+							</a>
+						</div>
+
+						<div class="row py-2 hover-padding">
+							<a class="col" (click)="getProductsOnSubmit(3)">
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<span> & up</span>
+							</a>
+						</div>
+
+						<div class="row py-2 hover-padding">
+							<a class="col" (click)="getProductsOnSubmit(2)">
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<span> & up</span>
+							</a>
+						</div>
+
+						<div class="row py-2 hover-padding">
+							<a class="col" (click)="getProductsOnSubmit(1)">
+								<i class="fa fa-star" style="color: orange;" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<span> & up</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="list-group my-3">
+						<h3 class="font-weight-bold font-new heading-underline">Color</h3>
+
+						<!-- <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="Red" />
                         <label class="custom-control-label" for="Red">Red</label>
                       </div> -->
-                  <div formArrayName="colors">
-                    <div [formGroupName]="i"
-                      *ngFor="
-                        let item of colorForm.controls?.colors?.controls;
-                        let i = index
-                      ">
-                      <input type="checkbox" formControlName="checked" (change)="getProductsOnSubmit()"/>&nbsp;
-                      <label>{{ colors[i].name }}</label>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="list-group my-3">
-                  <p class="mb-2 font-weight-bold">Price</p>
-                  <div data-role="main" class="ui-content">
-                    <div>
-                      <ngx-slider
-                        [(value)]="minValue"
-                        [(highValue)]="maxValue"
-                        [options]="options"
-                        (mouseup)="getProductsOnSubmit()"
-                      ></ngx-slider>
-                    </div>
-                  </div>
-                </div>
-      
-                <button
-                  class="btn btn-sm rounded btn-dark m-0"
-                  (click)="getProducts()"
-                >
-                  Reset Search
-                </button>
-              </div>
-            </form>
-            <div class="side-advert my-4">
-              <!-- <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/left-banner-266x400.jpg" alt="" class="img-thumbnail col-12"> -->
-            </div>
-          </div>
-        <div class="col-md-9 col-lg-10">
-            <div class="col-12" *ngFor="let product of searchResults">
-                <a href="" class="row my-3">
-                    <div class="img-wrap">
-                        <img [src]="product?.productImg.length > 0 ? product?.productImg[0] : 'https://m.media-amazon.com/images/I/71sxlhYhKWL._AC_UY218_.jpg'" alt="">
-                    </div>
-                    <div class="col">
-                        <h2 class="my-0">
-                            <a routerLink="/product-description/{{ product?._id }}" class="text-dark">
-                                {{ product?.itemName }}
-                            </a>
-                        </h2>
-                        <h3 class="text-info my-0 inr">{{ product?.productPrice }}</h3>
-                        <p>{{ product?.description }}</p>
-                    </div>
-                </a>
-            </div>
-            <hr>
-        </div>
-    </div>
+						<div formArrayName="colors">
+							<div [formGroupName]="i" *ngFor=" let item of colorForm.controls?.colors?.controls; let i = index">
+								<input type="checkbox" formControlName="checked"
+									(change)="getProductsOnSubmit()" />&nbsp;
+								<label>{{ colors[i].name }}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-group my-3">
+						<h3 class="font-weight-bold font-new heading-underline">Price</h3>
+						<div data-role="main" class="ui-content">
+							<div>
+								<ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+									(mouseup)="getProductsOnSubmit()"></ngx-slider>
+							</div>
+						</div>
+					</div>
+
+					<button class="btn btn-sm rounded btn-new m-0" (click)="getProducts()">
+						Reset Search
+					</button>
+				</div>
+			</form>
+			<div class="side-advert my-4">
+				<!-- <img src="http://opencart.templatemela.com/OPC10/OPC100240/OPC2/image/cache/catalog/left-banner-266x400.jpg" alt="" class="img-thumbnail col-12"> -->
+			</div>
+		</div>
+		<div class="col-md-9 col-lg-10 my-4 my-md-0 search-results-container">
+			<div class="col-12 bg-white" *ngFor="let product of searchResults">
+				<a target="_blank" href="/product-description/{{ product?._id }}" class="row product-anchor">
+					<div class="img-wrap">
+						<img [src]="product?.productImg.length > 0 ? product?.productImg[0] : 'https://m.media-amazon.com/images/I/71sxlhYhKWL._AC_UY218_.jpg'" alt="">
+					</div>
+					<div class="col py-4">
+						<h2 class="my-0 text-color-new font-weight-bold font-new"> {{ product?.itemName }} </h2>
+						<h3 class="text-info my-0 inr font-weight-bold font-new">{{ product?.productPrice }}</h3>
+						<p class="text-black-50 font-new text-justify">{{ product?.description }}</p>
+					</div>
+				</a>
+			</div>
+			<hr>
+		</div>
+	</div>
 </div>
 
 <app-footer></app-footer>

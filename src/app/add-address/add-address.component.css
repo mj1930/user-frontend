@@ -1,0 +1,13 @@
+.heading-underline{
+    display: inline-block;
+    position: relative;
+}
+
+.heading-underline:after{
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    border-top: 2px solid #043D5D;
+}

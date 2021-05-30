@@ -1,46 +1,56 @@
+<app-header></app-header>
 <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-            <header class="card-header">
-                <a href="signup" class="float-right btn btn-dark rounded mt-1">Sign Up</a>
-	            <h4 class="card-title mt-2">User Login</h4>
-            </header>
-          <div class="card-body">
-            <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login(loginForm.valid)">
-              <div class="form-label-group">
-                <label for="inputEmail">Email address</label>
-                <input type="email" formControlName="email"  id="inputEmail" class="form-control mb-4" placeholder="Email address" required autofocus>
-                <p *ngIf="!loginForm.get('email').valid && loginAttempt && loginForm.get('email').hasError('required')" class="deep-orange-text small m-0">
-                  Please provide a email!
-                </p>
-                <p *ngIf="loginForm.get('email').hasError('email')" class="deep-orange-text small m-0">
-                    Please provide a valid email!
-                </p>
-              </div>
+	<div class="row">
+		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card card-signin my-5">
+				<header class="card-header">
+					<a href="signup" class="btn-new float-right btn btn-dark rounded mt-1">Sign Up</a>
+					<h4
+						class="text-color-new card-title my-3 heading-underline font-new text-uppercase letter-spacing-2">
+						Login
+					</h4>
+				</header>
+				<div class="card-body">
+					<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login(loginForm.valid)">
+						<div class="form-label-group">
+							<label for="inputEmail" class="text-uppercase small my-0">Email address</label>
+							<input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+							<div class="error-block mb-4">
+								<p *ngIf="!loginForm.get('email').valid && loginAttempt && loginForm.get('email').hasError('required')"
+									class="small font-new text-danger text-uppercase mt-1">
+									Please provide a email!
+								</p>
+								<p *ngIf="loginForm.get('email').hasError('email')"
+									class="small font-new text-danger text-uppercase mt-1">
+									Please provide a valid email!
+								</p>
+							</div>
+						</div>
 
-              <div class="form-label-group">
-                <label for="inputPassword">Password</label>
-                <input type="password"  formControlName="password" id="inputPassword" class="form-control mb-4" placeholder="Password" required>
-                <p *ngIf="!loginForm.get('password').valid && loginAttempt && loginForm.get('password').hasError('required')" class="deep-orange-text small m-0">
-                  Please provide a password!
-                </p>
-              </div>
+						<div class="form-label-group">
+							<label for="inputPassword" class="text-uppercase small my-0">Password</label>
+							<input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password" required>
+							<div class="error-block mb-4">
+								<p *ngIf="!loginForm.get('password').valid && loginAttempt && loginForm.get('password').hasError('required')" class="small font-new text-danger text-uppercase mt-1">
+									Please provide a password!
+								</p>
+							</div>
+							
+						</div>
 
-              <div class="custom-control custom-checkbox my-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
-              </div>
-              <button class="btn rounded btn-dark btn-block text-uppercase" type="submit">Sign in</button>
-              <hr class="my-4">
-
-              <!-- <button class="btn btn-google btn-block text-uppercase rounded my-2 text-white" style="background-color: #4267b2;" type="submit"><i class="fa fa-facebook" aria-hidden="true"></i> Facebbok</button>
-              <button class="btn btn-facebook btn-block text-uppercase rounded my-2 text-white" style="background-color: #d34836;" type="submit"><i class="fa fa-google" aria-hidden="true"></i> Google</button> -->
-              <!-- <hr class="my-4"> -->
-              <p>Need an account? <a href="signup">Create Account</a></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+						<div class="custom-control custom-checkbox my-3">
+							<input type="checkbox" class="custom-control-input" id="customCheck1">
+							<label class="custom-control-label py-1" for="customCheck1">Remember password</label>
+						</div>
+						<button class="btn rounded btn-dark btn-block text-uppercase btn-new" type="submit">Sign
+							in</button>
+						<hr class="my-4">
+						<p class="font-new">Need an account? <a href="signup" class="text-color-new">Create Account</a>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>

@@ -34,30 +34,31 @@ import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
 
 
 const routes: Routes = [
-  // { path: '', component: UserHomepageComponent },
+  { path: '', component: UserHomepageComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'about', component: AboutUsComponent },
-  // { path: 'contact', component: ContactUsComponent },
-  // { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  // { path: 'search', component: SearchResultsComponent },
-  // { path: 'signup', component: SignupComponent },
-  // { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
-  // { path: 'search-results/:term', component: SearchResultsComponent },
-  { path: 'product-description/:id', component: ProductDescriptionComponent }, //
-  { path: 'order-listing', component: OrderListingComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'search', component: SearchResultsComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'cart', component: UserCartComponent, canActivate: [AuthGuard] },
+  { path: 'search-results/:term', component: SearchResultsComponent },
+  { path: 'product-description/:id', component: ProductDescriptionComponent }, 
   { path: 'product-category/:id', component: ProductCategoryViewComponent },
-  // { path: 'address-book', component: AddressBookComponent },
-  // { path: 'address-information', component: AddressInformationComponent },
-  // { path: 'my-account', component: MyAccountComponent,  canActivate: [AuthGuard]},
-  // { path: 'login-security', component: LoginSecurityComponent,  canActivate: [AuthGuard]},
-  // { path: 'my-addresses', component: MyAddressComponent, canActivate: [AuthGuard]},
-  // { path: 'add-address', component: AddAddressComponent},
+  { path: 'address-book', component: AddressBookComponent },
+  { path: 'address-information', component: AddressInformationComponent },
+  { path: 'my-account', component: MyAccountComponent,  canActivate: [AuthGuard]},
+  { path: 'login-security', component: LoginSecurityComponent,  canActivate: [AuthGuard]},
+  { path: 'my-addresses', component: MyAddressComponent, canActivate: [AuthGuard]},
+  { path: 'add-address', component: AddAddressComponent},
   { path: 'response', component: PaymentResponseComponent, canActivate: [AuthGuard]},
-  { path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
-  { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
   { path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
+  { path: '**', component: UserHomepageComponent },
+
+  { path: 'order-listing', component: OrderListingComponent },
   { path:'print-invoice/:orderID',component: PrintInvoiceComponent},
-  { path: '**', component: UserHomepageComponent }
+  { path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
+  { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -32,10 +32,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jspdf/dist/jspdf.es.min.js",
-              "node_modules/jspdf/dist/jspdf.node.js",
-              "node_modules/jspdf/dist/polyfills.es.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

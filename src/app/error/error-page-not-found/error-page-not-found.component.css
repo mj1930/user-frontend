@@ -1,0 +1,21 @@
+svg {
+  width: 50%;
+  max-height: 225px;
+  height: auto;
+  margin: 0 0 15px;
+}
+
+.heading-underline {
+  display: inline-block;
+  position: relative;
+  color: #043d5d !important;
+}
+
+.heading-underline:after {
+  position: absolute;
+  content: "";
+  left: 25%;
+  bottom: 0;
+  width: 50%;
+  border-top: 2px solid #043d5d;
+}

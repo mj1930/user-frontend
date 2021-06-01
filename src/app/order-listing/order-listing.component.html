@@ -2,11 +2,12 @@
 
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 bg-white pt-4 rounded">
 
-            <h4 class="font-weight-bold">Order History</h4>
-            <table class="table table-bordered  my-3" *ngIf="orders.length > 0">
-                <thead class="grey lighten-2">
+            <h4 class="font-weight-bold text-uppercase font-new letter-spacing-2 heading-underline">Order History</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered my-3" *ngIf="orders.length > 0">
+                <thead class="bg-new text-white">
                   <tr>
                     <th scope="col" class="text-nowrap">Order ID</th>
                     <th scope="col" class="text-nowrap">Customer</th>
@@ -23,20 +24,20 @@
                       <a [href]="'/order-detail/'+order?._id" class="orderLink">#{{order?._id}}</a>
                     </th>
                     <td class="text-nowrap">
-                        <p>{{order?.address?.name |  titlecase}}</p>
+                        <p class="font-new">{{order?.address?.name |  titlecase}}</p>
                     </td>
-                    <td>
+                    <td class="font-new">
                         {{order?.products.length}}
                     </td>
 
                     <td class="text-nowrap">
-                        <p>{{order?.status}}</p>
+                        <p class="font-new">{{order?.status}}</p>
                     </td>
                     <td class="text-nowrap">
-                        <p>{{order?.totalAmnt}}</p>
+                        <p class="font-new inr">{{order?.totalAmnt}}</p>
                     </td>
                     <td class="text-nowrap">
-                        <p>{{order?.createdAt | date: 'medium'}}</p>
+                        <p class="font-new">{{order?.createdAt | date: 'medium'}}</p>
                     </td>
                     <!-- <td>
                         <select class="form-control select-style" name="status" [(ngModel)]="order.orderStatus" (change)="updateStatus(order._id, $event)">
@@ -46,9 +47,11 @@
                   </tr>
                 </tbody>
             </table>
+            </div>
+            
 
             <div class="my-2" *ngIf="orders.length == 0">
-                <p style="font-size: large;">Your have no orders yet</p>
+                <p class="font-new">Your have no orders yet! <a href="/" class="text-color-new">Continue Shopping.</a></p>
             </div>
         </div>
     </div>

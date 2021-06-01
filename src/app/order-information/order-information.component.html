@@ -3,18 +3,18 @@
 
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 bg-white pt-4 rounded">
             <div class="row d-flex justify-content-between m-0">
-                <h4 class="font-weight-bold my-2">Order Information</h4>
-                <div class="btn-group" role="group">
-                    <button class="btn btn-sm btn-dark rounded mx-1" routerLink="/order-listing"> Back to my orders</button>
-                    <button class="btn btn-sm btn-primary rounded mx-1" routerLink="/print-invoice/{{order?._id}}" target="_blank">Invoice</button>
+                <h4 class="font-weight-bold my-2 text-uppercase font-new heading-underline letter-spacing-2">Order Information</h4>
+                <div class="btn-group mt-3 mt-md-0 mx-auto mx-md-0" role="group">
+                    <button class="btn btn-sm btn-new-inverse rounded mx-1" routerLink="/order-listing"> Back to my orders</button>
+                    <button class="btn btn-sm btn-new rounded mx-1" routerLink="/print-invoice/{{order?._id}}" target="_blank">Invoice</button>
                 </div>
                 
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered my-3">
-                    <thead class="grey lighten-2">
+                    <thead class="bg-new text-white">
                         <tr>
                             <th class="text-nowrap" colspan="2">Order Details</th>
                         </tr>
@@ -43,7 +43,7 @@
 
             <div class="table-responsive">
                 <table class="table table-bordered my-3">
-                    <thead class="grey lighten-2">
+                    <thead class="bg-new text-white">
                         <tr>
                             <th class="text-nowrap">Payment Address</th>
                             <th class="text-nowrap">Shipping Address</th>
@@ -53,28 +53,28 @@
                         <tr>
                             <th scope="row">
                                 <div class="m-0">
-                                    <p>{{address?.name | uppercase }}</p>
-                                    <p>{{address?.mobile | uppercase }}</p>
-                                    <p>{{address?.address1 | uppercase }}</p>
-                                    <p>{{address?.address2 | uppercase }}</p>
-                                    <p>{{address?.landmark | uppercase }}</p>
-                                    <p>{{address?.postal_code | uppercase }}</p>
-                                    <p>{{address?.city | uppercase }}</p>
-                                    <p>{{address?.state | uppercase }}</p>
-                                    <p>{{address?.country | uppercase }}</p>
+                                    <p class="font-new">{{address?.name | uppercase }}</p>
+                                    <p class="font-new text-color-new">{{address?.mobile | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.address1 | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.address2 | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.landmark | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.postal_code | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.city | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.state | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.country | uppercase }}</p>
                                 </div>
                             </th>
                             <td class="text-nowrap">
                                 <div class="m-0">
-                                    <p>{{address?.name | uppercase }}</p>
-                                    <p>{{address?.mobile | uppercase }}</p>
-                                    <p>{{address?.address1 | uppercase }}</p>
-                                    <p>{{address?.address2 | uppercase }}</p>
-                                    <p>{{address?.landmark | uppercase }}</p>
-                                    <p>{{address?.postal_code | uppercase }}</p>
-                                    <p>{{address?.city | uppercase }}</p>
-                                    <p>{{address?.state | uppercase }}</p>
-                                    <p>{{address?.country | uppercase }}</p>
+                                    <p class="font-new">{{address?.name | uppercase }}</p>
+                                    <p class="font-new text-color-new">{{address?.mobile | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.address1 | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.address2 | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.landmark | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.postal_code | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.city | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.state | uppercase }}</p>
+                                    <p class="font-new my-0">{{address?.country | uppercase }}</p>
                                 </div>
                             </td>
                         </tr>
@@ -84,7 +84,7 @@
 
             <div class="table-responsive">
                 <table class="table table-bordered my-3">
-                    <thead class="grey lighten-2">
+                    <thead class="bg-new text-white">
                         <tr>
                             <th scope="col" class="text-nowrap">Product Name</th>
                             <th scope="col" class="text-nowrap">Product Id</th>
@@ -97,40 +97,40 @@
                         <ng-container *ngFor="let product of order?.products;let i=index">
                             <tr>
                                 <th scope="row" class="text-left">
-                                    {{product.productName}}
+                                    <p class="font-new">{{product.productName}}</p>
                                 </th>
                                 <td class="text-nowrap">
-                                    <p>{{product.productId}}</p>
+                                    <p class="font-new text-color-new">{{product.productId}}</p>
                                 </td>
                                 <td>
                                     {{product.quantity}}
                                 </td>
 
                                 <td class="text-nowrap">
-                                    <p>INR {{product.orderPrice}}</p>
+                                    <p class="font-new inr">{{product.orderPrice}}</p>
                                 </td>
                                 <td class="text-nowrap">
-                                    <p>INR {{product.orderPrice*product.quantity}}</p>
+                                    <p class="font-new inr">{{product.orderPrice*product.quantity}}</p>
                                 </td>
                             </tr>
                         </ng-container>
                         <tr>
                             <th scope="row" colspan="3"></th>
                             <td class="text-nowrap text-right">
-                                <p><b>Sub-Total:</b></p>
+                                <p><b class="font-new">Sub-Total:</b></p>
                             </td>
                             <td class="text-nowrap">
-                                <p>INR {{order?.totalAmnt}}</p>
+                                <p class="font-new inr">{{order?.totalAmnt}}</p>
                             </td>
                         </tr>
 
                         <tr>
                             <th scope="row" colspan="3"></th>
                             <td class="text-nowrap text-right">
-                                <p><b>Flat Shipping Rate:</b></p>
+                                <p><b class="font-new">Flat Shipping Rate:</b></p>
                             </td>
                             <td class="text-nowrap">
-                                <p>N/A</p>
+                                <p class="font-new inr">N/A</p>
                             </td>
                         </tr>
 
@@ -138,10 +138,10 @@
                             <th scope="row" colspan="3" style="text-align: center;">
                             </th>
                             <td class="text-nowrap text-right">
-                                <p><b>Total:</b></p>
+                                <p><b class="font-new">Total:</b></p>
                             </td>
                             <td class="text-nowrap">
-                                <p>INR {{order?.totalAmnt}}</p>
+                                <p class="font-new inr"> {{order?.totalAmnt}}</p>
                             </td>
                         </tr>
 

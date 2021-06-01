@@ -35,6 +35,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
+import { ErrorPageNotFoundComponent } from './error/error-page-not-found/error-page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
     AboutUsComponent,
     PrivacyPolicyComponent,
     SearchResultsComponent,
-    PrintInvoiceComponent
+    PrintInvoiceComponent,
+    ErrorPageNotFoundComponent
   ],
   imports: [
     BrowserModule,

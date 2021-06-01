@@ -12,3 +12,23 @@
       display: none;
     }
   }
+
+.heading-underline-left, .heading-underline-right{
+    display: inline-block;
+    position: relative;
+}
+
+.heading-underline-left:after, .heading-underline-right:after{
+    position: absolute;
+    content: "";
+    bottom: 0;
+    width: 50%;
+    border-top: 2px solid #043D5D;
+}
+
+.heading-underline-left:after{
+	left: 0;
+}
+.heading-underline-right:after{
+	right: 0;
+}

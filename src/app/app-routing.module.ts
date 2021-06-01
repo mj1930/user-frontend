@@ -22,6 +22,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PrintInvoiceComponent } from './print-invoice/print-invoice.component';
+import { ErrorPageNotFoundComponent } from './error/error-page-not-found/error-page-not-found.component';
 
 
 
@@ -53,12 +54,13 @@ const routes: Routes = [
   { path: 'add-address', component: AddAddressComponent},
   { path: 'response', component: PaymentResponseComponent, canActivate: [AuthGuard]},
   { path:'transaction',component: PaymentComponent, canActivate: [AuthGuard]},
-  { path: '**', component: UserHomepageComponent },
-
   { path: 'order-listing', component: OrderListingComponent },
   { path:'print-invoice/:orderID',component: PrintInvoiceComponent},
   { path:'order-status/:orderId',component:PaymentResponseComponent, canActivate: [AuthGuard]},
-  { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]}
+  { path:'order-detail/:orderId',component:OrderInformationComponent, canActivate: [AuthGuard]},
+
+  
+  { path: '**', component: ErrorPageNotFoundComponent }
 ];
 
 @NgModule({

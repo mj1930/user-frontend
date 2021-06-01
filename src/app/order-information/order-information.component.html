@@ -87,6 +87,7 @@
                     <thead class="bg-new text-white">
                         <tr>
                             <th scope="col" class="text-nowrap">Product Name</th>
+                            <th scope="col" class="text-nowrap">Image</th>
                             <th scope="col" class="text-nowrap">Product Id</th>
                             <th scope="col" class="text-nowrap">Quantity</th>
                             <th scope="col" class="text-nowrap">Price</th>
@@ -97,7 +98,10 @@
                         <ng-container *ngFor="let product of order?.products;let i=index">
                             <tr>
                                 <th scope="row" class="text-left">
-                                    <p class="font-new">{{product.productName}}</p>
+                                    <p class="font-new"><a href="/product-description/{{product.productId}}">{{product.productName}}</a></p>
+                                </th>
+                                <th scope="row" class="text-center">
+                                    <img src="{{product.productImg}}" alt="product-image" width="100px">
                                 </th>
                                 <td class="text-nowrap">
                                     <p class="font-new text-color-new">{{product.productId}}</p>
@@ -115,7 +119,7 @@
                             </tr>
                         </ng-container>
                         <tr>
-                            <th scope="row" colspan="3"></th>
+                            <th scope="row" colspan="4"></th>
                             <td class="text-nowrap text-right">
                                 <p><b class="font-new">Sub-Total:</b></p>
                             </td>
@@ -125,7 +129,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row" colspan="3"></th>
+                            <th scope="row" colspan="4"></th>
                             <td class="text-nowrap text-right">
                                 <p><b class="font-new">Flat Shipping Rate:</b></p>
                             </td>
@@ -135,7 +139,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row" colspan="3" style="text-align: center;">
+                            <th scope="row" colspan="4" style="text-align: center;">
                             </th>
                             <td class="text-nowrap text-right">
                                 <p><b class="font-new">Total:</b></p>
